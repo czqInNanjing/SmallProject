@@ -1,20 +1,20 @@
 /**
  * 
- * @author czq ³Â×ÔÇ¿ Ñ§ºÅ141250017
+ * @author czq é™ˆè‡ªå¼º å­¦å·141250017
  *
  */
 public class ALU {
 	NewMultipler test = new NewMultipler();
 	// 1
 	/**
-	 *  ¸Ã·½·¨ÓÃÓÚÄ£ÄâÁ½¸ö²Ù×÷ÊýµÄËÄÔòÔËËã£¬²Ù×÷Êý¿ÉÒÔÎªÕûÊý»ò¸¡µãÊý£¬ÔËËãÀàÐÍ°üÀ¨¼Ó¼õ³Ë³ý¡£
-	 *  µ±Á½¸ö²Ù×÷Êý¾ùÎªÕûÊýÊ±£¬½«²Ù×÷Êý±íÊ¾Îª32Î»µÄÕûÊý£¬²¢µ÷ÓÃÏàÓ¦µÄÕûÊýÔËËã·½·¨½øÐÐÔËËã£»
-	 *  µ±ÖÁÉÙÒ»¸ö²Ù×÷ÊýÎª¸¡µãÊýÊ±£¬²ÉÓÃ32Î»µÄIEEE754±íÊ¾²Ù×÷Êý£¬²¢µ÷ÓÃÏàÓ¦µÄ¸¡µãÊýÔËËã·½·¨½øÐÐÔËËã¡£
-	 * @param formula ×Ö·û´®±íÊ¾µÄ¼ÆËã¹«Ê½£¬
-	 * 					ÆäÐÎÊ½Îª£º²Ù×÷Êý²Ù×÷·û²Ù×÷Êý=£¬ÀýÈç¡°5+(-7)=¡±¡£
-	 * 				¼ÆËã¹«Ê½ÖÐÓÐÇÒ½öÓÐ2¸ö²Ù×÷Êý£¬²ÉÓÃÊ®½øÖÆ±íÊ¾£¬µ±²Ù×÷ÊýÎª¸ºÊýÊ±¿ÉÄÜÓÃÀ¨ºÅÀ¨×¡£»
-	 *			 	ÓÐÇÒ½öÓÐ+-* /ÖÐµÄ1¸ö×÷Îª²Ù×÷·û£»ÒÔ=ºÅ½áÊø¡£
-	 * @return ¼ÆËã½á¹ûµÄÕæÖµ¡£Èç¹ûÊÇ¸ºÊý£¬×î×ó±ßÎª¡°-¡±£»Èç¹ûÊÇÕýÊý»ò0£¬²»ÐèÒª·ûºÅÎ»¡£
+	 *  è¯¥æ–¹æ³•ç”¨äºŽæ¨¡æ‹Ÿä¸¤ä¸ªæ“ä½œæ•°çš„å››åˆ™è¿ç®—ï¼Œæ“ä½œæ•°å¯ä»¥ä¸ºæ•´æ•°æˆ–æµ®ç‚¹æ•°ï¼Œè¿ç®—ç±»åž‹åŒ…æ‹¬åŠ å‡ä¹˜é™¤ã€‚
+	 *  å½“ä¸¤ä¸ªæ“ä½œæ•°å‡ä¸ºæ•´æ•°æ—¶ï¼Œå°†æ“ä½œæ•°è¡¨ç¤ºä¸º32ä½çš„æ•´æ•°ï¼Œå¹¶è°ƒç”¨ç›¸åº”çš„æ•´æ•°è¿ç®—æ–¹æ³•è¿›è¡Œè¿ç®—ï¼›
+	 *  å½“è‡³å°‘ä¸€ä¸ªæ“ä½œæ•°ä¸ºæµ®ç‚¹æ•°æ—¶ï¼Œé‡‡ç”¨32ä½çš„IEEE754è¡¨ç¤ºæ“ä½œæ•°ï¼Œå¹¶è°ƒç”¨ç›¸åº”çš„æµ®ç‚¹æ•°è¿ç®—æ–¹æ³•è¿›è¡Œè¿ç®—ã€‚
+	 * @param formula å­—ç¬¦ä¸²è¡¨ç¤ºçš„è®¡ç®—å…¬å¼ï¼Œ
+	 * 					å…¶å½¢å¼ä¸ºï¼šæ“ä½œæ•°æ“ä½œç¬¦æ“ä½œæ•°=ï¼Œä¾‹å¦‚â€œ5+(-7)=â€ã€‚
+	 * 				è®¡ç®—å…¬å¼ä¸­æœ‰ä¸”ä»…æœ‰2ä¸ªæ“ä½œæ•°ï¼Œé‡‡ç”¨åè¿›åˆ¶è¡¨ç¤ºï¼Œå½“æ“ä½œæ•°ä¸ºè´Ÿæ•°æ—¶å¯èƒ½ç”¨æ‹¬å·æ‹¬ä½ï¼›
+	 *			 	æœ‰ä¸”ä»…æœ‰+-* /ä¸­çš„1ä¸ªä½œä¸ºæ“ä½œç¬¦ï¼›ä»¥=å·ç»“æŸã€‚
+	 * @return è®¡ç®—ç»“æžœçš„çœŸå€¼ã€‚å¦‚æžœæ˜¯è´Ÿæ•°ï¼Œæœ€å·¦è¾¹ä¸ºâ€œ-â€ï¼›å¦‚æžœæ˜¯æ­£æ•°æˆ–0ï¼Œä¸éœ€è¦ç¬¦å·ä½ã€‚
 	 */
 	public String calculation(String formula) {
 		String operand1;
@@ -87,11 +87,11 @@ public class ALU {
 
 	// 2
 	/**
-	 * ·µ»ØÊ®½øÖÆÕûÊýµÄ²¹Âë±íÊ¾
+	 * è¿”å›žåè¿›åˆ¶æ•´æ•°çš„è¡¥ç è¡¨ç¤º
 	 * 
 	 * @param number
 	 * @param length
-	 *            ±íÊ¾µÄÎ»Êý
+	 *            è¡¨ç¤ºçš„ä½æ•°
 	 * @return
 	 */
 	public String integerRepresentation(String number, int length) {
@@ -102,7 +102,7 @@ public class ALU {
 		}
 		long temp = Long.parseLong(number);
 		StringBuffer temp2 = new StringBuffer(length);
-		// ¼ÆËã¾ø¶ÔÖµµÄ¶þ½øÖÆ±íÊ¾
+		// è®¡ç®—ç»å¯¹å€¼çš„äºŒè¿›åˆ¶è¡¨ç¤º
 		for (;;) {
 			if (temp / 2 == 0) {
 				temp2.append(Long.toString(temp % 2));
@@ -112,13 +112,13 @@ public class ALU {
 				temp = temp / 2;
 			}
 		}
-		// ²¹Æë0ÖÁ¹æ¶¨Î»Êý
+		// è¡¥é½0è‡³è§„å®šä½æ•°
 		for (int i = temp2.length(); i < length; i++) {
 			temp2.append("0");
 		}
-		// ÄæÐò
+		// é€†åº
 		temp2.reverse();
-		// ¶Ô¸ºÊý´¦Àí
+		// å¯¹è´Ÿæ•°å¤„ç†
 		if (isNeagtive) {
 			String result = computeCompletment(temp2.toString());
 			temp2.replace(0, length, result);
@@ -128,13 +128,13 @@ public class ALU {
 	}
 
 	/**
-	 * ¼ÆËãÕûÊý²¹Âë
+	 * è®¡ç®—æ•´æ•°è¡¥ç 
 	 * 
 	 * @return
 	 */
 	private String computeCompletment(String integer) {
 		StringBuffer result = new StringBuffer(integer);
-		// ¸ù¾ÝÈ¡·´¼ÓÒ»×îºóÒ»¸ö1¼°ÆäÖ®ºóµÄÊý×Ö²»»áÊÜµ½Ó°Ïì
+		// æ ¹æ®å–ååŠ ä¸€æœ€åŽä¸€ä¸ª1åŠå…¶ä¹‹åŽçš„æ•°å­—ä¸ä¼šå—åˆ°å½±å“
 		if (integer.indexOf("1") != -1) {
 			int temp3 = result.lastIndexOf("1");
 			for (int i = 0; i < temp3; i++) {
@@ -151,13 +151,13 @@ public class ALU {
 
 	// 3
 	/**
-	 * ¼ÆËãÊ®½øÖÆ¸¡µãÊýµÄ¸¡µãÊý±íÊ¾ÐÎÊ½
+	 * è®¡ç®—åè¿›åˆ¶æµ®ç‚¹æ•°çš„æµ®ç‚¹æ•°è¡¨ç¤ºå½¢å¼
 	 * 
 	 * @param number
 	 * @param sLength
-	 *            ´óÓÚ8
+	 *            å¤§äºŽ8
 	 * @param eLength
-	 *            ´óÓÚ8
+	 *            å¤§äºŽ8
 	 * @return
 	 */
 	public String floatRepresentation(String number, int sLength, int eLength) {
@@ -167,7 +167,7 @@ public class ALU {
 		StringBuffer exponent = new StringBuffer(eLength);
 		Long integerPart;
 		double decimarPart;
-		// Ð¡ÊýµãÒÆ¶¯Î»Êý
+		// å°æ•°ç‚¹ç§»åŠ¨ä½æ•°
 		int pointMove = 0;
 		if (number.startsWith("-")) {
 			isNegative = true;
@@ -183,7 +183,7 @@ public class ALU {
 			integerPart = Long.parseLong(number);
 			decimarPart = 0.0;
 		}
-		// »ñµÃÕûÊý²¿·Ö¶þ½øÖÆ±íÊ¾
+		// èŽ·å¾—æ•´æ•°éƒ¨åˆ†äºŒè¿›åˆ¶è¡¨ç¤º
 		if (integerPart != 0) {
 			for (;;) {
 				if (integerPart / 2 == 0) {
@@ -196,11 +196,11 @@ public class ALU {
 			}
 			result.reverse();
 			result.delete(0, 1);
-			// »ñµÃÐ¡ÊýµãÒÆ¶¯µÄÎ»Êý
+			// èŽ·å¾—å°æ•°ç‚¹ç§»åŠ¨çš„ä½æ•°
 			pointMove = result.length();
 		}
 
-		// »ñµÃÐ¡Êý²¿·ÖµÄ¶þ½øÖÆ±íÊ¾£¬²¢´æÈëdecimarpartsÖÐ
+		// èŽ·å¾—å°æ•°éƒ¨åˆ†çš„äºŒè¿›åˆ¶è¡¨ç¤ºï¼Œå¹¶å­˜å…¥decimarpartsä¸­
 		for (;;) {
 			if (decimarParts.length() == sLength*10) {
 				break;
@@ -215,7 +215,7 @@ public class ALU {
 
 		}
 		
-		// Èç¹ûÕûÊý²¿·ÖÎª0£¬ÔòÎªÓÒÒÆ
+		// å¦‚æžœæ•´æ•°éƒ¨åˆ†ä¸º0ï¼Œåˆ™ä¸ºå³ç§»
 		if (integerPart == 0) {
 //			if(decimarParts.indexOf("1") == -1){
 //				
@@ -225,24 +225,24 @@ public class ALU {
 			result.append(decimarParts.substring(decimarParts.indexOf("1") + 1));
 		}
 		
-		// ÇóÖ¸Êý²¿·Ö
+		// æ±‚æŒ‡æ•°éƒ¨åˆ†
 		int temp = pointMove +  (int)Math.pow(2, eLength - 1) - 1;
 		for (;;) {
-			//ÈôÎª0
+			//è‹¥ä¸º0
 			if(decimarParts.indexOf("1") == -1 && integerPart == 0){
 				for (int i = 0; i < eLength; i++) {
 					exponent.append('0');
 				}
 				break;
 			}
-			//ÈôÎªÎÞÇî´ó
+			//è‹¥ä¸ºæ— ç©·å¤§
 			if (temp >= (int)Math.pow(2, eLength) - 1) {
 				for (int i = 0; i < eLength; i++) {
 					exponent.append('1');
 				}
 				break;
 			}
-			//ÈôÎª·Ç¹æ¸ñ»¯Êý
+			//è‹¥ä¸ºéžè§„æ ¼åŒ–æ•°
 			if(temp <=0){
 				for (int i = 0; i < eLength; i++) {
 					exponent.append('0');
@@ -263,8 +263,8 @@ public class ALU {
 			exponent.insert(0, '0');
 		}
 		
-		//¿¼ÂÇ·´¹æ¸ñ»¯ÊýºÍÉáÈë·½Ê½
-		//ÓÒÒÆÒ»Î»´æ½øÈ¥
+		//è€ƒè™‘åè§„æ ¼åŒ–æ•°å’Œèˆå…¥æ–¹å¼
+		//å³ç§»ä¸€ä½å­˜è¿›åŽ»
 		if (exponent.indexOf("1") == -1) {
 			
 			result.delete(0, result.length());
@@ -276,7 +276,7 @@ public class ALU {
 		result.append(decimarParts.toString());
 		result.delete(sLength + 1, result.length());
 //		System.out.println(result);
-		//ÉáÈë
+		//èˆå…¥
 		if (result.charAt(sLength) == '1') {
 			int tempNum = result.lastIndexOf("0");
 			if(tempNum != -1){
@@ -285,7 +285,7 @@ public class ALU {
 					result.setCharAt(i, '0');
 				} 
 			}else{
-				//È«Îª1£¬½øÎ»¼Óµ½ÕûÊý
+				//å…¨ä¸º1ï¼Œè¿›ä½åŠ åˆ°æ•´æ•°
 				for (int i = 0; i < decimarParts.length(); i++) {
 					decimarParts.setCharAt(i, '0');
 				}
@@ -311,11 +311,11 @@ public class ALU {
 
 	// 4
 	/**
-	 * ½«Ê®½øÖÆ¸¡µãÊýÓÃIeee754 ±íÊ¾
+	 * å°†åè¿›åˆ¶æµ®ç‚¹æ•°ç”¨Ieee754 è¡¨ç¤º
 	 * 
 	 * @param number
 	 * @param length
-	 *            ±íÊ¾Î»Êý£¬Îª32 »ò 64 Î»
+	 *            è¡¨ç¤ºä½æ•°ï¼Œä¸º32 æˆ– 64 ä½
 	 * @return
 	 */
 	public String ieee754(String number, int length) {
@@ -329,7 +329,7 @@ public class ALU {
 
 	// 5
 	/**
-	 * ½«¶þ½øÖÆÕûÊý×ª»¯ÎªÊ®½øÖÆÕûÊý
+	 * å°†äºŒè¿›åˆ¶æ•´æ•°è½¬åŒ–ä¸ºåè¿›åˆ¶æ•´æ•°
 	 * 
 	 * @param operand
 	 * @return
@@ -338,7 +338,7 @@ public class ALU {
 		int length = operand.length();
 		char[] split = operand.toCharArray();
 		long result = 0;
-		//Ã»°ì·¨£¬ÀÏÒªÒç³ö£¬Ö»ºÃÕâÑùÁË
+		//æ²¡åŠžæ³•ï¼Œè€è¦æº¢å‡ºï¼Œåªå¥½è¿™æ ·äº†
 		if(split[0] != '0'){
 			if (length < 64) {
 				result = -(long) ((split[0] - '0') * Math.pow(2, length - 1));
@@ -358,25 +358,25 @@ public class ALU {
 
 	// 6
 	/**
-	 * ½«¶þ½øÖÆ¸¡µãÊý×ª»¯ÎªÊ®½øÖÆ
+	 * å°†äºŒè¿›åˆ¶æµ®ç‚¹æ•°è½¬åŒ–ä¸ºåè¿›åˆ¶
 	 * 
 	 * @param operand
 	 * @param sLength
-	 *            ÓÐÐ§ÊýÎ»
+	 *            æœ‰æ•ˆæ•°ä½
 	 * @param eLength
-	 *            Ö¸ÊýÎ»
+	 *            æŒ‡æ•°ä½
 	 * @return
 	 */
 	public String floatTrueValue(String operand, int sLength, int eLength) {
 		boolean isPostive = operand.startsWith("0");
-		// Ö¸ÊýµÄ¶þ½øÖÆ×Ö·û´®
+		// æŒ‡æ•°çš„äºŒè¿›åˆ¶å­—ç¬¦ä¸²
 		String indexStr = operand.substring(1, 1 + eLength);
-		// ÓÐÐ§ÊýµÄ¶þ½øÖÆ×Ö·û´®
+		// æœ‰æ•ˆæ•°çš„äºŒè¿›åˆ¶å­—ç¬¦ä¸²
 		String effStr = operand.substring(1 + eLength);
 		double result = 0;
-		// ÒòÎªÊÇÎÞ·ûºÅµÄ£¬ËùÒÔÇ°Ãæ¼Ó¸ö0±íÊ¾Çå°×
+		// å› ä¸ºæ˜¯æ— ç¬¦å·çš„ï¼Œæ‰€ä»¥å‰é¢åŠ ä¸ª0è¡¨ç¤ºæ¸…ç™½
 		int index = Integer.parseInt(integerTrueValue("0" + indexStr));
-		// ÓÐÐ§ÊýÐòÁÐ
+		// æœ‰æ•ˆæ•°åºåˆ—
 		char[] effChars = effStr.toCharArray();
 		if (index == 0 && effStr.indexOf("1") == -1) {
 			return "0";
@@ -392,13 +392,13 @@ public class ALU {
 			}
 			
 		}
-		// ¶ÔÓÚ·Ç¹æ¸ñ»¯Êý
+		// å¯¹äºŽéžè§„æ ¼åŒ–æ•°
 		if (index == 0 && effStr.indexOf("1") != -1) {
 			for (int i = 0; i < sLength; i++) {
 				result = result + (effChars[i] - '0')
 						* Math.pow(2, index - 127 - i);
 			}
-			// ¶ÔÓÚ¹æ¸ñ»¯Êý
+			// å¯¹äºŽè§„æ ¼åŒ–æ•°
 		} else {
 			result = Math.pow(2, index - 127);
 			for (int i = 0; i < sLength; i++) {
@@ -414,7 +414,7 @@ public class ALU {
 
 	// 7
 	/**
-	 * ¶Ô¶þ½øÖÆÊý°´Î»È¡·´
+	 * å¯¹äºŒè¿›åˆ¶æ•°æŒ‰ä½å–å
 	 * 
 	 * @param operand
 	 * @return
@@ -434,7 +434,7 @@ public class ALU {
 
 	// 8
 	/**
-	 * Ä£Äâ×óÒÆ²Ù×÷
+	 * æ¨¡æ‹Ÿå·¦ç§»æ“ä½œ
 	 * 
 	 * @param operand
 	 * @param n
@@ -451,7 +451,7 @@ public class ALU {
 
 	// 9
 	/**
-	 * Ä£ÄâËãÊõÓÒÒÆ²Ù×÷
+	 * æ¨¡æ‹Ÿç®—æœ¯å³ç§»æ“ä½œ
 	 * 
 	 * @param operand
 	 * @param n
@@ -471,7 +471,7 @@ public class ALU {
 
 	// 10
 	/**
-	 * Âß¼­ÓÒÒÆ²Ù×÷
+	 * é€»è¾‘å³ç§»æ“ä½œ
 	 * 
 	 * @param operand
 	 * @param n
@@ -488,12 +488,12 @@ public class ALU {
 
 	// 11
 	/**
-	 * È«¼Ó·¨Æ÷
+	 * å…¨åŠ æ³•å™¨
 	 * 
 	 * @param x
 	 * @param y
 	 * @param c
-	 * @return µÚÒ»Î»ÎªºÍ£¬µÚ¶þÎ»Îª½øÎ»
+	 * @return ç¬¬ä¸€ä½ä¸ºå’Œï¼Œç¬¬äºŒä½ä¸ºè¿›ä½
 	 */
 	public String fullAdder(char x, char y, char c) {
 		String result = "";
@@ -510,14 +510,14 @@ public class ALU {
 
 	// 12
 	/**
-	 * Ä£Äâ°ËÎ»ÏÈÐÐ½øÎ»¼Ó·¨Æ÷
+	 * æ¨¡æ‹Ÿå…«ä½å…ˆè¡Œè¿›ä½åŠ æ³•å™¨
 	 * 
 	 * @param operand1
-	 *            ²Ù×÷Êý1
+	 *            æ“ä½œæ•°1
 	 * @param operand2
-	 *            ²Ù×÷Êý2
+	 *            æ“ä½œæ•°2
 	 * @param c
-	 *            ³õÊ¼½øÎ»
+	 *            åˆå§‹è¿›ä½
 	 * @return
 	 */
 	public String claAdder(String operand1, String operand2, char c) {
@@ -530,7 +530,7 @@ public class ALU {
 		StringBuffer result = new StringBuffer(9);
 
 		cs[0] = c;
-		//Ê¹ÓÃµÝ¹éÏÈËã³öËùÓÐ½øÎ»
+		//ä½¿ç”¨é€’å½’å…ˆç®—å‡ºæ‰€æœ‰è¿›ä½
 		for (int i = 0; i < (cs.length - 1); i++) {
 			cs[i + 1] = computeC(x, y, c, i);
 		}
@@ -544,7 +544,7 @@ public class ALU {
 	}
 
 	/**
-	 * Ä£ÄâÏÈÐÐ½øÎ»¼Ó·¨Æ÷¼ÆËã½øÎ»£¬Ê¹ÓÃ°´Î»ÔËËã·ûÊ±ÐèÐ¡ÐÄ¡£ÆäÔËËãË³ÐòµÍÓÚ¼Ó¼õ
+	 * æ¨¡æ‹Ÿå…ˆè¡Œè¿›ä½åŠ æ³•å™¨è®¡ç®—è¿›ä½ï¼Œä½¿ç”¨æŒ‰ä½è¿ç®—ç¬¦æ—¶éœ€å°å¿ƒã€‚å…¶è¿ç®—é¡ºåºä½ŽäºŽåŠ å‡
 	 * 
 	 * @param x
 	 * @param y
@@ -564,21 +564,21 @@ public class ALU {
 
 	// 13
 	/**
-	 * Ä£Äâ²¿·ÖÏÈÐÐ½øÎ»¼Ó·¨Æ÷
+	 * æ¨¡æ‹Ÿéƒ¨åˆ†å…ˆè¡Œè¿›ä½åŠ æ³•å™¨
 	 * 
 	 * @param operand1
 	 * @param operand2
 	 * @param c
-	 *            ³õÊ¼½øÎ»
+	 *            åˆå§‹è¿›ä½
 	 * @param length
-	 *            ¼Ä´æÆ÷³¤¶È £¬´óÓÚµÈÓÚ8
-	 * @return ¼ÆËã½á¹û+ÊÇ·ñÒç³ö
+	 *            å¯„å­˜å™¨é•¿åº¦ ï¼Œå¤§äºŽç­‰äºŽ8
+	 * @return è®¡ç®—ç»“æžœ+æ˜¯å¦æº¢å‡º
 	 */
 	public String integerAddition(String operand1, String operand2, char c,
 			int length) {
 		int save = length;
 		StringBuffer result = new StringBuffer(length + 1);
-		// Ê×ÏÈ½«¼Ä´æÆ÷£¬²Ù×÷Êý³¤¶È½øÐÐ¹æ·¶
+		// é¦–å…ˆå°†å¯„å­˜å™¨ï¼Œæ“ä½œæ•°é•¿åº¦è¿›è¡Œè§„èŒƒ
 		while (length % 8 != 0) {
 			length++;
 		}
@@ -602,7 +602,7 @@ public class ALU {
 			}
 
 		}
-		// Ã¿´ÎÈ¡°ËÎ»½øÐÐÔËËã£¬½«ËùµÃ½á¹û´æ´¢£¬½«½øÎ»¸³ÓèÏÂÒ»´ÎÔËËã
+		// æ¯æ¬¡å–å…«ä½è¿›è¡Œè¿ç®—ï¼Œå°†æ‰€å¾—ç»“æžœå­˜å‚¨ï¼Œå°†è¿›ä½èµ‹äºˆä¸‹ä¸€æ¬¡è¿ç®—
 		String temp;
 		for (int i = 0; i < length / 8; i++) {
 			temp = claAdder(
@@ -612,10 +612,10 @@ public class ALU {
 			c = temp.charAt(8);
 		}
 		
-		//Ö®Ç°¹æ·¶»¯ÏÖÔÚÒªÖØÐÂ´¦Àí
+		//ä¹‹å‰è§„èŒƒåŒ–çŽ°åœ¨è¦é‡æ–°å¤„ç†
 		result.delete(0, length - save);
 		
-		// ÅÐ¶ÏÊÇ·ñÒç³ö
+		// åˆ¤æ–­æ˜¯å¦æº¢å‡º
 		if (operand1.startsWith("0") && operand2.startsWith("0")
 				&& (result.charAt(0) == '1') || operand1.startsWith("1")
 				&& operand2.startsWith("1") && (result.charAt(0) == '0'))
@@ -628,11 +628,11 @@ public class ALU {
 
 	// 14
 	/**
-	 * ¸Ã·½·¨ÓÃÓÚÄ£Äâ¼õ·¨£¬ÒªÇóµ÷ÓÃintegerAdditionÊµÏÖ
-	 * @param operand1 ±»¼õÊý ²¹Âë±íÊ¾
-	 * @param operand2 ¼õÊý ²¹Âë±íÊ¾
-	 * @param length ´æ·Å²Ù×÷ÊýµÄ¼Ä´æÆ÷³¤¶È¡£length²»Ð¡ÓÚ²Ù×÷Êý³¤¶È£¬µ±Ä³¸ö²Ù×÷ÊýµÄ³¤¶ÈÐ¡ÓÚlengthÊ±£¬ÐèÔÚ¸ßÎ»²¹·ûºÅÎ»
-	 * @return ³¤¶ÈÎªlength+1 µÄ×Ö·û´®£¬´Ó×óÏòÓÒ¡£Ç°lengthÎ»Îª¼ÆËã½á¹û£¬×îºóÒ»Î»ÎªÊÇ·ñÒç³ö
+	 * è¯¥æ–¹æ³•ç”¨äºŽæ¨¡æ‹Ÿå‡æ³•ï¼Œè¦æ±‚è°ƒç”¨integerAdditionå®žçŽ°
+	 * @param operand1 è¢«å‡æ•° è¡¥ç è¡¨ç¤º
+	 * @param operand2 å‡æ•° è¡¥ç è¡¨ç¤º
+	 * @param length å­˜æ”¾æ“ä½œæ•°çš„å¯„å­˜å™¨é•¿åº¦ã€‚lengthä¸å°äºŽæ“ä½œæ•°é•¿åº¦ï¼Œå½“æŸä¸ªæ“ä½œæ•°çš„é•¿åº¦å°äºŽlengthæ—¶ï¼Œéœ€åœ¨é«˜ä½è¡¥ç¬¦å·ä½
+	 * @return é•¿åº¦ä¸ºlength+1 çš„å­—ç¬¦ä¸²ï¼Œä»Žå·¦å‘å³ã€‚å‰lengthä½ä¸ºè®¡ç®—ç»“æžœï¼Œæœ€åŽä¸€ä½ä¸ºæ˜¯å¦æº¢å‡º
 	 */
 	public String integerSubtraction(String operand1, String operand2,
 			int length) {
@@ -641,16 +641,16 @@ public class ALU {
 
 	// 15
 	/**
-	 * ¸Ã·½·¨ÓÃÓÚÄ£ÄâBooth³Ë·¨£¬ÒªÇóµ÷ÓÃintegerAddition·½·¨ºÍintegerSubtraction·½·¨À´ÊµÏÖ¡£
-	 * @param operand1 ±»³ËÊý£¬ÓÃ²¹Âë±íÊ¾
-	 * @param operand2 ³ËÊý£¬ÓÃ²¹Âë±íÊ¾¡£
-	 * @param length ´æ·Å²Ù×÷ÊýµÄ¼Ä´æÆ÷µÄ³¤¶È¡£length²»Ð¡ÓÚ²Ù×÷ÊýµÄ³¤¶È£¬µ±Ä³¸ö²Ù×÷ÊýµÄ³¤¶ÈÐ¡ÓÚlengthÊ±£¬ÐèÒªÔÚ¸ßÎ»²¹·ûºÅÎ»¡£
-	 * @return ³¤¶ÈÎªlength*2£¬Îª¼ÆËã½á¹û£¬ÓÃ²¹Âë±íÊ¾¡£
+	 * è¯¥æ–¹æ³•ç”¨äºŽæ¨¡æ‹ŸBoothä¹˜æ³•ï¼Œè¦æ±‚è°ƒç”¨integerAdditionæ–¹æ³•å’ŒintegerSubtractionæ–¹æ³•æ¥å®žçŽ°ã€‚
+	 * @param operand1 è¢«ä¹˜æ•°ï¼Œç”¨è¡¥ç è¡¨ç¤º
+	 * @param operand2 ä¹˜æ•°ï¼Œç”¨è¡¥ç è¡¨ç¤ºã€‚
+	 * @param length å­˜æ”¾æ“ä½œæ•°çš„å¯„å­˜å™¨çš„é•¿åº¦ã€‚lengthä¸å°äºŽæ“ä½œæ•°çš„é•¿åº¦ï¼Œå½“æŸä¸ªæ“ä½œæ•°çš„é•¿åº¦å°äºŽlengthæ—¶ï¼Œéœ€è¦åœ¨é«˜ä½è¡¥ç¬¦å·ä½ã€‚
+	 * @return é•¿åº¦ä¸ºlength*2ï¼Œä¸ºè®¡ç®—ç»“æžœï¼Œç”¨è¡¥ç è¡¨ç¤ºã€‚
 	 */
 	public String integerMultiplication(String operand1, String operand2,
 			int length) {
 		StringBuffer result = new StringBuffer();
-		// ³õÊ¼»¯
+		// åˆå§‹åŒ–
 		for (int i = 0; i < length * 2 + 1; i++) {
 			result.append('0');
 		}
@@ -674,7 +674,7 @@ public class ALU {
 			}
 
 		}
-		// Ä£ÄâN´ÎÓÒÒÆ¼°¼Ó¼õÔËËã
+		// æ¨¡æ‹ŸNæ¬¡å³ç§»åŠåŠ å‡è¿ç®—
 		char[] y = (operand2 + "0").toCharArray();
 		for (int i = 0; i < length; i++) {
 			int j = (y[length - i] - y[length - i - 1]);
@@ -693,7 +693,7 @@ public class ALU {
 								operand1, length).substring(0, length));
 			}
 
-			// ½øÐÐËãÊõÓÒÒÆ
+			// è¿›è¡Œç®—æœ¯å³ç§»
 			if (result.charAt(0) == '0')
 				result.insert(0, '0');
 			else
@@ -705,12 +705,12 @@ public class ALU {
 
 	// 16
 	/**
-	 * Ä£ÄâÕûÊý³ý·¨£¨»Ö¸´ÓàÊý·¨£©
+	 * æ¨¡æ‹Ÿæ•´æ•°é™¤æ³•ï¼ˆæ¢å¤ä½™æ•°æ³•ï¼‰
 	 * 
 	 * @param operand1
 	 * @param operand2
 	 * @param length
-	 * @return length*2Î» Ç°²¿·ÖÎªÉÌ ºó²¿·ÖÎªÓàÊý
+	 * @return length*2ä½ å‰éƒ¨åˆ†ä¸ºå•† åŽéƒ¨åˆ†ä¸ºä½™æ•°
 	 */
 	public String integerDivision(String operand1, String operand2, int length) {
 		StringBuffer result = new StringBuffer(length * 2);
@@ -720,7 +720,7 @@ public class ALU {
 		if (operand1.indexOf("1") == -1) {
 			return "0";
 		}
-		// ³õÊ¼»¯
+		// åˆå§‹åŒ–
 		if (operand1.length() < length) {
 			if (operand1.startsWith("1")) {
 				while (operand1.length() < length)
@@ -741,7 +741,7 @@ public class ALU {
 			}
 
 		}
-		// ½«²¹ÆëÖÁ2NÎ»µÄ±»³ýÊýÖÃÈëresultÖÐ
+		// å°†è¡¥é½è‡³2Nä½çš„è¢«é™¤æ•°ç½®å…¥resultä¸­
 		if (operand1.startsWith("1")) {
 			for (int i = 0; i < length; i++) {
 				result.append('1');
@@ -756,13 +756,13 @@ public class ALU {
 		String temp;
 		String tempresult;
 		for (int i = 0; i < length; i++) {
-			// Ä£Äâ×óÒÆ
+			// æ¨¡æ‹Ÿå·¦ç§»
 			result.deleteCharAt(0);
-			// ±£ÁôÇ°lengthÎ»ÒÔ¹©»Ö¸´
+			// ä¿ç•™å‰lengthä½ä»¥ä¾›æ¢å¤
 			temp = result.toString().substring(0, length);
-			// ¸ù¾ÝÓàÊýÓë³ýÊý·ûºÅÅÐ¶¨¼Ó»¹ÊÇ¼õ
+			// æ ¹æ®ä½™æ•°ä¸Žé™¤æ•°ç¬¦å·åˆ¤å®šåŠ è¿˜æ˜¯å‡
 			if (((operand2.charAt(0) - '0') ^ (result.charAt(0) - '0')) == 1) {
-				// ¸ãÕâÁ½¸öÂé·³µÄ¶«Î÷ÊÇÎªÁË´¦ÀíÎ»ÊýÐ¡ÓÚÕûÊý¼Ó·¨Î»ÊýµÄÎÊÌâ£¬Òò¼Ó·¨»á¶Ô²»Âú8Î»µÄ½øÐÐÀ©Õ¹£¬¹ÊÈ¡½á¹ûÊ±´ÓºóÃæÈ¡Æð£¬»¹ÒªÅ×ÆúÒç³öÎ»
+				// æžè¿™ä¸¤ä¸ªéº»çƒ¦çš„ä¸œè¥¿æ˜¯ä¸ºäº†å¤„ç†ä½æ•°å°äºŽæ•´æ•°åŠ æ³•ä½æ•°çš„é—®é¢˜ï¼Œå› åŠ æ³•ä¼šå¯¹ä¸æ»¡8ä½çš„è¿›è¡Œæ‰©å±•ï¼Œæ•…å–ç»“æžœæ—¶ä»ŽåŽé¢å–èµ·ï¼Œè¿˜è¦æŠ›å¼ƒæº¢å‡ºä½
 				tempresult = integerAddition(
 						result.toString().substring(0, length), operand2, '0',
 						length).substring(0, operand1.length());
@@ -788,12 +788,12 @@ public class ALU {
 				}
 			}
 		}
-		// Èç¹û³ýÊýÓë±»³ýÊý·ûºÅ²»Í¬£¬×ª»»ÉÌµÄ·ûºÅ
+		// å¦‚æžœé™¤æ•°ä¸Žè¢«é™¤æ•°ç¬¦å·ä¸åŒï¼Œè½¬æ¢å•†çš„ç¬¦å·
 		if (((operand1.charAt(0) - '0') ^ (operand2.charAt(0) - '0')) == 1) {
 			result.replace(length, length * 2, computeCompletment(result
 					.toString().substring(length, length * 2)));
 		}
-		// µ÷×ªÉÌºÍÓàÊýÎ»ÖÃ
+		// è°ƒè½¬å•†å’Œä½™æ•°ä½ç½®
 		temp = result.toString().substring(0, length);
 		result.replace(0, length,
 				result.toString().substring(length, length * 2));
@@ -804,18 +804,18 @@ public class ALU {
 
 	// 17
 	/**
-	 * ¸Ã·½·¨ÓÃ ÓÚÄ£Äâ¸¡µãÊýµÄ¼Ó·¨£¬ÒªÇóµ÷ÓÃintegerAdditionºÍintegersubtractionÊµÏÖ
+	 * è¯¥æ–¹æ³•ç”¨ äºŽæ¨¡æ‹Ÿæµ®ç‚¹æ•°çš„åŠ æ³•ï¼Œè¦æ±‚è°ƒç”¨integerAdditionå’Œintegersubtractionå®žçŽ°
 	 * 
 	 * @param operand1
 	 * @param operand2
 	 * @param sLength
-	 *            Î²Êý³¤¶È£¬È¡Öµ´óÓÚµÈÓÚ8
+	 *            å°¾æ•°é•¿åº¦ï¼Œå–å€¼å¤§äºŽç­‰äºŽ8
 	 * @param eLength
-	 *            Ö¸Êý³¤¶È£¬È¡Öµ´óÓÚµÈÓÚ8
+	 *            æŒ‡æ•°é•¿åº¦ï¼Œå–å€¼å¤§äºŽç­‰äºŽ8
 	 * @param gLength
-	 *            ±£»¤Î»³¤¶È
-	 * @return ³¤¶ÈÎª1+sLength+eLength+1µÄ×Ö·û´®¡£´Ó×óÏòÓÒ£¬ÒÀ´ÎÎª·ûºÅ¡¢Ö¸Êý£¨ÒÆÂë±íÊ¾£©¡¢Î²Êý£¨Ê×Î»Òþ²Ø£©£»
-	 *         ×îºó1Î»ÎªÊÇ·ñÒç³ö£¬ÆäÖÐÒç³öÎª1£¬²»Òç³öÎª0¡£ÉáÈë²ÉÓÃ¾Í½üÉáÈë¡£
+	 *            ä¿æŠ¤ä½é•¿åº¦
+	 * @return é•¿åº¦ä¸º1+sLength+eLength+1çš„å­—ç¬¦ä¸²ã€‚ä»Žå·¦å‘å³ï¼Œä¾æ¬¡ä¸ºç¬¦å·ã€æŒ‡æ•°ï¼ˆç§»ç è¡¨ç¤ºï¼‰ã€å°¾æ•°ï¼ˆé¦–ä½éšè—ï¼‰ï¼›
+	 *         æœ€åŽ1ä½ä¸ºæ˜¯å¦æº¢å‡ºï¼Œå…¶ä¸­æº¢å‡ºä¸º1ï¼Œä¸æº¢å‡ºä¸º0ã€‚èˆå…¥é‡‡ç”¨å°±è¿‘èˆå…¥ã€‚
 	 */
 	public String floatAddition(String operand1, String operand2, int sLength,
 			int eLength, int gLength) {
@@ -828,16 +828,16 @@ public class ALU {
 		int isOverFlow = 0;
 		int e1 = computeInteger(operand1.substring(1,eLength + 1));
 		int e2 = computeInteger(operand2.substring(1,eLength + 1));
-		//Òþ²ØÎ»
+		//éšè—ä½
 		String s1 = "1"+operand1.substring(eLength +1);
 		String s2 = "1"+operand2.substring(eLength +1);
-		//ÔöÁ¿Ð¡½×Âë ÓÒÒÆÎ²Êý,²¢²¹ÆëÎ»ÊýÖÁ±£»¤Î»Êý£¬½×ÂëÏàµÈÊ±±£»¤Î»Ã»ÓÐÒâÒå
+		//å¢žé‡å°é˜¶ç  å³ç§»å°¾æ•°,å¹¶è¡¥é½ä½æ•°è‡³ä¿æŠ¤ä½æ•°ï¼Œé˜¶ç ç›¸ç­‰æ—¶ä¿æŠ¤ä½æ²¡æœ‰æ„ä¹‰
 		if(e1 != e2){
 			if(e1 > e2){
 				for (int i = 0; i < e1 - e2; i++) {
 					s2 = "0" + s2 ;
 				}
-				//³¬¹ý±£»¤Î»£¬ÉáÈ¥ºóÃæµÄ,·ñÔò²¹Æë0
+				//è¶…è¿‡ä¿æŠ¤ä½ï¼ŒèˆåŽ»åŽé¢çš„,å¦åˆ™è¡¥é½0
 				if(s2.length() >= sLength + gLength + 1){
 					s2 = s2.substring(0, sLength+gLength +1);
 				}
@@ -860,7 +860,7 @@ public class ALU {
 			}
 			
 		}
-		//²¹ÆëÖÁ±£»¤Î»
+		//è¡¥é½è‡³ä¿æŠ¤ä½
 		while(s2.length() < sLength + gLength + 1){
 				s2 = s2 + "0";
 		}
@@ -870,14 +870,14 @@ public class ALU {
 		
 		
 //		System.out.println(gLength);
-		//´ø·ûºÅÎ²ÊýÏà¼Ó
+		//å¸¦ç¬¦å·å°¾æ•°ç›¸åŠ 
 		String result;
-		//ÅÐ¶ÏÊ×Î»µÄ·ûºÅÎ»ÊÇ·ñÏàÍ¬£¬Í¬¼Ó
+		//åˆ¤æ–­é¦–ä½çš„ç¬¦å·ä½æ˜¯å¦ç›¸åŒï¼ŒåŒåŠ 
 		if(operand1.charAt(0) == operand2.charAt(0)){
-			//²¹Ò»Î»È·¶¨ÊÇ·ñÓÐ½øÎ»
+			//è¡¥ä¸€ä½ç¡®å®šæ˜¯å¦æœ‰è¿›ä½
 			result = integerAddition("0" +s1, "0"+s2, '0', sLength + gLength + 1 + 1);
 			System.out.println("s"+result);
-			//Èç¹ûÒç³ö
+			//å¦‚æžœæº¢å‡º
 			if(result.charAt(0) == '1'){
 				result = "1" + result;
 				e1++;
@@ -885,17 +885,17 @@ public class ALU {
 					isOverFlow = 1;
 				}
 			}
-			//È¥µô¼ÓµÄÊ×Î»
+			//åŽ»æŽ‰åŠ çš„é¦–ä½
 			result = result.substring(1);
 			if(operand1.charAt(0)=='0'){
 				isNegative = false;
 			}else{
 				isNegative = true;
 			}
-			//ÒìºÅÔò¼õ
+			//å¼‚å·åˆ™å‡
 		}else{
 			result = integerAddition("0" + s1, "0" + computeCompletment(s2), '0', sLength + gLength + 1 + 1);
-			//Ê×Î»Èç¹ûÓÐ½øÎ»
+			//é¦–ä½å¦‚æžœæœ‰è¿›ä½
 			if(result.charAt(0) == '1'){
 				isNegative = (operand1.charAt(0) == '1')?true:false;
 				result = result.substring(1);
@@ -908,16 +908,16 @@ public class ALU {
 			
 		}
 		result = result.substring(0, sLength + gLength + 1);
-		//Î²ÊýÎª0
+		//å°¾æ•°ä¸º0
 		if(result.substring(0,sLength).indexOf("1") == -1){
 			e1 = 0;
 		}
 		
 
 		
-		//¹æ¸ñ»¯½á¹û
+		//è§„æ ¼åŒ–ç»“æžœ
 		int sub = e1 - result.indexOf("1");
-		//³öÏÖÏÂÒç
+		//å‡ºçŽ°ä¸‹æº¢
 		if(sub <= 0){
 			e1 = 0;
 			if(sub == 0){
@@ -934,7 +934,7 @@ public class ALU {
 			result += "0";
 		}
 		
-		//ÉáÈë
+		//èˆå…¥
 		if (gLength != 0) {
 			if (result.charAt(sLength) == '1') {
 				int temp = result.substring(0, sLength).lastIndexOf("0");
@@ -960,7 +960,7 @@ public class ALU {
 	
 	// 18
 	/**
-	 * Ä£Äâ¸¡µãÊý¼õ·¨
+	 * æ¨¡æ‹Ÿæµ®ç‚¹æ•°å‡æ³•
 	 * @param operand1
 	 * @param operand2
 	 * @param sLength
@@ -978,16 +978,16 @@ public class ALU {
 
 	// 19
 	/**
-	 * ¸Ã·½·¨ÓÃÓÚÄ£Äâ¸¡µãÊýµÄ³Ë·¨£¬ÒªÇóµ÷ÓÃintegerAddition¡¢integerSubtractionµÈ·½·¨À´ÊµÏÖ¡£
-	 * @param operand1 ±»³ËÊý£¬ÓÃ¶þ½øÖÆ±íÊ¾¡£
-	 * @param operand2 ³ËÊý£¬ÓÃ¶þ½øÖÆ±íÊ¾¡£
-	 * @param sLength Î²ÊýµÄ³¤¶È£¬È¡Öµ´óÓÚµÈÓÚ8¡£
-	 * @param eLengthÖ¸ÊýµÄ³¤¶È£¬È¡Öµ´óÓÚµÈÓÚ8¡£
-	 * @return 1+sLength+eLength Îª»ý£¬ÓÃ¶þ½øÖÆ±íÊ¾¡£´Ó×óÏòÓÒ£¬ÒÀ´ÎÎª·ûºÅ¡¢Ö¸Êý£¨ÒÆÂë±íÊ¾£©¡¢Î²Êý£¨Ê×Î»Òþ²Ø£©¡£ÉáÈë²ÉÓÃ¾Í½üÉáÈë¡£
+	 * è¯¥æ–¹æ³•ç”¨äºŽæ¨¡æ‹Ÿæµ®ç‚¹æ•°çš„ä¹˜æ³•ï¼Œè¦æ±‚è°ƒç”¨integerAdditionã€integerSubtractionç­‰æ–¹æ³•æ¥å®žçŽ°ã€‚
+	 * @param operand1 è¢«ä¹˜æ•°ï¼Œç”¨äºŒè¿›åˆ¶è¡¨ç¤ºã€‚
+	 * @param operand2 ä¹˜æ•°ï¼Œç”¨äºŒè¿›åˆ¶è¡¨ç¤ºã€‚
+	 * @param sLength å°¾æ•°çš„é•¿åº¦ï¼Œå–å€¼å¤§äºŽç­‰äºŽ8ã€‚
+	 * @param eLengthæŒ‡æ•°çš„é•¿åº¦ï¼Œå–å€¼å¤§äºŽç­‰äºŽ8ã€‚
+	 * @return 1+sLength+eLength ä¸ºç§¯ï¼Œç”¨äºŒè¿›åˆ¶è¡¨ç¤ºã€‚ä»Žå·¦å‘å³ï¼Œä¾æ¬¡ä¸ºç¬¦å·ã€æŒ‡æ•°ï¼ˆç§»ç è¡¨ç¤ºï¼‰ã€å°¾æ•°ï¼ˆé¦–ä½éšè—ï¼‰ã€‚èˆå…¥é‡‡ç”¨å°±è¿‘èˆå…¥ã€‚
 	 */
 	public String floatMultiplication(String operand1, String operand2,
 			int sLength, int eLength) {
-		//ÈÎºÎÒ»ÏîÎª0 ·µ»Ø0
+		//ä»»ä½•ä¸€é¡¹ä¸º0 è¿”å›ž0
 		if(!operand1.substring(1).contains("1")){
 			return "0"+operand1.substring(1);
 		}
@@ -1003,7 +1003,7 @@ public class ALU {
 			return "exponent under flow";
 		}
 		
-		//Î²ÊýÏà³Ë
+		//å°¾æ•°ç›¸ä¹˜
 		String s1 = "1"+operand1.substring(eLength + 1);
 		String s2 = "1"+operand2.substring(1+ eLength);
 		StringBuffer result = new StringBuffer((sLength+ 1) *2);
@@ -1012,7 +1012,7 @@ public class ALU {
 		}
 		for (int i = 0; i < sLength + 1; i++) {
 			if(s2.charAt(s2.length() - i - 1) == '1'){
-				//ÓÐÊ±ºò¼ÓÁËÖ®ºó»áÒç³ö£¬Òò´Ë´ËÊ±ÒÆÎ»²åÈëµÄÊÇ1
+				//æœ‰æ—¶å€™åŠ äº†ä¹‹åŽä¼šæº¢å‡ºï¼Œå› æ­¤æ­¤æ—¶ç§»ä½æ’å…¥çš„æ˜¯1
 				String temp = integerAddition("0" +result.substring(0, sLength+1), "0"+s1, '0', sLength + 1);
 				
 				temp = temp.substring(0, sLength + 1);
@@ -1026,12 +1026,12 @@ public class ALU {
 		}
 		
 		
-		//¹æ¸ñ»¯
+		//è§„æ ¼åŒ–
 		if(result.indexOf("1") != -1){
 			e = e + result.indexOf("1") + 1;
 			result.delete(0, result.indexOf("1") +  1);
 		}
-		//ÉáÈë                
+		//èˆå…¥                
 		if(result.charAt(sLength) == '1'){
 			int temp = result.substring(0, sLength).lastIndexOf("0");
 			if(temp != -1){
@@ -1048,7 +1048,7 @@ public class ALU {
 			
 			
 		}
-		//Î»Êý²»¹»Ôò²¹Æë
+		//ä½æ•°ä¸å¤Ÿåˆ™è¡¥é½
 		while(result.length() < sLength){
 			result.append('0');
 		}
@@ -1063,7 +1063,7 @@ public class ALU {
 	}
 //	public String floatMultiplication(String operand1, String operand2,
 //			int sLength, int eLength) {
-//		//ÈÎºÎÒ»ÏîÎª0 ·µ»Ø0
+//		//ä»»ä½•ä¸€é¡¹ä¸º0 è¿”å›ž0
 //				if(!operand1.substring(1).contains("1")){
 //					return "0"+operand1.substring(1);
 //				}
@@ -1079,7 +1079,7 @@ public class ALU {
 //					return "exponent under flow";
 //				}
 //				
-//				//Î²ÊýÏà³Ë
+//				//å°¾æ•°ç›¸ä¹˜
 ////				StringBuffer result = new StringBuffer((sLength+ 1) *2);
 ////				String s1 = "1"+operand1.substring(eLength + 1);
 ////				String s2 = "1"+operand2.substring(1+ eLength);
@@ -1095,7 +1095,7 @@ public class ALU {
 //				}
 //				for (int i = 0; i < sLength + 1; i++) {
 //					if(s2.charAt(s2.length() - i - 1) == '1'){
-//						//ÓÐÊ±ºò¼ÓÁËÖ®ºó»áÒç³ö£¬Òò´Ë´ËÊ±ÒÆÎ»²åÈëµÄÊÇ1
+//						//æœ‰æ—¶å€™åŠ äº†ä¹‹åŽä¼šæº¢å‡ºï¼Œå› æ­¤æ­¤æ—¶ç§»ä½æ’å…¥çš„æ˜¯1
 //						String temp = integerAddition("0" +result.substring(0, sLength+1), "0"+s1, '0', sLength + 1);
 //						
 //						temp = temp.substring(0, sLength + 1);
@@ -1111,12 +1111,12 @@ public class ALU {
 //				System.out.println(result);
 //				System.out.println(result.length());
 //				
-//				//¹æ¸ñ»¯
+//				//è§„æ ¼åŒ–
 //				if(result.indexOf("1") != -1){
 //					e = e + result.indexOf("1") + 1;
 //					result.delete(0, result.indexOf("1") +  1);
 //				}
-//				//ÉáÈë                
+//				//èˆå…¥                
 //				if(result.charAt(sLength) == '1'){
 //					int temp = result.substring(0, sLength).lastIndexOf("0");
 //					if(temp != -1){
@@ -1133,7 +1133,7 @@ public class ALU {
 //					
 //					
 //				}
-//				//Î»Êý²»¹»Ôò²¹Æë
+//				//ä½æ•°ä¸å¤Ÿåˆ™è¡¥é½
 //				while(result.length() < sLength){
 //					result.append('0');
 //				}
@@ -1148,13 +1148,13 @@ public class ALU {
 //	}
 	// 20
 	/**
-	 * ¸Ã·½·¨ÓÃÓÚÄ£Äâ¸¡µãÊýµÄ»Ö¸´ÓàÊý³ý·¨£¬ÒªÇóµ÷ÓÃintegerAddition¡¢integerSubtractionµÈ·½·¨À´ÊµÏÖ¡£
-	 * @param operand1 ±»³ýÊý£¬ÓÃ²¹Âë±íÊ¾¡£
-	 * @param operand2 ³ýÊý£¬ÓÃ²¹Âë±íÊ¾¡£
-	 * @param sLength Î²ÊýµÄ³¤¶È£¬È¡Öµ´óÓÚµÈÓÚ8
-	 * @param eLength Ö¸ÊýµÄ³¤¶È£¬È¡Öµ´óÓÚµÈÓÚ8
-	 * @return ·µ»ØÖµ£º³¤¶ÈÎª1+sLength+eLength£¬ÎªÉÌ£¬ÓÃ¶þ½øÖÆ±íÊ¾¡£´Ó×óÏòÓÒ£¬ÒÀ´ÎÎª·ûºÅ¡¢Ö¸Êý£¨ÒÆÂë±íÊ¾£©¡¢Î²Êý£¨Ê×Î»Òþ²Ø£©¡£
-	 * 			ÉáÈë²ÉÓÃ¾Í½üÉáÈë
+	 * è¯¥æ–¹æ³•ç”¨äºŽæ¨¡æ‹Ÿæµ®ç‚¹æ•°çš„æ¢å¤ä½™æ•°é™¤æ³•ï¼Œè¦æ±‚è°ƒç”¨integerAdditionã€integerSubtractionç­‰æ–¹æ³•æ¥å®žçŽ°ã€‚
+	 * @param operand1 è¢«é™¤æ•°ï¼Œç”¨è¡¥ç è¡¨ç¤ºã€‚
+	 * @param operand2 é™¤æ•°ï¼Œç”¨è¡¥ç è¡¨ç¤ºã€‚
+	 * @param sLength å°¾æ•°çš„é•¿åº¦ï¼Œå–å€¼å¤§äºŽç­‰äºŽ8
+	 * @param eLength æŒ‡æ•°çš„é•¿åº¦ï¼Œå–å€¼å¤§äºŽç­‰äºŽ8
+	 * @return è¿”å›žå€¼ï¼šé•¿åº¦ä¸º1+sLength+eLengthï¼Œä¸ºå•†ï¼Œç”¨äºŒè¿›åˆ¶è¡¨ç¤ºã€‚ä»Žå·¦å‘å³ï¼Œä¾æ¬¡ä¸ºç¬¦å·ã€æŒ‡æ•°ï¼ˆç§»ç è¡¨ç¤ºï¼‰ã€å°¾æ•°ï¼ˆé¦–ä½éšè—ï¼‰ã€‚
+	 * 			èˆå…¥é‡‡ç”¨å°±è¿‘èˆå…¥
 	 */
 	public String floatDivision(String operand1, String operand2, int sLength,
 			int eLength) {
@@ -1178,7 +1178,7 @@ public class ALU {
 			return "exponent under flow";
 		}
 		/*
-		 * »Ö¸´ÓàÊý·¨
+		 * æ¢å¤ä½™æ•°æ³•
 		 */
 //		System.out.println(e1 + " " +e2);
 //		String s1 = "1" + operand1.substring(1+eLength);
@@ -1196,7 +1196,7 @@ public class ALU {
 		s2 = "0" + s2;
 //		System.out.println(s1);
 //		System.out.println(s2);
-		//³õÊ¼»¯result
+		//åˆå§‹åŒ–result
 		result.append(s1);
 		for (int i = 0; i < sLength + 1; i++) {
 			result.append('0');
@@ -1204,9 +1204,9 @@ public class ALU {
 		String temp;
 		String tempResult;
 		for (int i = 0; i < sLength + 1 + 1; i++) {
-			//±£ÁôÇ°NÎ»¹©»Ö¸´
+			//ä¿ç•™å‰Nä½ä¾›æ¢å¤
 			 temp = result.substring(0,sLength + 1 + 1);
-			//¼Ó0ÒÔÊ¾Çå°×,Å×ÆúÒç³öÎ»
+			//åŠ 0ä»¥ç¤ºæ¸…ç™½,æŠ›å¼ƒæº¢å‡ºä½
 			tempResult = integerSubtraction("0" + temp, "0"+s2, sLength + 1 + 1 + 1).substring(0, sLength + 1 + 1 +1);
 //			System.out.println("tempRe:" + tempResult);
 //			System.out.println("result:" + result);
@@ -1217,17 +1217,17 @@ public class ALU {
 				result.replace(0, sLength + 1 + 1, tempResult.substring(1));
 				result.append('1');
 			}
-			//Ä£Äâ×óÒÆ
+			//æ¨¡æ‹Ÿå·¦ç§»
 			result.deleteCharAt(0);
 			
 		}
-			//ÓàÊýÉáÈ¥
+			//ä½™æ•°èˆåŽ»
 			result.delete(0, sLength+1);
-			//¹æ¸ñ»¯
+			//è§„æ ¼åŒ–
 			String quotient = result.substring(0, sLength + 1);
 			if(quotient.contains("1")){
 				e = e - quotient.indexOf("1");
-				//Èç¹û1²»ÊÇ×îºóÒ»¸ö
+				//å¦‚æžœ1ä¸æ˜¯æœ€åŽä¸€ä¸ª
 				if(quotient.indexOf("1") != quotient.length() - 1){
 					quotient = quotient.substring(quotient.indexOf("1") + 1);
 				}else{
@@ -1239,7 +1239,7 @@ public class ALU {
 			}else{
 				
 			}
-			//ÉáÈë
+			//èˆå…¥
 			
 			exponent = integerRepresentation(Integer.toString(e), eLength);
 			System.out.println(quotient);
@@ -1254,7 +1254,7 @@ public class ALU {
 	
 	
 	/**
-	 * ¼ÆËã¶þ½øÖÆÎÞ·ûºÅÕûÊýµÄÕæÖµ
+	 * è®¡ç®—äºŒè¿›åˆ¶æ— ç¬¦å·æ•´æ•°çš„çœŸå€¼
 	 * @param substring
 	 * @return
 	 */
@@ -1270,7 +1270,7 @@ public class ALU {
 		return result;
 	}
 	/**
-	 * ´ó×÷Òµ2 ¸Ä½ø·½·¨ ¸Ä½øÎÞ·ûºÅÕûÊýµÄ³Ë·¨ÒÔ¼°¸¡µãÊýµÄ³Ë·¨
+	 * å¤§ä½œä¸š2 æ”¹è¿›æ–¹æ³• æ”¹è¿›æ— ç¬¦å·æ•´æ•°çš„ä¹˜æ³•ä»¥åŠæµ®ç‚¹æ•°çš„ä¹˜æ³•
 	 * @param operand1
 	 * @param operand2
 	 * @param length

@@ -1,14 +1,14 @@
 
 
 /**
- * ³Â×ÔÇ¿ Ñ§ºÅ 141250017
+ * é™ˆè‡ªå¼º å­¦å· 141250017
  * @author czq
  *
  */
 public class NewMultipler {
 	
 	/**
-	 * ²âÊÔ´úÂë
+	 * æµ‹è¯•ä»£ç 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -20,15 +20,15 @@ public class NewMultipler {
 	}
 	
 	/**
-	 * ¸Ã·½·¨ÓÃÓÚÄ£ÄâÊµÏÖÕóÁĞ³Ë·¨Æ÷
+	 * è¯¥æ–¹æ³•ç”¨äºæ¨¡æ‹Ÿå®ç°é˜µåˆ—ä¹˜æ³•å™¨
 	 * @param operand1
 	 * @param operand2
-	 * @param length ¼Ä´æÆ÷³¤¶È
+	 * @param length å¯„å­˜å™¨é•¿åº¦
 	 * @return
 	 */
 	public String newMultipler(String operand1, String operand2, int length){
 		StringBuffer result = new StringBuffer(length*2);
-		//³õÊ¼»¯£¬Î»Êı²¹Æë
+		//åˆå§‹åŒ–ï¼Œä½æ•°è¡¥é½
 		if (operand1.length() < length) {
 			if (operand1.startsWith("1")) {
 				while (operand1.length() < length)
@@ -51,12 +51,12 @@ public class NewMultipler {
 		}
 		char[] num1 = (new StringBuffer(operand1).reverse().toString()).toCharArray();
 		char[] num2 = (new StringBuffer(operand2).reverse().toString()).toCharArray();
-		//´ÓÓÒÉÏµ½×óÏÂµÄ¡°Ğ±¡±½øÎ»
+		//ä»å³ä¸Šåˆ°å·¦ä¸‹çš„â€œæ–œâ€è¿›ä½
 		char[] carries = new char[length - 1];
 		for (int i = 0; i < carries.length; i++) {
 			carries[i] = '0';
 		}
-		//´ÓÉÏµ½ÏÂµÄ½øÎ»
+		//ä»ä¸Šåˆ°ä¸‹çš„è¿›ä½
 		char[] tempC = new char[length -1];
 		for (int i = 0; i < tempC.length; i++) {
 			tempC[i] = and(num1[i + 1], num2[0]);
@@ -66,10 +66,10 @@ public class NewMultipler {
 		
 		
 		for (int i = 0; i < length - 1; i++) {
-			//¼ÆËãtempC×î¸ßÎ»
+			//è®¡ç®—tempCæœ€é«˜ä½
 			
 			tempC[length - 2] = and(num1[length - 1], num2[i]);
-			//´¦Àí2Àà¼Ó·¨Æ÷
+			//å¤„ç†2ç±»åŠ æ³•å™¨
 			if(i == length - 2){
 				for (int j = 0; j < length - 1; j++) {
 					String temp = fullAdder2(tempC[j], and(num1[j],num2[i+1]), carries[j]);
@@ -85,7 +85,7 @@ public class NewMultipler {
 				tempC[length - 2] = and(num1[length - 1], num2[i + 1]);
 				break;
 			}
-			//´¦Àí´øÕıÈ¨ÖµµÄ0Àà¼Ó·¨Æ÷
+			//å¤„ç†å¸¦æ­£æƒå€¼çš„0ç±»åŠ æ³•å™¨
 			for (int j = 0; j < length - i - 2; j++) {
 				String temp = fullAdder0(tempC[j], carries[j], and(num1[j], num2[i+1]));
 				if(j == 0){
@@ -97,7 +97,7 @@ public class NewMultipler {
 				}
 				
 			}
-			//´¦Àí´ø¸ºÈ¨ÖµµÄ1Àà¼Ó·¨Æ÷
+			//å¤„ç†å¸¦è´Ÿæƒå€¼çš„1ç±»åŠ æ³•å™¨
 			for (int j = 0; j < i + 1; j++) {
 				int start = length - i - 2 + j;
 
@@ -108,7 +108,7 @@ public class NewMultipler {
 			}
 		}
 		
-		//´¦Àí×îºóÒ»²¿·Ö£º´®ĞĞ½øÎ»¼Ó·¨Æ÷
+		//å¤„ç†æœ€åä¸€éƒ¨åˆ†ï¼šä¸²è¡Œè¿›ä½åŠ æ³•å™¨
 		char tempCarry = '0';
 		for (int i = 0; i < length - 1; i++) {
 			String temp = fullAdder2(tempCarry,carries[i] , tempC[i]);
@@ -130,7 +130,7 @@ public class NewMultipler {
 	}
 
 	/**
-	 * 0ÀàÈ«¼ÓÆ÷
+	 * 0ç±»å…¨åŠ å™¨
 	 * @param x
 	 * @param y
 	 * @param c
@@ -149,7 +149,7 @@ public class NewMultipler {
 		return result;
 	}
 	/**
-	 * 1ÀàÈ«¼ÓÆ÷
+	 * 1ç±»å…¨åŠ å™¨
 	 * @param x
 	 * @param y
 	 * @param c
@@ -177,7 +177,7 @@ public class NewMultipler {
 		return result;
 	}
 	/**
-	 * 2ÀàÈ«¼ÓÆ÷
+	 * 2ç±»å…¨åŠ å™¨
 	 * @param x
 	 * @param y
 	 * @param c
@@ -217,7 +217,7 @@ public class NewMultipler {
 	
 	
 	/**
-	 * ÏÂÃæ´úÂëÊÇ´ó×÷Òµ1µÄ²¿·Ö´úÂë£¬ÔÚÕâ¶ùÓÃÀ´·½±ã²âÊÔ
+	 * ä¸‹é¢ä»£ç æ˜¯å¤§ä½œä¸š1çš„éƒ¨åˆ†ä»£ç ï¼Œåœ¨è¿™å„¿ç”¨æ¥æ–¹ä¾¿æµ‹è¯•
 	 */
 	
 	public String calculation(String formula) {
@@ -284,7 +284,7 @@ public class NewMultipler {
 		}
 		long temp = Long.parseLong(number);
 		StringBuffer temp2 = new StringBuffer(length);
-		// ¼ÆËã¾ø¶ÔÖµµÄ¶ş½øÖÆ±íÊ¾
+		// è®¡ç®—ç»å¯¹å€¼çš„äºŒè¿›åˆ¶è¡¨ç¤º
 		for (;;) {
 			if (temp / 2 == 0) {
 				temp2.append(Long.toString(temp % 2));
@@ -294,13 +294,13 @@ public class NewMultipler {
 				temp = temp / 2;
 			}
 		}
-		// ²¹Æë0ÖÁ¹æ¶¨Î»Êı
+		// è¡¥é½0è‡³è§„å®šä½æ•°
 		for (int i = temp2.length(); i < length; i++) {
 			temp2.append("0");
 		}
-		// ÄæĞò
+		// é€†åº
 		temp2.reverse();
-		// ¶Ô¸ºÊı´¦Àí
+		// å¯¹è´Ÿæ•°å¤„ç†
 		if (isNeagtive) {
 			String result = computeCompletment(temp2.toString());
 			temp2.replace(0, length, result);
@@ -309,13 +309,13 @@ public class NewMultipler {
 		return temp2.toString();
 	}
 	/**
-	 * ¼ÆËãÕûÊı²¹Âë
+	 * è®¡ç®—æ•´æ•°è¡¥ç 
 	 * 
 	 * @return
 	 */
 	private String computeCompletment(String integer) {
 		StringBuffer result = new StringBuffer(integer);
-		// ¸ù¾İÈ¡·´¼ÓÒ»×îºóÒ»¸ö1¼°ÆäÖ®ºóµÄÊı×Ö²»»áÊÜµ½Ó°Ïì
+		// æ ¹æ®å–ååŠ ä¸€æœ€åä¸€ä¸ª1åŠå…¶ä¹‹åçš„æ•°å­—ä¸ä¼šå—åˆ°å½±å“
 		if (integer.indexOf("1") != -1) {
 			int temp3 = result.lastIndexOf("1");
 			for (int i = 0; i < temp3; i++) {
@@ -330,7 +330,7 @@ public class NewMultipler {
 		return result.toString();
 	}
 	/**
-	 * ½«¶ş½øÖÆÕûÊı×ª»¯ÎªÊ®½øÖÆÕûÊı
+	 * å°†äºŒè¿›åˆ¶æ•´æ•°è½¬åŒ–ä¸ºåè¿›åˆ¶æ•´æ•°
 	 * 
 	 * @param operand
 	 * @return

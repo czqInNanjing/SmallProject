@@ -21,7 +21,7 @@ public class ALUTest13 {
 	}
 	@Test
 	public void test2(){
-		//TODO 如果严格按照pdf实现，这是一个及其困难的bug
+		//TODO 濡傛灉涓ユ牸鎸夌収pdf瀹炵幇锛岃繖鏄竴涓強鍏跺洶闅剧殑bug
 		assertEquals("11", alu.integerAddition("1", "1", '1', 1));
 	}
 	@Test
