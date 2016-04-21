@@ -1,0 +1,140 @@
+/*三体第三部分剧本
+	内容： 罗辑站在冰面,仰望浩瀚星空,”猜疑链,技术爆炸......猜疑链,技术爆炸......“,掉入水中,画面切为死
+	寂的冷黑。罗辑:”面壁者罗辑,我是你的破壁人。在这死寂的冷黑间,我想你看到了宇宙的真相。“
+	8. 罗辑:“林格博士,我们能够像宇宙发出某种信息暴露出某个恒星的坐标吗?”林格:”可以,然而解读
+	这种信息的文明,大概要比三体文明更加先进。“罗辑:”我需要一颗距离太阳 50 光年左右的恒星的位置构图。”林格:“ 187J3X1 。”
+	9. 会议现场,罗辑:“这个计划将利用太阳的电渡放大功能,向宇宙发射一条位置信息,或者说,发送一
+	条作用于 187J3X1 的咒语。”咒语最快在什么时候可以生效?”罗辑:“ 50 年后,大概 100 年后能观测到,
+	或者会更久。”“在这一百年或更长的时间里,您打算做什么?“罗辑:”冬眠。当观测到咒语的作用时,请
+	叫醒我。“
+	10. 罗辑进入冬眠。
+	11. 罗辑冬眠醒来,进入侦探生存类游戏。【此游戏的线索主要来自罗辑与史强的对话,游戏的结局是罗
+	辑与三体人的谈判,最终黑森理论生效,三体人离开地球,游戏结束。若不能找到线索完成游戏,则回
+	到游戏开始】,游戏结束后设置存档点。
+	*/
+	set bghome = "image/background/background3/background_home.jpg"
+    set bgmountain = "image/background/background3/background_mountain.jpg"
+	set bgice = "image/background/background3/background_ice.jpg"
+	set bgsky = "image/background/background3/background_sky.jpg"
+    set bgdark = "image/background/background3/background_dark.jpg"
+   	set bglake = "image/background/background3/background_lake.png"
+    set bgroom = "image/background/background3/background_room.jpg"
+    set bg187J3X1 = "image/background/background3/background_187J3X1.jpg"
+    set bgmeeting = "image/background/background3/background_meeting.jpg"
+	
+	//表情集
+	set lj = "罗辑"
+	set lj01 = "image/cg/罗辑/罗辑01.png"
+	set lj02 = "image/cg/罗辑/罗辑02.png"
+	set lj03 = "image/cg/罗辑/罗辑03.png"
+	set lj04 = "image/cg/罗辑/罗辑04.png"
+//	set lj05 = "image/cg/罗辑/罗辑05.png"
+	set lj11 = "image/cg/罗辑/罗辑11.png"
+	set lj12 = "image/cg/罗辑/罗辑12.png"
+	set lj13 = "image/cg/罗辑/罗辑13.png"
+	set lj14 = "image/cg/罗辑/罗辑14.png"
+	set lj31 = "image/cg/罗辑/罗辑31.png"
+	set lj32 = "image/cg/罗辑/罗辑32.png"
+	set lj41 = "image/cg/罗辑/罗辑41.png"
+	set lj42 = "image/cg/罗辑/罗辑42.png"
+	set lj71 = "image/cg/罗辑/罗辑71.png"
+	set lj72 = "image/cg/罗辑/罗辑72.png"
+	set lg = "林格博士"
+	set lg01 = "image/cg/林格/林格01.png"
+	set lg02 = "image/cg/林格/林格02.png"
+	set lg03 = "image/cg/林格/林格03.png"
+	
+	set pb = "旁白"
+	set kt = "卡特"
+	set ywj = "叶文洁"
+	
+	//路人表情集，通用
+	set lrjm = "路人甲男"
+	set lrjm0 = "image/cg/路人甲男/路人甲男0.png"
+	set lrjm1 = "image/cg/路人甲男/路人甲男1.png"
+	set lrjw = "路人甲女"
+	set lrjw0 = "image/cg/路人甲女/路人甲女0.png"
+	set lrjw1 = "image/cg/路人甲女/路人甲女1.png"
+	
+	
+	
+	
+	gb print(bghome)
+	cg print(lj04) 200
+	mes {print(lj)}我想现在可以肯定,这一切的一切,都源白九年前与叶文沽的那次偶然会面。叶文洁已不在人世,这次会面成了只有我自己和三体世界知道的秘密。那段时间,到达地球的智子只有两个,但可以肯定,在黄昏的杨冬墓前,它们就悬浮在我们身边,倾听着我们的每一句话,量子阵列的波动瞬间越过四光年的空间,三体世界也在倾听。
+	mes {print(ywj)}"假设宇宙中分布着数量巨大的文明,很多很多,这些文明构成了一个总体的宇宙社会。你看,星星都是一个个的点,宇宙中各个文明社会的复杂结构,其中的混沌和随机的因素,都被这样巨大的距离滤去了,那些文明在我们看来就是一个个拥有参数的点,这在数学上就比较客易处理了。所以你最后的成果就是纯理论的,就像欧氏几何一样,先设定几条简单的不证自明的公理,再在这些公理的基础上推导出整个理论体系。"
+	mes {print(lj)}当年叶老师说了两条公理，生存是文明的第一需要;文明不断增长和扩张,但宇宙中的物质总量保持不变。这到底是什么意思？
+	mes {print(pb)}等等，罗辑，再仔细想想，你好像还忘了什么。
+	mes {print(lj)}那两个关键的概念，猜疑链....技术爆炸....猜疑链...技术爆炸
+	cg del
+	
+	gb print(bglake)
+	mes {print(pb)}罗辑，不要轻视简单,不要轻视简单，简单意味着坚固。
+	gb print(bgmountain)
+	cg print(lj02) 200
+	mes {print(lj)}周围的一切都蜷伏在冬天的寒冷中,但这时地球上的大部分区域仍然生机盎然。呵，这就是一个比什么宇宙文明公理都要简单的法则“适者生存”。
+	mes {print(pb)}这个简洁的世界却有一个诡异的谜:在距我们最近的恒星上,出现了高等智慧文明,但整个银河系,却是一片如此空旷的荒漠。罗辑，好好想想，这是个如此空旷的荒漠。
+	cg print(lj02) to print(lj04)
+	gb print(bgsky)
+	mes {print(lj)}我好像，看到了什么。宇宙被冻结了，运动都停止了，从恒星到原子，一切都处于静止状态......
+	gb print(bgdark)
+	cg del
+	cg print(lj03)
+	mes {print(lj)}面壁者罗辑,我是你的破壁人。在这死寂的冷黑间,我想你看到了宇宙的真相。
+	mes {print(kt)}罗辑博士，你终于开始工作了。
+	cg del
+	cg print(lj42) 200
+	mes {print(lj)}我需要一个更安全的地方。要绝对的安全，除了安全，没有其他要求。
+	cg del
+	gb print(bgroom)
+	cg print(lj02) 30
+	cg print(lg01) 500
+	mes {print(lj)}“林格博士，是您首先观察到三体舰队的航迹?”
+	mes {print(lg)}“不，不是我，是斐茨罗将军。”
+	mes {print(lj)}我想知道的事情和这个无关。首先想请教一个问题，在宇宙间,如果存在着除三体之外的其他观察者,到目前为此,地球的位置暴露了吗?
+	mes {print(lg)}没有。
+	mes {print(lj)}您能确定？人类和三体世界已经进行过交互通讯了。
+	mes {print(lg)}这种低频通讯,只能暴露地球和三体世界在银河系中的大致方向,以及地球与三体世界间的距离,也就是说,如果存在第三方的接收者,那他们通过这些通讯可能知道的,只是在银河系猎户旋臂的这一区域中存在着两个相距4.22 光年的文明世界,但这两个世界的精确位置仍不得而知。
+	mes {print(lj)}我明白了，这样就对了。
+	mes {print(lj)}以我们的技术水平。如何向宇宙问标示某颗恒星的位置呢?”
+	mes {print(lg)}用可定位的甚高频电磁波,这种频率应该达到或超过可见光频率,以恒星级功率发出信息。简单地说,就是让这颗恒星闪烁,使其本身变成一座宇宙灯塔 。
+	mes {print(lj)}人类现在可以做到吗？
+	mes {print(lg)}可以是可以,如果把要指明的恒星与周围恒星的相对位置信息发送出去，接收者把它与星图进行对照,就确定了这颗恒星的位置。而解读这种信息的文明,我想恐怕要比三体文明更加先进。
+	mes {print(lj)}那好，我现在问你第三个问题，太阳系外其他带有行星的恒星，距离太阳最近的是？
+	mes {print(lg)}244J2E1,距太阳16光年。
+	mes {print(lj)}太近了。再远些的呢？比如五十光年左右的。
+	mes {print(lg)}187J3X1,距太阳49.5光年。
+	gb print(bg187J3X1)
+	mes {print(lj)}我需要它的恒星位置构图。
+	mes {print(lg)}没问题，今晚就可以。
+	cg del
+	gb print(bgmeeting)
+	cg print(lrjm0) 30
+	cg print(lj02) 520
+	mes {print(lrjm)}面壁者罗辑，现在让我们了解一下你的计划吧。
+	mes {print(lj)}简而言之,就是通过太阳的电渡放大功能,向宇宙中发送一份信息,信息只包括三幅简单的图形,还有一些附加信息,表明这些图形是由智慧体发送而不是自然形成的。
+	cg del
+	cg print(lrjw0) 30
+	mes {print(lrjw)}这是什么？
+	cg print(lj04) 520
+	mes {print(lj)}这是一句咒语。
+	mes {print(lrjw)}针对谁的咒语？
+	mes {print(lj)}187J3X1恒星拥有的行星，当然，也有可能直接作用于恒星上。咒语的作用现在还不知道,但有一点是明确的,它肯定是灾难性的。
+	mes {print(lrjw)}然而，如果那上面也拥有生命呢？
+	mes {print(lj)}就目前的研究而言，应该没有。
+	mes {print(lrjw)}咒语在什么时间能起到作用？
+	mes {print(lj)}最早为五十年后,我们则要在一百年后才能观测到作用的图像,但这是能估计到的最早时间,实际起作用的时间可能要推后很多。
+	mes {print(pb)}人类，也许你们终于有了一个神。
+	mes {print(lrjw)}在这一百年或更长的时间里,您打算做什么?
+	mes {print(lj)}你们可以摆脱我了:冬眠.当观测到咒语在187J3X1星系上发生作用时叫醒我。
+	mes {print(lj)}颜和孩子，你们一定要在未来等我。
+	cg del
+	cg save
+	mes {print(cd)}点我可以存档哟~(不点也不行O(∩_∩)O~~！）
+	store 3
+	cg del
+	pass
+	pass
+	pass
+	jump script/script4.txt
+

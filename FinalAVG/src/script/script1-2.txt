@@ -1,0 +1,68 @@
+set bg16 = "image/background/background1/bg16.jpg"
+//罗辑表情集
+set lj = "罗辑"
+set lj01 = "image/cg/罗辑/罗辑01.png"
+set lj02 = "image/cg/罗辑/罗辑02.png"
+set lj03 = "image/cg/罗辑/罗辑03.png"
+set lj04 = "image/cg/罗辑/罗辑04.png"
+set lj05 = "image/cg/罗辑/罗辑05.png"
+set lj11 = "image/cg/罗辑/罗辑11.png"
+set lj12 = "image/cg/罗辑/罗辑12.png"
+set lj13 = "image/cg/罗辑/罗辑13.png"
+set lj14 = "image/cg/罗辑/罗辑14.png"
+set lj21 = "image/cg/罗辑/罗辑21.png"
+set lj31 =  "image/cg/罗辑/罗辑31.png"
+set lj32 =  "image/cg/罗辑/罗辑32.png"
+set lj41 = "image/cg/罗辑/罗辑41.png"
+set lj42 = "image/cg/罗辑/罗辑42.png"
+set lj71 = "image/cg/罗辑/罗辑71.png"
+set lj72 = "image/cg/罗辑/罗辑72.png"
+//史强表情集
+set sq = "史强"
+set sq01 = "image/cg/史强/史强01.png"
+set sq02 = "image/cg/史强/史强02.png"
+set sq03 = "image/cg/史强/史强03.png"
+set sq04 = "image/cg/史强/史强04.png"
+set sq13 = "image/cg/史强/史强13.png"
+set sq21 = "image/cg/史强/史强21.png"
+set sq22 = "image/cg/史强/史强22.png"
+set sq23 = "image/cg/史强/史强23.png"
+set sq3 =  "image/cg/史强/史强3.png"
+set sq41 =  "image/cg/史强/史强41.png"
+set sq42 =  "image/cg/史强/史强42.png"
+set sq43 =  "image/cg/史强/史强43.png"
+set sq44 =  "image/cg/史强/史强44.png"
+
+
+set sq11 = "image/cg/史强/史强11.png"
+set sq12 = "image/cg/史强/史强12.png"
+mes {print(sq)}要不要学学？
+mes {print(lj)}我需要骗谁吗？
+mes {print(sq)}当然需要了...那我就教教你怎么骗人吧，当然对此我也不在行，我的工作更偏重于防骗和揭穿骗局。
+mes {print(sq)}这样，我给你讲讲审讯的几个基本技巧，你以后有可能用得着，到时知己知彼容易对付些。
+mes {print(sq)}当然，只是最基本最常用的，复杂的一时也说不清。
+mes {print(sq)}先说最文的一种，也是最简单的一种：拉单子，就是把与案子有关的问题列一个单子，单子上的问题越多越好，八竿子刚打着的全列上去，把关键要问的混在其中，然后一条一条地问，记下审讯对象的回答，然后再从头问一遍，也记下回答，必要时可以问很多遍，最后对照这几次的记录，如果对象说假话，那相应的问题每次的回答是有出入的你别看这办法简单，没有经过反侦查训练的人基本上都过不了关。
+mes {print(sq)}你觉得对付拉单子，最可靠的办法是什么？
+  call issue2 始终回答一种答案 保持沉默
+set select = SELECT + 1
+if select==1
+mes {print(sq)}保持沉默才是最佳选择
+if select==2
+mes {print(sq)}Bingo!答对了
+mes 智慧值加1
+mes {print(sq)}聪明，不过还有另外一种半文半武的。这一招叫黑白脸。这种审讯需要多人配合，稍复杂一些。
+mes {print(sq)}首先是黑脸出来，一般是两人以上。他们对你很凶，可能动文的也可能动武的，反正很凶。这也是有策略的，不仅仅是让你产生恐惧，更重要的是激发你的孤独感，让你感觉全世界除了想吃你的狼就再没别的了。
+mes {print(sq)}这时白脸出来了，肯定只有一个人，而且肯定长得慈眉善目，他制止了黑脸们，说你也是一个人，有人的权利，你们怎么能这样对待他？黑脸们说你走开，不要影响工作。
+mes {print(sq)}白脸坚持，说你们真的不能这样做！黑脸们说早就知道你干不了这个，干不了走人啊！白脸用身体护住你说：我要保护他的权利，保护法律的公正！
+mes {print(sq)}黑脸们说你等着，明天你就滚蛋了！然后气哼哼地走了。就剩你们俩时，白脸会替你擦擦汗呀血呀的，说别怕，有我在，他们不敢把你怎么样。
+mes {print(sq)}不管我落到什么下场，定会维护你的权利！你不想说就别说了，你有权沉默！接下来的事儿你就能想得出了，他这时成了你在这个世界上唯一的最亲的人，在他进一步的利诱下，你是不会沉默的...
+mes {print(sq)}这一招对付知识分子最管用，但与前面拉单子不同，你一旦知道了，它就失效了。当然，以上讲的一般都不单独使用，真正的审讯是一个大工程，是多种技术的综合...”
+cg del
+cg save
+mes {print(cd)}点我可以存档哟~
+store 1
+cg del
+pass
+pass
+pass
+jump script/script2.txt

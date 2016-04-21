@@ -1,0 +1,29 @@
+//设置背景为拉格朗日点
+set background = "image/background/background_lagrange.jpg"
+
+//罗辑表情集
+set lj = "罗辑"
+set lj0 = "image/罗辑/罗辑0.png"
+set lj1 = "image/罗辑/罗辑1.png"
+set lj2 = "image/罗辑/罗辑2.png"
+set lj3 = "image/罗辑/罗辑3.png"
+set lj4 = "image/罗辑/罗辑4.png"
+set lj5 = "image/罗辑/罗辑5.png"
+set lj6 = "image/罗辑/罗辑6.png"
+
+gb print(background)
+	cg print(lj0) 30
+
+mes {print(lj)}现在又回到那个问题——
+
+set content = "你，代表着地球，将会如何抉择"
+call issue3 共同发展确实是最好的结果 这是不可能的，你们必须为侵略地球的野心付出代价 我在考虑考虑吧
+set select = SELECT+1
+if select==1
+	has script/script4-1.txt		
+else if select==2
+	has script/script4-2.txt
+else if select==3
+	has script/script4-3.txt
+endif	
+		

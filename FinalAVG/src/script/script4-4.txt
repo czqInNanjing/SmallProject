@@ -1,0 +1,37 @@
+//设置思考的背景
+set background = "image/background/background4/background_thinking.jpg"
+
+//三体人，神秘形象，一种就可以
+set 3t = "三体人"
+set st = "image/cg/三体人/三体人.png"
+
+
+//罗辑表情集
+set lj = "罗辑"
+set lj0 = "image/cg/罗辑/罗辑01.png"
+set lj1 = "image/cg/罗辑/罗辑02.png"
+set lj2 = "image/cg/罗辑/罗辑03.png"
+set lj3 = "image/cg/罗辑/罗辑04.png"
+set lj4 = "image/cg/罗辑/罗辑11.png"
+set lj5 = "image/cg/罗辑/罗辑12.png"
+set lj6 = "image/cg/罗辑/罗辑13.png"
+
+gb print(background)
+
+	cg print(lj0) 30
+
+mes {print(lj)}（到底应该怎么做呢）
+
+	cg print(lj0) to print(lj3)
+
+mes {print(lj)}（好纠结）
+
+	cg print(lj3) to print(lj1)
+
+mes {print(lj)}（有了，做个小游戏放松一下吧，说不定就有思路了呢！）
+
+//进入游戏的标志（暂时未实现）
+//game
+return
+//game胜利结束后返回script4补.txt
+//失败则游戏结束

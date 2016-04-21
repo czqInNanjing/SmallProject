@@ -1,0 +1,84 @@
+mes {print(sq)}真的吗？那我来考考你咯：
+mes {print(sq)}假设你是间谍，被抓到了，一群人在审问你。他们对你很凶，可能动文的也可能动武的，反正很凶。
+mes {print(sq)}正当他们打算拷打你时，一个长得慈眉善目的人恰好路过，他制止了黑脸们，说你也是一个人，有人的权利，你们怎么能这样对待他？
+mes {print(sq)}那些人说：你走开，我们正在工作
+mes {print(sq)}那男人坚持，说你们真的不能这样做！ 
+mes {print(sq)}黑脸们说早就知道你干不了这个，干不了走人啊！
+mes {print(sq)}那男人用身体护住你说：我要保护他的权利，保护法律的公正！
+mes {print(sq)}黑脸们说你等着，明天你就滚蛋了！然后气哼哼地走了
+mes {print(sq)}这时候只剩下你和那男人两个人在审问间里
+
+set content = "整个过程中，你一直关注他们的："
+call issue4 眼神 言语 肢体动作 门外途径的人
+   set select = SELECT + 1
+   if select==2
+        mes {print(sq)}他们的言语如此的真实，你不知不觉相信了并感激那男人
+        mes {print(sq)}这时候那男人替你擦擦汗呀血呀的，说别怕，有我在，他们不敢把你怎么样。不管我落到什么下场，定会维护你的权利！你不想说就别说了，你有权沉默！ 
+        mes {print(sq)}他这时成了你在这个世界上唯一的最亲的人，你悄悄对他说出了实情
+	mes {print(sq)}然而之后，当你再次看到他时，他笑着对你说，谢啦，小伙子，你的同伴现在都在隔壁等着你了
+	mes {print(sq)}你终于意识到自己错了，作为专业的刑侦人员，他们早已可以自由控制说话的语气感情了
+      mes {print(xts)}判断错误，智慧值减3
+      cg del
+cg save
+mes {print(cd)}点我可以存档哟~
+store 1
+cg del
+pass
+pass
+pass
+jump script/script2.txt
+   else if select==3
+ 	 mes {print(sq)}他们的肢体动作，你不知不觉相信了并感激那男人
+         mes {print(sq)}这时候那男人替你擦擦汗呀血呀的，说别怕，有我在，他们不敢把你怎么样。不管我落到什么下场，定会维护你的权利！你不想说就别说了，你有权沉默！ 
+        mes {print(sq)}他这时成了你在这个世界上唯一的最亲的人，你悄悄对他说出了实情
+	mes {print(sq)}然而之后，当你再次看到他时，他笑着对你说，谢啦，小伙子，你的同伴现在都在隔壁等着你了
+	mes {print(sq)}你终于意识到自己错了，作为专业的刑侦人员，他们的肢体动作可以装的很像
+      mes {print(sq)}判断错误，智慧值减2
+      cg del
+cg save
+mes {print(cd)}点我可以存档哟~
+store 1
+cg del
+pass
+pass
+pass
+jump script/script2.txt
+   else if select==4
+         mes {print(sq)}在整个过程中，你并没有去看他们“表演”，门外那些路过却没有看进来哪怕一眼的人就是最好的佐证了
+	mes {print(sq)}这时候那男人替你擦擦汗呀血呀的，说别怕，有我在，他们不敢把你怎么样。不管我落到什么下场，定会维护你的权利！你不想说就别说了，你有权沉默！ 
+        mes {print(sq)}你假装自己很感激他，悄悄对他说出了所谓“实情”
+       mes {print(sq)}几天之后，你被赶来的伙伴救出，你想他们夸耀你的事迹
+        mes {print(xts)}恭喜判断正确，智慧值加3
+        cg del
+cg save
+mes {print(cd)}点我可以存档哟~
+store 1
+cg del
+pass
+pass
+pass
+jump script/script2.txt
+    else if select==1
+       mes {print(sq)}你一直盯着他们的眼睛看，然而，他们的眼神似真又似假
+       set content = "这时候你对那个男人给你一支烟，你选择？"
+        call issue2 果断拒绝并辱骂对方：我不相信！  收下，一脸感激。
+         set select = SELECT + 1 
+	     if select==1  
+        mes {print(sq)}对方发现你已识破，愤怒的杀了你，你虽然守住了秘密，却没能保全自己的性命
+        mes {print(xts)}智慧值+1
+         if select==2
+		 mes {print(sq)}这时候那男人替你擦擦汗呀血呀的，说别怕，有我在，他们不敢把你怎么样。不管我落到什么下场，定会维护你的权利！你不想说就别说了，你有权沉默！ 
+         mes {print(sq)}你假装自己很感激他，悄悄对他说出了所谓“实情”
+         mes {print(sq)}几天之后，你被赶来的伙伴救出，你想他们夸耀你的事迹
+         mes {print(sq)}恭喜判断正确，智慧值加3
+cg del
+cg save
+mes {print(cd)}点我可以存档哟~
+store 1
+cg del
+pass
+pass
+pass
+jump script/script2.txt
+endif
+endif

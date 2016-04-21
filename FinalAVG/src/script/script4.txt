@@ -1,0 +1,152 @@
+/*
+三体第四部分剧本
+内容从罗辑完成侦探生存游戏后开始，即从在拉格朗日点与三体人谈判开始
+
+11.罗辑冬眠醒来，进入侦探生存类游戏。【此游戏的线索主要来自罗辑与史强的对话，游戏的结局是罗
+辑与三体人的谈判，最终黑森理论生效，三体人离开地球，游戏结束。若不能找到线索完成游戏，则回
+到游戏开始】，游戏结束后设置存档点。
+12.三体人与地球人在拉格朗日点谈判，三体人：“我们愿意帮助地球建立引力波发射系统，并且截除智子
+封锁，全面传授人类科学技术。”地球：“黑森理论并不是虚幻的猜想，在你们的眼里我们是低等的虫子，
+然而，在更高级的文明眼里，你们也一样是低等的虫子。”三体：“你说的没错，所以我想，我们这两条低
+等的虫子，也该共同想想，怎么面对更高级的智慧生物。”地球：“我们依旧会，做出那些”人是大写的“选
+择，给岁月以文明，给时光以生命。”画面回到罗辑处于冥王星的镜头。
+13.游戏结束。星空配图，“宇宙有多空旷，我们不知道。宇宙有多拥挤，我们也不知道。人类在宇宙中是
+非常渺小的，然而有一天，若是我们发现了比自己更加低等的生命文明，我们又会做出何种举动？只希
+望，在所有的选择中，人都能是大写的。
+*/
+
+//设置背景为拉格朗日点
+begin issue2
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	out
+FuncEnd
+
+begin issue3
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	  C.item3
+	out
+FuncEnd
+
+begin issue4
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	  C.item3
+	  D.item4
+	out
+FuncEnd
+set background = "image/background/background4/background_lagrange.jpg"
+
+//三体人，神秘形象，一种就可以
+set 3t = "三体人"
+set st = "image/cg/三体人/三体人.png"
+ 
+ 
+set cd = "存档小天使"
+
+//罗辑表情集
+set lj = "罗辑"
+set lj0 = "image/cg/罗辑/罗辑01.png"
+set lj1 = "image/cg/罗辑/罗辑02.png"
+set lj2 = "image/cg/罗辑/罗辑03.png"
+set lj3 =  "image/cg/罗辑/罗辑04.png"
+set lj4 = "image/cg/罗辑/罗辑11.png"
+set lj5 = "image/cg/罗辑/罗辑12.png"
+set lj6 = "image/cg/罗辑/罗辑13.png"
+
+
+
+gb print(background)
+
+	cg print(lj1) 30
+
+mes {print(lj)}百年后的恒星的毁灭，证实了——这就是宇宙的真相！！
+	
+	cg print(st) 600
+
+mes {print(3t)}。。。。。。
+
+	cg print(lj1) 30
+mes {print(lj)}这是你们早就知道了的，每个发展到一定程度的文明都会明晰宇宙社会的最终定律，或者说，<r黑暗森林法则/>！
+
+mes {print(3t)}。。。。。。
+	cg del
+	cg print(lj3) 30
+
+mes {print(lj)}（三体人有在说什么吗，难道是。。。）
+
+set content = "难道是"
+call issue2 三体人听不懂我在说什么 我忘记戴语言转换器了TT
+set select = SELECT+1
+if select==1
+	cg print(lj0) to print(lj5)
+
+	mes 明明是我忘戴<r语言转换器/>了！！
+else if select==2
+	cg print(lj0) to print(lj5)
+
+	mes 额，被发现了，你什么都不知道。。
+endif
+
+	cg print(lj5) to print(lj0)
+mes {print(lj)}咳咳（戴上语言转换器）。。。
+	cg del
+	cg print(st) 30
+
+mes {print(3t)}你是第一个发现并证实它的地球人，我们三体人就是担心这种情况的发生才想尽早杀了你，遗憾的是你最终成功了。
+	cg del
+	cg print(lj0) 30
+
+mes {print(lj)}其实我早该想到，作为茫茫宇宙中刚刚睁开眼睛的新生文明，我们在一片黑暗中蹒跚学步，同时又发出一阵阵呐喊，期望得到“同类”的回应。。。
+
+mes {print(lj)}但是，尽管在同一个星球，不同物种之间，甚至同一个物种内，都存在着<y猜疑/>与倾轧，更何况是在不同星球衍生的不同文明呢？！
+
+mes {print(lj)}面对一个未知的存在，无论是谁都会<y猜疑/>，猜疑这个未知的存在是否会对自身产生威胁。作为进化到一定程度的高等文明，存在这种<y猜疑/>更是得以延续的必要条件。
+
+mes {print(lj)}与其探索这个未知的存在，还不如，直接毁灭这个存在!!以更小的代价结束这段<y猜疑/>。。
+
+mes {print(lj)}<g我们的宇宙就像一片黑暗森林/>，每个文明都像小心翼翼在黑暗中前行的猎人，在这片黑暗中发出声响，迎接而来的。。。便是一片枪林弹雨！！
+	cg print(lj0) to print(lj3)
+
+mes 这，就是<r宇宙黑暗森林法则/>！
+	cg del
+	cg print(st) 30
+
+mes {print(3t)}没错，你说得很对。
+	cg del
+	cg print(lj0) 30
+
+mes {print(lj)}现在的情况是，我们地球人可以向太空发射你们三体世界的坐标，虽然我们也会暴露，但你们的世界终究会比我们更早迈向死亡。我想我们应该好好谈谈了。
+	cg del
+	cg print(st) 30
+
+mes {print(3t)}。。。。。。
+
+mes {print(3t)}我们其实可以相互帮助，共同发展。三体世界可以为帮助地球建立引力波发射系统，并且截除智子封锁，全面传授人类科学技术。地球上的历史文化也值得我们学习，增进艺术的发展。
+	cg del
+	cg save
+mes {print(cd)}点我可以存档哦~~（想不点也不行！）
+store 4
+	cg del
+	gb print(background)
+	cg print(lj0) 30
+set content = "你，代表着地球，将会如何抉择"
+call issue3 共同发展确实是最好的结果 这是不可能的，你们必须为侵略地球的野心付出代价 我再考虑考虑吧
+set select = SELECT+1
+if select==1
+	has script/script4-1.txt		
+else if select==2
+	has script/script4-2.txt
+else if select==3
+	has script/script4-3.txt
+endif	
+		
+
+

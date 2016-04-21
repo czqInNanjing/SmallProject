@@ -1,0 +1,323 @@
+﻿/*
+三体第一部分剧本     最后修改时间：5/3
+内容：
+楔子：罗辑独自守护在冥王星，开始回忆他从被选为面壁者到现在的生活，可用内心独白式表现。
+第一幕：行星防御理事会第十九次会议，面壁者的选择过程以及罗辑的内心独白，伪条件分支让罗辑选
+择是否成为面壁人，接受任务。离开会场，史强出场，条件分支为是否需要贴身保护。
+第二幕：如果选择不需要则有中枪情节【设计为小游戏,小游戏的内容暂时待定，可能为十字棋】，苏醒
+后由行凶者告知三体世界的真实状况以及自身重要性，否则在保镖保护下回到酒店，梦里【设计小游
+戏，】通关后由叶文洁告知三体世界真实状况以及自身重要性。沉思过后，选择隐居
+第三幕：破壁计划和破壁人产生，展现其他两个面壁人的计划【简单一两页图片带过】
+*/
+begin issue2
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	out
+FuncEnd
+
+begin issue3
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	  C.item3
+	out
+FuncEnd
+
+begin issue4
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	  C.item3
+	  D.item4
+	out
+FuncEnd
+//以下为变量
+//背景图
+set bg1 = "image/background/background1/bg1.jpg"
+set bg2 = "image/background/background1/bg2.jpg"
+set bg3 = "image/background/background1/bg3.jpg"
+set bg4 = "image/background/background1/bg4.jpg"
+set bg5 = "image/background/background1/bg5.jpg"
+set bg6 = "image/background/background1/bg6.jpg"
+set bg7 = "image/background/background1/bg7.jpg"
+set bg8 = "image/background/background1/bg8.jpg"
+set bg9 = "image/background/background1/bg9.jpg"
+set bg10 = "image/background/background1/bg10.jpg"
+set bg11 = "image/background/background1/bg11.jpg"
+set bg12 =  "image/background/background1/bg12.jpg"
+set bg13 = "image/background/background1/bg13.jpg"
+set bg14 = "image/background/background1/bg14.jpg"
+set bg15 = "image/background/background1/bg15.jpg"
+set bg16 = "image/background/background1/bg16.jpg"
+//罗辑表情集
+set lj = "罗辑"
+set lj01 = "image/cg/罗辑/罗辑01.png"
+set lj02 = "image/cg/罗辑/罗辑02.png"
+set lj03 = "image/cg/罗辑/罗辑03.png"
+set lj04 = "image/cg/罗辑/罗辑04.png"
+set lj05 = "image/cg/罗辑/罗辑05.png"
+set lj11 = "image/cg/罗辑/罗辑11.png"
+set lj12 = "image/cg/罗辑/罗辑12.png"
+set lj13 = "image/cg/罗辑/罗辑13.png"
+set lj14 = "image/cg/罗辑/罗辑14.png"
+set lj21 = "image/cg/罗辑/罗辑21.png"
+set lj31 =  "image/cg/罗辑/罗辑31.png"
+set lj32 =  "image/cg/罗辑/罗辑32.png"
+set lj41 = "image/cg/罗辑/罗辑41.png"
+set lj42 = "image/cg/罗辑/罗辑42.png"
+set lj71 = "image/cg/罗辑/罗辑71.png"
+set lj72 = "image/cg/罗辑/罗辑72.png"
+
+//庄颜表情集
+set zy = "庄颜"
+set zy22 = "image/cg/庄颜/庄颜22.png"
+set zy11 = "image/cg/庄颜/庄颜11.png"
+set zy12 = "image/cg/庄颜/庄颜12.png"
+
+//路人表情集，通用
+44
+set lrjm0 = "image/cg/路人甲男/路人甲男0.png"
+set lrjm1 = "image/cg/路人甲男/路人甲男1.png"
+//set lrm2 = 
+set lrjw0 = "image/cg/路人甲女/路人甲女0.png"
+set lrjw1 = "image/cg/路人甲女/路人甲女1.png"
+//set lryn1
+set lrny0 = "image/cg/路人乙男/路人乙男0.png"
+set lrny1 = "image/cg/路人乙男/路人乙男1.png"
+//叶文洁表情集
+set ywj = "叶文洁"
+set ywj0 = "image/cg/叶文洁/叶文洁0.png"
+set ywj1 = "image/cg/叶文洁/叶文洁1.png"
+//set ywj2 = 
+//史强表情集
+set sq = "史强"
+set sq01 = "image/cg/史强/史强01.png"
+set sq02 = "image/cg/史强/史强02.png"
+set sq03 = "image/cg/史强/史强03.png"
+set sq04 = "image/cg/史强/史强04.png"
+set sq13 = "image/cg/史强/史强13.png"
+set sq21 = "image/cg/史强/史强21.png"
+set sq22 = "image/cg/史强/史强22.png"
+set sq23 = "image/cg/史强/史强23.png"
+set sq3 =  "image/cg/史强/史强3.png"
+set sq41 =  "image/cg/史强/史强41.png"
+set sq42 =  "image/cg/史强/史强42.png"
+set sq43 =  "image/cg/史强/史强43.png"
+set sq44 =  "image/cg/史强/史强44.png"
+
+
+set sq11 = "image/cg/史强/史强11.png"
+set sq12 = "image/cg/史强/史强12.png"
+
+
+set pb = "旁白"
+set sy = "萨伊"
+set lrny = "路人男乙"
+set qz = "群众"
+set zz = "智子"
+set cd = "存档小天使"
+
+
+gb print(bg1)
+pass
+pass
+pass
+title1 第一幕 楔子
+pass
+pass
+pass
+title2 y 掩体纪元某年 冥王星
+ gb print(bg1)
+ gb print(bg1)
+bgm 回想
+//cg print(lrjm0) 30
+mes {print()}尊敬的罗辑博士，罗辑博士
+mes {print(lj)}哦，小陈啊，你有什么事情吗？
+sound 脚步声
+cg print(lj01) 500
+mes {print(小陈)}博士,赶紧进来吧.
+mes {print(lj)}哦，是啊，但别担心我,你先进去吧.
+cg del
+
+//bgm o
+
+//change image/movie/1/过场动画1 289
+
+gb print(bg2)
+mes 说完这句话，罗辑再次把他那深邃的目光投向了广阔无垠的宇宙，几万光年外的恒星依旧发出迷人的光.
+//title2 r 掩体纪元某年 冥王星
+
+gb print(bg3)
+mes {print(pb)}他想到的第一件事，是和叶文洁在杨冬墓前的那次谈话。
+cg print(ywj0) 30
+mes {print(ywj)}第一，生存是文明的第一需要；第二，文明不断增长和扩张，但宇宙中物质总量保持不变.
+mes {print(ywj)}....还有两个重要概念，猜疑链和技术爆炸....
+cg del
+
+//bgm 
+gb print(bg4)
+mes {print(pb)}那些和庄颜在一起的像天堂一般的日子，也渐渐在他眼前浮现。
+cg print(zy11) 30
+mes {print(zy)}呀，你看，这酒真好看，就像....
+cg print(lj11) 520
+mes {print(lj)}像死去的太阳。
+cg print(zy11) to print(zy12)
+mes {print(zy)}不要这样想啊，我觉得它像...晚霞的眼睛。
+cg del
+
+gb print(bg5)
+mes {print(pb)}人生发生巨变的转折点，成为了面壁人。
+cg print(lrjw0) 30
+mes {print(sy)}第四位面壁者——来自中国的社会学家，罗辑。
+sound noisy
+cg print(lj11) 520
+mes {print(lj)}我拒绝！
+
+cg print(lrjw0) to print(lrjw1)
+mes {print(sy)}您可以拒绝，罗辑先生。
+cg del
+/*
+gb print(bg6)
+cg print(lj02) 520
+mes {print(lj)}颜，你成为世界上最幸福快乐的女孩儿，是面壁计划的一部分。
+cg print(zy12) 30
+mes {print(zy)}罗老师，你可以带我去卢浮宫吗？
+mes {print(lj)}当然。
+
+cg del
+*/
+gb print(bg7)
+mes {print(pb)}这大概是他生活中最痛苦的一瞬间。
+cg print(lj31) 520
+mes {print(lj)}我妻子和孩子呢？！
+cg print(lrjm0) 30
+mes {print(sy)}他们在末日等你。
+cg del
+bgm 梦语
+gb print(bg5)
+mes {print(pb)}那个被大家看不起的面壁人罗辑，是怎么变成人人眼中躲在角落里的神的呢？
+cg print(lrny0) 30
+mes {print(lrny)}这是什么？
+mes {print(pb)}面壁者罗辑，根据面壁计划的基本原则，你可以不回答这个问题。
+cg print(lj02) 520
+mes {print(lj)}这是一句咒语。
+cg del
+
+gb print(bg8)
+mes {print(pb)}经历了大低谷之后的人类，大概也明白了一些什么。
+cg print(lj02) 30
+mes {print(lj)}这是什么雕塑？
+mes {print(pb)}给岁月以文明，给时光以生命。
+cg del
+gb print(bg9)
+
+gb print(bg10)
+mes {print(pb)}水滴告诉人类，毁灭你，与你何干？在深空里，极权不过是一分钟的选择而已。
+mes {print(旁白)}据报道，蓝色空间号毁灭了“企业号”“深空号”“自然选择号”，继续向宇宙深处飞行
+cg print(lj11) 30 
+mes {print(lj)}大史，我想我是对的。
+cg print(sq01) 520
+mes {print(sq)}是吗？
+cg del
+ 
+mes {print(pb)}冬眠醒来之后，他成了人类眼中的神。
+mes {print(qz)}主啊，救救我们吧。
+gb print(bg11)
+mes {print(qz)}我们的神啊，拯救世界吧。
+
+gb print(bg12)
+mes {print(pb)}他真正明白黑暗森林理论，大概是在和大史的那场谈话中。
+cg print(sq12) 30 
+mes {print(sq)}这，这也太黑了吧？！
+cg print(lj02) 520
+mes {print(lj)}宇宙就是一座黑暗森林。
+cg del
+
+gb print(bg13)
+mes {print(pb)}他们在末日请你等下去，没有救世能力不是你的错，但给世界以希望后又打碎它则是一种不可饶恕的罪恶了。
+
+gb print(bg14)
+cg print(lj32) 30
+mes {print(lj)}现在，我将让自己的心脏停止跳动，与此同时我也将成为两个世界有史以来最大的罪犯。对于所犯下的罪行，我对两个文明表示深深的歉意，但不会忏悔，因为这是唯一的选择。
+cg print(lj32) to print(lj41)
+mes {print(lj)}我知道智子就在身边，但你们对人类的呼唤从不理睬，无言是最大的轻蔑，我们忍受这种轻蔑已经两个世纪了，
+cg print(lj41) to print(lj42)
+mes {print(lj)}现在，如果你们愿意，可以继续保持沉默，我只给你们三十秒钟时间。
+mes 30
+mes 29
+mes 28
+mes ...
+mes {print(zz)}罗辑博士，请住手！！
+gb print(bg15)
+cg print(zy12) 460
+mes {print(zy)}天啊！您还活着？
+mes {print(lj)}请接受我的歉意。
+mes {print(lj)}我有一个梦，也许有一天，灿烂的阳光能照进黑暗森林。
+cg del
+
+cg save
+mes {print(cd)}点我可以存档哟~(不点也不行O(∩_∩)O~~！）
+store 1
+cg del
+//背景：监狱内
+gb print(bg16)
+cg print(lj03) 30
+cg print(sq02) 520
+/*
+mes {print(sq)}罗教授，我来陪陪你，不过你也就刚进来，不至于闷得慌吧。
+mes {print(lj)}您是警察吧。
+mes {print(sq)}以前是吧，我叫史强，来，抽根烟。
+mes {print(sq)}时间还早，咱们聊聊。
+mes {print(lj)}你问吧。
+mes {print(sq)}问什么？
+mes {print(lj)}你们怎么你们怎么能怀疑我？那明明就是一场意外交通事故嘛！先是两辆车相撞，后面那辆车为了躲闪才把她撞了的！这是很明白的事儿。
+mes {print(sq)}我可没提这事儿啊，是你先提的，这就好，上面不让我说更多的情况，我也不知道更多的，刚才还发愁咱们没话题聊呢，来，坐坐。
+mes {print(lj)}我和她才认识了一个星期，就是在学校旁边的酒吧里认识的，出事前连她的名字都想不起来，你说我们之间能有什么，竟让你们往那方面想呢？
+mes {print(sq)}一点儿都想不起来了？怪不得她死了你一点儿也不在乎，和我见过的另一个天才差不多。呵呵，罗教授的生活真是丰富多彩，隔一段就认识一个女孩儿，档次还都不低。
+mes {print(lj)}这犯法吗？
+mes {print(sq)}当然不，我只是羡慕。我在工作中有一个原则：从不进行道德判断。我要对付的那些主儿，成色可都是最纯的。我要是对他们婆婆妈妈：你看你都干了些什么啊？你对得起社会对得起爹妈吗...还不如给他一巴掌。
+mes {print(lj)}你看看，刚才你主动提这事儿，现在又说自己可能杀她，咱就是随便聊聊，你急着抖落这些于吗？一看就是个嫩主。
+//史强笑
+mes {print(sq)}罗兄，哦，应该是罗老弟吧，咱们其实有缘：我办的案子中，有十六个死刑犯，其中的九个都让我去送的
+mes {print(lj)}我不会让你去送的。好吧，麻烦你通知我的律师。
+mes {print(sq)}好！罗老弟！
+mes {print(lj)}这人嘛，什么事儿都可能遇上，不过你遇到的这也太...我其实是想帮你，知道那个笑话吧：在去刑场的路上，死刑犯抱怨天下雨了，刽子手说你有什么可抱怨的，俺们还得回来呢！这就足你我在后面的过程中应该有的心态。
+mes {print(sq)}好了，离上路还早，就在这儿凑合着睡会儿吧。
+mes {print(lj)}上路？不会吧，还没审判就要送我上路了？冤枉啊！
+mes {print(sq)}你想多了，罗老弟。
+mes {print(pb)}史队，提前了，现在就出发。
+mes {print(sq)}好，我们走吧
+mes （一路上，史强罗辑都受到了“过分”的保护）
+//过场动画：专机上：
+mes {print(sq)}咱们再聊会儿，然后去睡觉，好不好？
+mes 睡觉？看来要飞很长时间了？
+mes {print(sq)}管它呢，这有床的飞机，咱们还不得好好享用一下。
+mes 你们只是负责把我送到目的地，是吗？
+mes {print(sq)}你抱怨什么，我们还得走回去呢！
+//史强笑
+*/
+mes {print(sq)}你走的这一趟，我知道的不比你多多少，再说也轮不着我对你说什么。放心，会有人对你把一切都交待清楚的。
+mes {print(lj)}我猜了半天，只想出一个可能的答案。
+mes {print(sq)}说说看，看是不是和我猜的一样。
+mes {print(lj)}她应该是个普通人，那只能是她的社会或家庭关系不一般。
+mes {print(sq)}啊，哦，你那个一周情人？还是别再想她了吧，反正你不在乎。不过想也可以，照你说的，你把她的姓和脸与大人物们—个个对对？
+//罗辑想
+mes {print(lj)}恩。。。。。。
+mes {print(lj)}恩。。。。。。
+mes {print(lj)}似乎没有谁。
+mes {print(sq)}哎呀，算了，别想了。
+
+set content = "我问下，罗兄啊，你骗人在行吗？"
+call issue2 还行吧 并不在行
+set select = SELECT + 1
+if select==1
+  has script/script1-1.txt
+else if select==2
+  has script/script1-2.txt
+endif
+
+

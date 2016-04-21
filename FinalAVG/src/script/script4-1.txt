@@ -1,0 +1,118 @@
+//背景为宇宙宏观背景
+set background = "image/background/background4/background_universe.jpg"
+//纯黑色背景
+set blackbg = "image/background/background4/background_black.jpg"
+
+//三体人，神秘形象，一种就可以
+set 3t = "三体人"
+set st = "image/cg/三体人/三体人.png"
+
+
+//罗辑表情集
+set lj = "罗辑"
+set lj0 = "image/cg/罗辑/罗辑01.png"
+set lj1 = "image/cg/罗辑/罗辑02.png"
+set lj2 = "image/cg/罗辑/罗辑03.png"
+set lj3 = "image/cg/罗辑/罗辑04.png"
+set lj4 = "image/cg/罗辑/罗辑11.png"
+set lj5 = "image/cg/罗辑/罗辑12.png"
+set lj6 = "image/cg/罗辑/罗辑13.png"
+
+//花白色闪过
+flash 255 255 240
+
+gb print(background)
+
+	cg print(lj0) 30
+
+mes {print(lj)}你看，我们仰望着的宏大的宇宙，从140多亿年之前的大爆炸开始，就以一种无法理解的方式，跨越了时间和空间,演化到现在的样子。
+
+mes {print(lj)}在这个宏大的宇宙背景之中，我们都是渺小的。
+
+mes {print(lj)}<r黑暗森林理论/>是宇宙社会学的一大定律，有太多太多未知的强大存在正在某个黑暗的角落伺机而动，对于他们来说，我们都只是“<r低等的虫子/>”。
+	cg del
+	cg print(st) 30
+
+mes {print(3t)}这也是为什么我们三体人选择与你们合作的原因。
+
+mes {print(3t)}其实，三体世界与地球世界已经接触了很长的时间，我们彼此之间也有了深刻的认知，你们拥有我们难以企及的思维，我们拥有领先于你们的科学技术。
+
+mes {print(3t)}我们之间不应存在猜疑，我们完全可以从对方那里学习到很多。我们需要思考如何面对更为先进的那些存在，面对那些可能在不远的将来猜疑我们的高等文明。
+	cg del
+	cg print(lj3) 30
+
+mes {print(lj)}（是呀，随着人类文明的发展，以后必然也会遇到像三体世界类似的文明，乃至更为高等的文明，我们又该何去何从呢。。）
+
+	cg print(lj3) to print(lj0)
+
+mes {print(lj)}或许就像你们说的，我们作为“<r低等的虫子/>”，需要联起手来，共同面对来自高等文明的威胁。
+	cg del
+	cg print(st) 30
+
+mes {print(3t)}那么，预祝我们合作愉快。
+
+mes {print(3t)}在结束这次跨世纪的谈判之前，作为地球的盟友，我们想问。。。
+
+mes {print(3t)}你认为，在<r黑暗森林/>背景下的宇宙，<y未来将何去何从/>？
+	cg del
+//象牙黑色闪过
+flash 41 36 33
+
+	cg print(lj0) 30
+
+mes {print(lj)}(宇宙。。。的。。。<y未来/>)
+
+gb print(blackbg)
+	cg del
+	cg print(lj0) 30
+
+mes {print(lj)}（宇宙的黑暗森林会一直延续到宇宙的毁灭吗，宇宙会在无边的黑暗中走向终结吗？）
+
+mes {print(lj)}（还是说，总有一天，宇宙会有出现一束打破黑暗森林魔咒的光，宇宙终会破晓，迎来无数文明共同繁荣的局面）
+	cg del
+set content = "那么，宇宙的未来会怎样"
+call issue3 我不知道，也不需要知道 宇宙，是一片永恒的黑暗 我相信，宇宙会迎来属于每个文明的曙光！
+set select = SELECT+1
+if select==1
+	cg print(lj1) 30
+
+	mes {print(lj)}我知道，人类避免了一张浩劫，地球即将迎来繁盛发展的时光，这，就够了。
+	
+	cg print(lj1) to print(lj0)
+
+	mes {print(lj)}这之后，哪怕洪水滔天。我罗辑，已经尽吾之力了，这样也好。
+	cg del
+	//亚麻色闪过
+	//flash 250 240 230
+	//返回主界面	
+	return
+
+else if select==2
+	cg print(lj0) 30
+
+	mes {print(lj)}一切的文明印迹都深深隐藏在这黑暗之中，每个文明都是带枪的猎人，像幽灵般潜行于林间，轻轻拨开挡路的树枝，竭力不让脚步发出一点儿声音，连呼吸都小心翼翼。。。
+
+	mes {print(lj)}他必须小心，因为林中到处都有与他一样潜行的猎人。如果他发现了别的生命，不管是不是猎人，不管是天使还是魔鬼，不管是娇嫩的婴儿还是步履蹒跚的老人，也不管是天仙般的少女还是天神般的男人，能做的只有一件事：开枪消灭之。
+
+	mes {print(lj)}在这片森林中，他人就是地狱，就是永恒的威胁，任何暴露自己存在的生命都将很快被消灭。。
+
+	mes {print(lj)}这是宇宙永恒的命题，文明之间的倾轧，留下黑暗之中一抹醒目的血腥。
+
+	mes {print(lj)}（只是，你甘心与此吗。。。）
+
+	//灰色闪过
+	//flash 128 128 105
+	has script/script4-4.txt
+else if select==3
+	cg print(lj1) 30
+
+	mes {print(lj)}总有一天，总会有一个存在站出来，结束这片无边的黑暗，构建一个和谐的宇宙社会，给岁月以文明，给时光以生命。让每一个文明，无论高低贵贱，都能在我们的诞生之处——这片浩瀚的宇宙，留下自己的璀璨与辉煌。
+
+	mes {print(lj)}到了这时，我们就能找到真正的归宿，离开这片黑暗的宇宙。
+	cg del
+	//白色闪过
+	//flash 255 250 250
+	has script/script4-4.txt
+endif
+	
+

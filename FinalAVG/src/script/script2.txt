@@ -1,0 +1,180 @@
+﻿/*三体第二部分剧本
+史强：“外面可能有危险，需要安全保卫吗 ？”
+弹出条件分支选择窗口：a.不需要（“不需要走开。“）进入小游戏界面。
+小游戏结束后，罗辑在医院苏醒，与凶手见面。”我已经解脱了，我已经不再是面壁者了，
+ETO 白白浪费了一个杀手。“
+凶手：”您真幽默。您应该知道，在这种使命被交付前，是不可能向要承担它的人征求意见的。“
+罗辑：“我他妈从不在乎人类文明的延续，为什么选中我？！”凶手：“因为，您，是三体世界，唯一要杀的地球人。”
+对话结束。
+b.选择需要保护，回到酒店睡觉并在梦中遇见叶文洁。叶：“小罗，我这辈子可算是等到你了。”
+罗辑：
+“您是杨冬的母亲，叶文洁老师？”叶：“是的。听说你是研究心理学的？”罗：“对，我这人确实胸无大志。 “
+叶：”我倒是有个建议，为什么不去研究宇宙社会学呢？宇宙中分布着数量巨大的社会文明，构成了总体的宇宙社会，
+宇宙社会学就是研究这个超级社会的形态。“罗：”这，真有意思。”叶：“假设两条不证自明的公理，第一、生存是
+文明的第一需要；第二：文明不断增长扩张，宇宙物质总量并不改变。再加上猜疑链和技术爆炸这两个概念，推论出宇
+宙社会学的基本图景。”罗辑：“这真是，太不可思议了。但是，您为什么要和我说这些？”叶：“因为你，是三体世
+界，唯一要杀的地球人。”对话结束，罗辑惊醒。*/
+
+//设置背景为联合国大厅
+set background1 = "image/background/background2/background_hall.jpg"
+set background2 = "image/background/background2/background_door.jpg"
+
+//旁边
+set pb = "旁白"
+
+//史强
+set sq = "史强"
+set sq1 = "image/cg/史强/史强01.png"
+set sq2 = "image/cg/史强/史强02.png"
+set sq3 = "image/cg/史强/史强03.png"
+set sq4 = "image/cg/史强/史强04.png"
+set sq5 = "image/cg/史强/史强11.png"
+
+//罗辑表情集
+set lj = "罗辑"
+set lj0 = "image/cg/罗辑/罗辑01.png"
+set lj1 = "image/cg/罗辑/罗辑02.png"
+set lj2 = "image/cg/罗辑/罗辑03.png"
+set lj3 = "image/cg/罗辑/罗辑04.png"
+set lj4 = "image/cg/罗辑/罗辑11.png"
+set lj5 = "image/cg/罗辑/罗辑12.png"
+
+//萨伊表情集
+set sy = "萨伊"
+set sy0 = "image/cg/萨伊/萨伊01.png"
+set sy1 = "image/cg/萨伊/萨伊02.png"
+set sy2 = "image/cg/萨伊/萨伊03.png"
+
+//观众
+set gz = "观众"
+
+begin issue2
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	out
+FuncEnd
+
+begin issue3
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	  C.item3
+	out
+FuncEnd
+
+begin issue4
+    mes print(content)
+    in 
+	  A.item1
+	  B.item2
+	  C.item3
+	  D.item4
+	out
+FuncEnd
+
+pass
+pass
+pass
+
+Title1 联合国大会
+
+
+gb print(background1)
+
+mes {print()}所谓<r面壁计划/>，就是选定4位完全依靠自己的思维制定战略计划，不与外界进行任何形式交流的领导者。他们将依托自己的思维，拯救人类于水火之中。
+
+
+mes {print()}<r面壁者/>可以调用一切合理范围内的资源，并且不需要做出解释。
+
+	cg print(sy0) 30
+
+mes {print(sy)}下面，我将以联合国的名义，公布四位<r面壁者/>
+
+mes {print(sy)}前美国国防部部长-弗里德里克，委内瑞拉总统-曼努尔，英国科学家-比尔，以及——
+
+mes {print(sy)}来自中国的社会学家-罗辑。
+
+	cg del
+
+Title1 目光集中在罗辑
+
+gb print(background1)
+	cg print(lj2) 40
+mes {print(lj)}大家都在等着我的反应，这么重要的使命，而我什么都不知道，真是。。。醉了
+
+set content = "我到底该怎么做呢？"
+call issue3 果断拒绝！ 委婉拒绝。 欣然接受~
+set select = SELECT+1
+if select==1
+	cg del
+	cg print(lj4) 520
+	mes {print(lj)}没有人预先征求我的意见，我对这件事一无所知！	
+	cg print(sy1) 30
+	mes {print(sy)}但是，罗辑先生，你要知道，这种神圣的使命的赋予一般都不会提前通知承担着的。
+	cg print(lj4) to print(lj3)
+	mes {print(lj)}我才不管别人怎么想，总之，我不愿意承担这份任务！
+	mes {print(lj)}我作为一名社会学家，只想做好自己的本职工作，并不觉得自己有能力来拯救地球，我只是一个普通人，无法承担起拯救地球的使命~
+	mes {print(lj)}请问，秘书长女士，我可以离开了吧？
+	cg print(sy0) to print(sy0)
+	mes {print(sy)}是的，罗辑先生，你可以做你任何想做的事情。
+	cg del
+else if select==2
+	cg del
+	cg print(lj4) 520
+	mes {print(lj)}我作为一名社会学家，只想做好自己的本职工作，并不觉得自己有能力来拯救地球，我只是一个普通人，无法承担起拯救地球的使命~
+	cg print(sy0) 30
+	mes {print(sy)}但是，罗辑先生，你要知道，联合国选出你来成为面壁者是有原因的。
+	cg print(lj4) to print(lj3)
+	mes {print(lj)}我不管别人怎么想，我并不认为仅仅依靠个人的力量就能改变地球历史的发展轨迹，我也不愿意为此努力。
+	mes {print(lj)}我对于现在的一切很满意，对于将来的一切也不会感到惋惜，所以，我的决定是放弃这份使命。
+	mes {print(lj)}请问，秘书长女士，我可以离开了吧？
+	cg del
+	cg print(sy0)
+	mes {print(sy)}是的，罗辑先生，你可以做你任何想做的事情。
+	cg del
+else if select==3
+	cg del
+	cg print(lj4) 520
+	mes {print(lj)}嗯，好的，各位，我就是罗辑，很荣幸也很不幸被赋予了这样的使命。。。
+	mes {print(gz)}他是谁？有什么实力承担这样的任务？
+	cg print(lj4) to print(lj3)
+	mes {print(lj)}额。。。我不确定我有实力拯救地球，但是我一定会尽我最大的可能努力。。。
+	cg del
+	mes {print(gz)}呵呵。。。还是要求联合国换人吧。
+	cg print(lj1) 520
+	mes {print(lj)}对！我果然还是不应该接受，其实我内心是拒绝的，并不认为地球存亡和我有什么关系，并不认为自己愿意接受使命！
+	mes {print(lj)}请问，秘书长女士，我可以离开了吧？
+	cg del
+	cg print(sy0)
+	mes {print(sy)}是的，罗辑先生，你可以做你任何想做的事情。
+	cg del
+	endif
+		
+	gb print(background2)
+	
+	cg print(sq3) 30
+
+	mes {print(sq)}罗辑博士，停，不要出去！
+
+	cg print(lj4) 520
+	
+	mes {print(lj)}史强？！你出现在这里是什么意思？
+	mes {print(sq)}外面有可能有危险。。。
+	mes {print(lj)}但是我已经放弃了面壁者的身份。。。
+	mes {print(sq)}ETO是不会轻易放过你的。。。
+	cg del 
+	cg print(lj4) 520
+set content = "到底需不需要保卫呢？"
+call issue2 不需要，走开！ 额，既然有危险就需要呗~
+set select = SELECT+1
+if select==1
+cg del 
+mes {print(pb)}刚刚走出大门的罗辑就遭到了枪击，被送往医院抢救
+	has script/script2-1.txt		
+else if select==2
+cg del 
+	has script/script2-2.txt
+endif	

@@ -1,0 +1,52 @@
+//纯黑色背景
+set blackbg = "image/background/background4/background_black.jpg"
+
+//三体人，神秘形象，一种就可以
+set 3t = "三体人"
+set st = "image/cg/三体人/三体人.png"
+
+
+//罗辑表情集
+set lj = "罗辑"
+set lj0 = "image/cg/罗辑/罗辑01.png"
+set lj1 = "image/cg/罗辑/罗辑02.png"
+set lj2 = "image/cg/罗辑/罗辑03.png"
+set lj3 = "image/cg/罗辑/罗辑04.png"
+set lj4 = "image/cg/罗辑/罗辑11.png"
+set lj5 = "image/cg/罗辑/罗辑12.png"
+set lj6 = "image/cg/罗辑/罗辑13.png"
+
+
+gb print(blackbg)
+
+	cg print(lj0) 30
+
+mes {print(lj)}你们始终对地球怀有野心，这么做只会自取灭亡！
+ 	cg del
+	cg print(st) 30
+
+mes {print(3t)}那你想怎么做
+
+	cg del
+	cg print(lj4) 30
+mes {print(lj)}我会向宇宙更深处暴露你们的坐标
+
+mes {print(lj)}这是唯一我可以为地球做的了。。。
+	cg del
+	cg print(st) 30
+
+mes {print(3t)}唉。。。
+	cg del
+	cg print(lj6) 30 
+
+mes {print(lj)}<r（两个文明就此毁灭，这就是结局吗？)/>
+	cg del
+//红色闪过
+//flash 227 23 13
+
+title1 我们在一片黑暗中 走向了毁灭
+pass
+pass
+pass
+//返回主界面	
+return
