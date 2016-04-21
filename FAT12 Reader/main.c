@@ -16,7 +16,7 @@ typedef unsigned int u32;   //4字节
 const char* filePath = "/Users/czq/Development/OS/123/abc.img";
 
 // 是否为纯C语言,此开关打开时将使用C类库代替nasm汇编语言,还需要注释掉661,662行
-int pureC = 0;
+int pureC = 1;
 /***颜色控制***/
 char* white = "\e[0m";
 char* red = "\e[31m";
@@ -211,6 +211,9 @@ void printFileOrDire(char* userInput) {
 
 void printFile(int start , int size) {
     char fileContenet[size + 1];
+    for (int j = 0; j < size + 1; ++j) {
+        fileContenet[j] = '\0';
+    }
     char oneSec[BytsPerSec + 1];
     oneSec[BytsPerSec] = '\0';
     int check;
@@ -239,7 +242,7 @@ void printFile(int start , int size) {
             return;
         }
 
-        fseek(file , getBase(start) ,SEEK_SET);
+        check = fseek(file , getBase(start) ,SEEK_SET);
         if(i == num -1){
             fread(oneSec , 1 , size%BytsPerSec , file);
             strncat(fileContenet , oneSec , size%BytsPerSec);
@@ -616,7 +619,7 @@ int getNextFatValue(int now){
     check = fseek(file , base , SEEK_SET);
     check = fread(bytes , 1 , 2 , file);
     if(now% 2== 0){
-        next = (u16) (next & 0x0111);
+        next = (u16) (next & 0x0FFF);
 
     } else{
         next =  next >> 4;
@@ -658,8 +661,8 @@ void my_print(char* msg ,...){
         if(pureC){
             printf(temp);
         } else{
-            n_print(temp , strlen(temp));
-            n_print(white , strlen(white));
+//            n_print(temp , strlen(temp));
+//            n_print(white , strlen(white));
         }
 
     }
