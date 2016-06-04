@@ -50,19 +50,19 @@ PUBLIC int sys_get_ticks()
                            sys_process_sleep
 
  *======================================================================*/
-PUBLIC void sys_process_sleep(int unused1, int unused2, int milli_sec, PROCESS * p){
+PUBLIC void sys_process_sleep(int unused, int milli_sec, PROCESS * p){
 	p->sleepTicks = milli_sec*HZ/1000;
 }
-PUBLIC void sys_tem_p(int unused1, int unused2,  semaphore * s, PROCESS * p){
+PUBLIC void sys_tem_p(int unused,  semaphore * s, PROCESS * p){
 	s->value=s->value-1;
 	if(s->value < 0){ //no more thing to deal with
 		//barber now should stop himself or customer has to wait
-		sys_process_sleep(0 ,0 , 100000 , p);
+		sys_process_sleep(0 , 100000 , p);
 		
 		s->wait[-s->value - 1] = p;
 	}
 }
-PUBLIC void sys_tem_v(int unused1, int unused2,  semaphore * s, PROCESS * p){
+PUBLIC void sys_tem_v(int unused,  semaphore * s, PROCESS * p){
 	s->value=s->value+1;
 	if(s->value <= 0){ //now barber is available or one customer come in
 		//wake up any customers or barber

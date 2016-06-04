@@ -59,9 +59,9 @@ PUBLIC  int     vsprintf(char *buf, const char *fmt, va_list args);
 /* proc.c */
 PUBLIC  int     sys_get_ticks();
 PUBLIC  int     sys_write(char* buf, int len, PROCESS* p_proc);
-PUBLIC void     sys_process_sleep(int unused1, int unused2, int milli_sec, PROCESS * p);
-PUBLIC void     sys_tem_p(int unused1, int unused2,  semaphore * s,  PROCESS * p);
-PUBLIC void     sys_tem_v(int unused1, int unused2,  semaphore * s,  PROCESS * p);
+PUBLIC void     sys_process_sleep(int unused, int milli_sec, PROCESS * p);
+PUBLIC void     sys_tem_p(int unused,  semaphore * s,  PROCESS * p);
+PUBLIC void     sys_tem_v(int unused,  semaphore * s,  PROCESS * p);
 /* syscall.asm */
 PUBLIC  void    sys_call();             /* int_handler */
 
@@ -69,4 +69,6 @@ PUBLIC  void    sys_call();             /* int_handler */
 /* 系统调用 - 用户级 */
 PUBLIC  int     get_ticks();
 PUBLIC  void    write(char* buf, int len);
-
+PUBLIC void  process_sleep(int unused, int milli_sec, PROCESS * p);
+PUBLIC void  tem_p(int unused,  semaphore * s,  PROCESS * p);
+PUBLIC void  tem_v(int unused,  semaphore * s,  PROCESS * p);

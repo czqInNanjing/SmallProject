@@ -164,7 +164,7 @@ void Barber()
 		// milli_delay(20000);
 		// sys_process_sleep(0,0,200000,&proc_table[2]);
 
-	 sys_tem_p(0,0,&customer,&proc_table[2]) ;  
+	 tem_p(0,&customer,&proc_table[2]) ;  
 	 printf("now waiting customer num is %d\n", customer.value);
 	 if(proc_table[2].sleepTicks != 0){
 		printf("barber is going to sleep\n");
@@ -178,7 +178,7 @@ void Barber()
       	printf("barbering over , customerID%d leaves\n" , barberCustomerID);
       	
      	// sys_tem_v(0 , 0 , &mutex , &proc_table[2] ) ;  
-     	sys_tem_v(0 , 0 , &barber , &proc_table[2] ) ;
+     	tem_v( 0 , &barber , &proc_table[2] ) ;
 
      	if(customerID%10 == 0){
 
@@ -208,12 +208,12 @@ void Customer1()
 		}
 
 
-		sys_tem_v( 0 , 0 , &customer , &proc_table[3]);
+		tem_v(  0 , &customer , &proc_table[3]);
 		
 
 
 		// printf("now the custom value is %d\n", customer.value);
-		sys_tem_p( 0 , 0 , &barber , &proc_table[3]);
+		tem_p(  0 , &barber , &proc_table[3]);
 		// printf("now barber available is %d\n", barber.value);
 		if( proc_table[3].sleepTicks != 0){
 			printf("customer%d has to sleep,waiting number is %d\n" , tempCustomerID , customer.value);
@@ -252,10 +252,10 @@ void Customer2()
 		}
 
 
-		sys_tem_v( 0 , 0 , &customer , &proc_table[4]);
+		tem_v( 0 , &customer , &proc_table[4]);
 
 		// printf("now the custom value is %d\n", customer.value);
-		sys_tem_p( 0 , 0 , &barber , &proc_table[4]);
+		tem_p(  0 , &barber , &proc_table[4]);
 		// printf("now barber available is %d\n", barber.value);
 		if( proc_table[4].sleepTicks != 0){
 			printf("customer%d has to sleep,waiting number is %d\n" , tempCustomerID , customer.value);
@@ -293,9 +293,9 @@ void Customer3()
 		}
 
 
-		sys_tem_v( 0 , 0 , &customer , &proc_table[5]);
+		tem_v(  0 , &customer , &proc_table[5]);
 		// printf("now the custom value is %d\n", customer.value);
-		sys_tem_p( 0 , 0 , &barber , &proc_table[5]);
+		tem_p(  0 , &barber , &proc_table[5]);
 		// printf("now barber available is %d\n", barber.value);
 		if( proc_table[5].sleepTicks != 0){
 			printf("customer%d has to sleep,waiting number is %d\n" , tempCustomerID , customer.value);
