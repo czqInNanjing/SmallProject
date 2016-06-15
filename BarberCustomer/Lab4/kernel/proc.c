@@ -53,13 +53,23 @@ PUBLIC int sys_get_ticks()
 PUBLIC void sys_process_sleep(int unused, int milli_sec, PROCESS * p){
 	p->sleepTicks = milli_sec*HZ/1000;
 }
-PUBLIC void sys_tem_p(int unused,  semaphore * s, PROCESS * p){
+PUBLIC void sys_tem_p(int toPrint,  semaphore * s, PROCESS * p){
 	s->value=s->value-1;
 	if(s->value < 0){ //no more thing to deal with
 		//barber now should stop himself or customer has to wait
 		sys_process_sleep(0 , 100000 , p);
 		
 		s->wait[-s->value - 1] = p;
+			
+		if( toPrint == -1){
+			printf("Barber is going to sleep\n");
+		}else if( toPrint > 0){
+			printf("customer%d is going to sleep\n" , toPrint);
+		}
+
+
+
+		schedule();
 	}
 }
 PUBLIC void sys_tem_v(int unused,  semaphore * s, PROCESS * p){

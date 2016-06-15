@@ -21,12 +21,13 @@ semaphore barber;
 semaphore customer;
 semaphore mutex;
 int clearConsole = 0;
-int chair = 3;
+int chair;
 int customerID;
 int barberTime = 60000;
+int waiting = 0;                     // the chairs that is seated now
 int customer1ComeTime = 50000;
-int customer2ComeTime = 70000;
-int customer3ComeTime = 80000;
+int customer2ComeTime = 90000;
+int customer3ComeTime = 110000;
 int barberCustomerID;
 
 /*======================================================================*
@@ -116,10 +117,13 @@ PUBLIC int kernel_main()
 	// disp_pos = 0;
 
 	clearConsole = 1;
-	barber.value = 1;
-	customer.value = 0;
-	mutex.value = 0;
+	barber.value = 0 ;
+	customer.value = 0 ;
+	mutex.value = 1;
 	customerID = 0;
+	barberCustomerID = 0;
+	waiting = 0;
+	chair = 2;
 
 	k_reenter = 0;
 	ticks = 0;
@@ -158,27 +162,27 @@ void TestA()
 void Barber()
 {
 	int i = 1;
-	
+	int nowBarberID;
 	while(1){
 		// printf("B %x", get_ticks());
 		// milli_delay(20000);
 		// sys_process_sleep(0,0,200000,&proc_table[2]);
 
-	 tem_p(0,&customer,&proc_table[2]) ;  
-	 printf("now waiting customer num is %d\n", customer.value);
-	 if(proc_table[2].sleepTicks != 0){
-		printf("barber is going to sleep\n");
+	 	tem_p(-1,  &customer,&proc_table[i+1]) ;  
+	 	tem_p(0 , &mutex , &proc_table[i+1]);                                           // in the critical section
+	 // printf("now waiting customer num is %d\n", customer.value);	
+	 	waiting--;
 	 	
-	 }
-	 	milli_delay(100);
-	 	printf("starting barbering for custmer%d\n", barberCustomerID);
-		// sys_tem_p(0,0,&barber,&proc_table[2]) ;  
-	 	// sys_tem_p(0,0,&mutex,&proc_table[2] );  
+	 	tem_v(0 , &barber , &proc_table[i+1] ) ;
+
+	 	tem_v(0 , &mutex , &proc_table[i+1]);
+	 	nowBarberID = barberCustomerID;
+	 	printf("start barbering for customer\n");
       	milli_delay(barberTime);
-      	printf("barbering over , customerID%d leaves\n" , barberCustomerID);
+      	printf("barbering over , customer leaves\n");
       	
      	// sys_tem_v(0 , 0 , &mutex , &proc_table[2] ) ;  
-     	tem_v( 0 , &barber , &proc_table[2] ) ;
+     	
 
      	if(customerID%10 == 0){
 
@@ -197,37 +201,28 @@ void Customer1()
 	int i = 2;
 	int tempCustomerID;
 	while(1){
-		// printf("C");
-		tempCustomerID = ++customerID;
-		printf("customer%d come in\n" , tempCustomerID);
+		milli_delay(customer2ComeTime);                                // the next time before the customer come
 
-		if( customer.value >= chair) {
+
+		tem_p(0 , &mutex , &proc_table[i+1]);                         //go in the critical section
+		tempCustomerID = ++customerID;                                // id of the temporary customer
+		printf("customer%d come in\n" , tempCustomerID);              
+		
+		if( waiting >= chair) {
 			printf("not enough chair for customer to wait , customer%d leave\n" , tempCustomerID);
-			milli_delay(customer1ComeTime);
+			tem_v(0, &mutex , &proc_table[i + 1]);                     // leave the mutex                       
 			continue;
+		}else{
+			waiting++;
+			printf("now waiting people is %d\n" , waiting);
+			tem_v(0 , &customer , 0);                                //wake up the barber
+			tem_v(0 , &mutex    , 0);
+			
+			tem_p(tempCustomerID , &barber   , &proc_table[i + 1]);                  //if the barber is busy , sleep
+			printf("customer%d get service\n" , tempCustomerID);
+			
 		}
-
-
-		tem_v(  0 , &customer , &proc_table[3]);
 		
-
-
-		// printf("now the custom value is %d\n", customer.value);
-		tem_p(  0 , &barber , &proc_table[3]);
-		// printf("now barber available is %d\n", barber.value);
-		if( proc_table[3].sleepTicks != 0){
-			printf("customer%d has to sleep,waiting number is %d\n" , tempCustomerID , customer.value);
-			milli_delay(100);
-		}
-		printf("customer%d get service\n" , tempCustomerID);
-		barberCustomerID = tempCustomerID;
-		// printf("cust %d\n", customer.value);
-		// milli_delay(100);
-
-		// printf("customer%d leave\n" , tempCustomerID);
-		
-		
-		milli_delay(customer1ComeTime);
 
 
 
@@ -237,38 +232,32 @@ void Customer1()
                                Customer2
  *======================================================================*/
 void Customer2()
-{
+{	
 	int i = 3;
 	int tempCustomerID;
 	while(1){
-		// printf("C");
-		tempCustomerID = ++customerID;
-		printf("customer%d come in\n" , tempCustomerID);
+		milli_delay(customer2ComeTime);                                // the next time before the customer come
 
-		if( customer.value >= chair) {
+
+		tem_p(0 , &mutex , &proc_table[i+1]);                         //go in the critical section
+		tempCustomerID = ++customerID;                                // id of the temporary customer
+		printf("customer%d come in\n" , tempCustomerID);              
+		
+		if( waiting >= chair) {
 			printf("not enough chair for customer to wait , customer%d leave\n" , tempCustomerID);
-			milli_delay(customer2ComeTime);
+			tem_v(0, &mutex , &proc_table[i + 1]);                     // leave the mutex                       
 			continue;
+		}else{
+			waiting++;
+			printf("now waiting people is %d\n" , waiting);
+			tem_v(0 , &customer , 0);                                //wake up the barber
+			tem_v(0 , &mutex    , 0);
+			
+			tem_p(tempCustomerID , &barber   , &proc_table[i + 1]);                  //if the barber is busy , sleep
+			printf("customer%d get service\n" , tempCustomerID);
+			
 		}
-
-
-		tem_v( 0 , &customer , &proc_table[4]);
-
-		// printf("now the custom value is %d\n", customer.value);
-		tem_p(  0 , &barber , &proc_table[4]);
-		// printf("now barber available is %d\n", barber.value);
-		if( proc_table[4].sleepTicks != 0){
-			printf("customer%d has to sleep,waiting number is %d\n" , tempCustomerID , customer.value);
-			milli_delay(100);
-		}
-		printf("customer%d get service\n" , tempCustomerID);
-		barberCustomerID = tempCustomerID;
-		// printf("cust %d\n", customer.value);
-		// milli_delay(100);
 		
-		
-		
-		milli_delay(customer2ComeTime);
 
 
 
@@ -282,33 +271,28 @@ void Customer3()
 	int i = 4;
 	int tempCustomerID;
 	while(1){
-		// printf("C");
-		tempCustomerID = ++customerID;
-		printf("customer%d come in\n" , tempCustomerID);
+		milli_delay(customer3ComeTime);                                // the next time before the customer come
 
-		if( customer.value >= chair) {
+
+		tem_p(0 , &mutex , &proc_table[i+1]);                         //go in the critical section
+		tempCustomerID = ++customerID;                                // id of the temporary customer
+		printf("customer%d come in\n" , tempCustomerID);              
+		
+		if( waiting >= chair) {
 			printf("not enough chair for customer to wait , customer%d leave\n" , tempCustomerID);
-			milli_delay(customer3ComeTime);
+			tem_v(0, &mutex , &proc_table[i + 1]);                     // leave the mutex                       
 			continue;
+		}else{
+			waiting++;
+			printf("now waiting people is %d\n" , waiting);
+			tem_v(0 , &customer , 0);                                //wake up the barber
+			tem_v(0 , &mutex    , 0);
+			
+			tem_p(tempCustomerID , &barber   , &proc_table[i + 1]);                  //if the barber is busy , sleep
+			printf("customer%d get service\n" , tempCustomerID);
+			
 		}
-
-
-		tem_v(  0 , &customer , &proc_table[5]);
-		// printf("now the custom value is %d\n", customer.value);
-		tem_p(  0 , &barber , &proc_table[5]);
-		// printf("now barber available is %d\n", barber.value);
-		if( proc_table[5].sleepTicks != 0){
-			printf("customer%d has to sleep,waiting number is %d\n" , tempCustomerID , customer.value);
-			milli_delay(100);
-		}
-		printf("customer%d get service\n" , tempCustomerID);
-		barberCustomerID = tempCustomerID;
-		// printf("cust %d\n", customer.value);
-		// milli_delay(100);
 		
-		
-		
-		milli_delay(customer3ComeTime);
 
 
 
