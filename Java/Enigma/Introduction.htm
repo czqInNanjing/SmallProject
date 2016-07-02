@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Project 1 | CS 61BL Summer 2016</title>
+    
+
+    <link href="./Project 1 _ CS 61BL Summer 2016_files/common.css" rel="stylesheet" type="text/css">
+    <link href="./Project 1 _ CS 61BL Summer 2016_files/lab.css" rel="stylesheet" type="text/css">
+    <link href="./Project 1 _ CS 61BL Summer 2016_files/tomorrow.css" rel="stylesheet" type="text/css">
+    <link href="./Project 1 _ CS 61BL Summer 2016_files/icon" rel="stylesheet" type="text/css">
+
+    <script src="./Project 1 _ CS 61BL Summer 2016_files/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="./Project 1 _ CS 61BL Summer 2016_files/highlight.pack.js" type="text/javascript"></script>
+    <script src="./Project 1 _ CS 61BL Summer 2016_files/sidebar.js" type="text/javascript"></script>
+    <script src="./Project 1 _ CS 61BL Summer 2016_files/self_test_script.js" type="text/javascript"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+    <div id="navbar"><div id="navitems">
+        <a href="http://www.cs61bl.org/su16/index.html"><div class="navitem">Main</div></a>
+        <a href="http://www.cs61bl.org/su16/about.html"><div class="navitem">Course Info</div></a>
+        <a href="http://www.cs61bl.org/su16/staff.html"><div class="navitem">Staff</div></a>
+        <a href="http://www.cs61bl.org/su16/assign.html"><div class="navitem">Assignments</div></a>
+        <a href="http://www.cs61bl.org/su16/resources.html"><div class="navitem">Resources</div></a>
+        <a href="https://piazza.com/class/ia05tqjlnoo1w6"><div class="navitem">Piazza</div></a>
+    </div></div>
+    <div id="sidebar">
+        <div id="sidebar-content">
+            <h3>Project 1<br>Navigation</h3>
+            <ul>
+  <li><a href="http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html#introduction">Introduction</a></li>
+  <li><a href="http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html#background">Background</a></li>
+  <li><a href="http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html#example">Example</a></li>
+  <li><a href="http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html#input-and-output">Input and Output</a></li>
+  <li><a href="http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html#handling-errors">Handling Errors</a></li>
+  <li><a href="http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html#testing">Testing</a></li>
+  <li><a href="http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html#what-to-turn-in">What to Turn In</a></li>
+  <li><a href="http://www.cs61bl.org/su16/materials/proj/proj1/proj1.html#advice">Advice</a></li>
+</ul>
+        </div>
+    </div>
+    <div id="content-container" class="content-spacer"><main id="content">
+        <header class="title">Project 1: Enigma</header>
+<script type="text/x-mathjax-config;executed=true">
+	  MathJax.Hub.Config({
+	    tex2jax: {inlineMath: [["$","$"]]}
+	  });
+	</script>
+	<script type="text/javascript" src="./Project 1 _ CS 61BL Summer 2016_files/MathJax.js">
+	</script>
+
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This initial programming assignment is intended as an extended finger exercise,
+a mini-project rather than a full-scale programming project. True, there is quite a
+bit of background reading, but the necessary program is not (or rather need not be)
+terribly big. The intent is to give you a chance to get familiar with Java and the
+various tools used in the course.</p>
+
+<p>We will be grading <em>solely</em> on whether you manage to get your
+program to work (according to our tests) and to hand in the assigned
+pieces.  There is a slight stylistic component: the submission and
+grading machinery require that your program pass a mechanized style
+check (<code>style61b</code>), which mainly checks for formatting and the
+presence of comments in the proper places. See the course website for a brief description of the style rules.</p>
+
+<p>To obtain the skeleton files (and set up an initial entry for your project in the repository),
+you can use the command <code>git pull skeleton master</code>. From there, you can set up an IntelliJ project as you did in the labs.</p>
+
+
+<h2 id="background">Background</h2>
+
+<p>You may have heard of the Enigma machines that Germany used during
+World War II to encrypt its military communications. If you have not, I recommend you read the <a href="https://en.wikipedia.org/wiki/Enigma_machine">wikipedia page on them</a> (or whatever resource you wish), especially the part about design and operation. This project
+involves building a simulator for a very simplified version of this
+machine (there were actually a number of varieties of the
+machine, each implementing its own encryption algorithm.  Ours is
+probably closest to M4, used by the German navy.
+We have left off the plugboard (<em>Steckerbrett,</em>) which added an
+additional configurable permutation to the encryption, increasing the
+number of possible configurations by a factor of roughly <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;5.5&lt;/mn&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mn&gt;20&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" role="math" style="width: 5.168em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.238em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.449em 1004.24em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-2"><span class="mn" id="MathJax-Span-3" style="font-family: STIXGeneral-Regular;">5.5</span><span class="mo" id="MathJax-Span-4" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">×</span><span class="msubsup" id="MathJax-Span-5" style="padding-left: 0.261em;"><span style="display: inline-block; position: relative; width: 1.81em; height: 0px;"><span style="position: absolute; clip: rect(3.153em 1000.98em 4.135em -999.997em); top: -3.975em; left: 0.003em;"><span class="mn" id="MathJax-Span-6" style="font-family: STIXGeneral-Regular;">10</span><span style="display: inline-block; width: 0px; height: 3.98em;"></span></span><span style="position: absolute; top: -4.388em; left: 0.984em;"><span class="texatom" id="MathJax-Span-7"><span class="mrow" id="MathJax-Span-8"><span class="mn" id="MathJax-Span-9" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">20</span></span></span><span style="display: inline-block; width: 0px; height: 3.98em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.253em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>5.5</mn><mo>×</mo><msup><mn>10</mn><mrow class="MJX-TeXAtom-ORD"><mn>20</mn></mrow></msup></math></span></span><script type="math/tex" id="MathJax-Element-1">5.5\times10^{20}</script>.
+We've also omitted the configurability of the  alphabet ring (<em>Ringstellung</em>)
+on each rotor, which allowed changing the points at which the rotor
+sequenced).  Your program will take descriptions of possible
+initial configurations of the machine and messages to encode or decode
+(the Enigma algorithms were <em>reciprocal,</em> meaning that the
+encryption is its own inverse operation.)</p>
+
+<p>The Enigmas effect a <em>substitution cipher,</em> on the letters of a
+message.  That is, at any given time, the machine performs a
+permutation---a one-to-one mapping---of the alphabet onto itself.
+The alphabet consists solely of the 26 letters in one case
+(there were various conventions for spaces and punctuation).</p>
+
+<p>Plain substitution ciphers are easy to break (you've probably seen
+puzzles in newspapers that consist of breaking such ciphers).  The
+Enigma, however, implements a <em>progressive</em> substitution, different
+for each subsequent letter of the message.  This made decryption
+considerably more difficult.</p>
+
+<p>The device consists of a simple mechanical
+system of interchangeable <em>rotors</em> (<em>Walzen</em>) that
+sit side-by-side on a
+shaft and make electrical contact with each other.  In our simulator,
+there will be a total of 12 rotors:</p>
+
+<ul>
+  <li>Eight rotors labeled with roman numerals I—VIII, of which three will be used in any given configuration as the rightmost rotors,</li>
+  <li>Two additional non-moving rotors (<em>Zusatzwalzen</em>) labeled "Beta" and "Gamma", of which one will be used in any configuration, as the fourth-from-right rotor, and</li>
+  <li>Two special reflectors (<em>Umkehrwalzen</em>), labeled 'B' and 'C', of which one will be used in any given configuration as the leftmost rotor.</li>
+</ul>
+
+<p>Each of the first ten rotors has
+26 contacts on both sides, which are wired together internally so as
+to effect a permutation
+of signals coming in from one side onto the
+contacts on the other (and the inverse permutation when going in the
+reverse
+direction).  The reflectors
+are special "rotors" that
+don't rotate during
+translation and have all of their contacts on one side.  They simply connect
+half of their contacts to the other half.
+Figure 2 shows the permutations implemented by all the
+rotors and reflectors.</p>
+
+<p>A signal starting from
+the right through one of the 26 possible contacts will flow through wires
+in four
+rotors, "bounce" off the reflector, and then come back through the
+same rotors by a different route, always ending up permuted to a
+letter position different from where it started (A significant
+crytographic weakness, as it turned out.  It doesn't really do a
+would-be code-breaker any good to know that some letters in an
+encrypted message <em>it might</em> be the same as the those in the plaintext if he
+doesn't know which ones. But it does a great deal of good to be able
+to eliminate a possible decryption because one position in
+the encrypted text would have the same letter as the plaintext.).</p>
+
+<p>Each rotor and each reflector
+implements a different permutation, and the overall effect
+depends on their configuration: which rotors and reflector are used,
+what order they are
+placed in the machine, and which rotational position they are
+initially set to.
+This configuration is the secret key used to
+encrypt or decrypt a message.  On our simple machine, there
+are thus 614175744:</p>
+
+<ul>
+  <li>Two possible reflectors times</li>
+  <li>Two possible rotors in the fourth position, times</li>
+  <li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mo&gt;!&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;!&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;336&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-10" role="math" style="width: 8.629em; display: inline-block;"><span style="display: inline-block; position: relative; width: 7.131em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1007.08em 2.792em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-11"><span class="mn" id="MathJax-Span-12" style="font-family: STIXGeneral-Regular;">8</span><span class="mo" id="MathJax-Span-13" style="font-family: STIXGeneral-Regular;">!</span><span class="texatom" id="MathJax-Span-14"><span class="mrow" id="MathJax-Span-15"><span class="mo" id="MathJax-Span-16" style="font-family: STIXGeneral-Regular;">/</span></span></span><span class="mo" id="MathJax-Span-17" style="font-family: STIXGeneral-Regular;">(</span><span class="mn" id="MathJax-Span-18" style="font-family: STIXGeneral-Regular;">8</span><span class="mo" id="MathJax-Span-19" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">−</span><span class="mn" id="MathJax-Span-20" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">3</span><span class="mo" id="MathJax-Span-21" style="font-family: STIXGeneral-Regular;">)</span><span class="mo" id="MathJax-Span-22" style="font-family: STIXGeneral-Regular;">!</span><span class="mo" id="MathJax-Span-23" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-24" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">336</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>8</mn><mo>!</mo><mrow class="MJX-TeXAtom-ORD"><mo>/</mo></mrow><mo stretchy="false">(</mo><mn>8</mn><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo>!</mo><mo>=</mo><mn>336</mn></math></span></span><script type="math/tex" id="MathJax-Element-2">8!/(8-3)! = 336</script> choices for the rightmost three rotors and their ordering, times</li>
+  <li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msup&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-25" role="math" style="width: 1.81em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.501em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.087em 1001.5em 2.275em -999.997em); top: -2.115em; left: 0.003em;"><span class="mrow" id="MathJax-Span-26"><span class="msubsup" id="MathJax-Span-27"><span style="display: inline-block; position: relative; width: 1.449em; height: 0px;"><span style="position: absolute; clip: rect(3.153em 1000.98em 4.135em -999.997em); top: -3.975em; left: 0.003em;"><span class="mn" id="MathJax-Span-28" style="font-family: STIXGeneral-Regular;">26</span><span style="display: inline-block; width: 0px; height: 3.98em;"></span></span><span style="position: absolute; top: -4.388em; left: 0.984em;"><span class="mn" id="MathJax-Span-29" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">4</span><span style="display: inline-block; width: 0px; height: 3.98em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.12em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>26</mn><mn>4</mn></msup></math></span></span><script type="math/tex" id="MathJax-Element-3">26^4</script> possible initial rotational settings for the rightmost four rotors (each reflector has only one possible position.).</li>
+</ul>
+
+<p>In what follows, we'll refer to the selected rotors in a machine's
+configuration as 1—5, with 1 being the reflector, and 5 the rightmost rotor.</p>
+
+<p>Before a letter of a message is translated, a spring-loaded
+pawl (lever), one
+for each of rotors 3—5,
+tries to engage a ratchet on the right side of its
+rotor and to rotate that rotor by one position,
+thus
+changing the permutation performed by the rotor.  The lever on the
+right rotor (5) always succeeds, so that rotor 5 (the "fast" rotor)
+rotates one position before each character.  The pawls pushing
+rotors 3 and 4, however, are normally blocked from
+engaging their rotors by a ring on the left side of the rotor to
+their right (rotors 4 and 5 respectively).
+This ring holds the pawl away from its ratchet,
+preventing its wheel from moving, except when the pawl is
+positioned over a notch in the ring when the pawl moves.
+Each of the I—VIII
+rotors has at least one such
+notch (two in the case of rotors VI—VIII).
+A "feature" of the design (It was corrected in other
+versions of the Enigma, since it reduced the period of the cipher)
+is that when a pawl is in a notch, it also moves the notch and the
+wheel it is connected to, so
+that the rotors on both sides of the pawl move.  This means that rotor 4
+experiences
+"double stepping"---if it advances on one step
+so that its notch moves under the pawl to its left (belonging to
+rotor 3), then on the next
+step, when rotor 3 advances,
+its pawl also advances rotor 4
+(even though rotor 4's own pawl has moved off the notch to its
+right on the previous move and does not contact the ratchet on rotor 4).
+This peculiarity only affects rotor 4: rotor 5
+always advances anyway, and rotors 1 and 2 have
+no pawls and never move.</p>
+
+<p>The effect of advancing a wheel is to change where on the wheel a
+certain signal enters or leaves.  When a wheel is in its 'A' setting
+in the machine, then a signal that arrives at, say, the 'C' position,
+goes into the 'C' contact on the wheel. Likewise, a signal the leaves
+the wheel from its 'C' contact exits at the 'C' position.  When the
+wheel is rotated by one to its 'B' setting, a signal that arrives at
+the 'C' position goes instead into the 'D' contact on the wheel, and a
+signal that leaves through the 'D' contact does so at the 'C'
+position.  It's easier to see if we use numbers 0—25 rather than
+letters ('A' is 0, 'B' is 1, etc.).  Then, when the wheel is in its
+<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-30" role="math" style="width: 0.571em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.467em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1000.47em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-31"><span class="mi" id="MathJax-Span-32" style="font-family: STIXGeneral-Italic;">k<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">k</script> setting, a signal entering at the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-33" role="math" style="width: 0.622em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.519em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.862em 1000.47em 2.843em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-34"><span class="mi" id="MathJax-Span-35" style="font-family: STIXGeneral-Italic;">p</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi></math></span></span><script type="math/tex" id="MathJax-Element-5">p</script> position enters the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mo lspace=&quot;thickmathspace&quot; rspace=&quot;thickmathspace&quot;&gt;mod&lt;/mo&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-36" role="math" style="width: 6.769em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.581em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1005.53em 2.843em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-37"><span class="mi" id="MathJax-Span-38" style="font-family: STIXGeneral-Italic;">p</span><span class="mo" id="MathJax-Span-39" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">+</span><span class="mi" id="MathJax-Span-40" style="font-family: STIXGeneral-Italic; padding-left: 0.261em;">k<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-41" style="font-family: STIXGeneral-Regular; padding-left: 0.313em; padding-right: 0.313em;">mod</span><span class="mn" id="MathJax-Span-42" style="font-family: STIXGeneral-Regular;">26</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo>+</mo><mi>k</mi><mo lspace="thickmathspace" rspace="thickmathspace">mod</mo><mn>26</mn></math></span></span><script type="math/tex" id="MathJax-Element-6">p+k
+\bmod 26</script> contact on the wheel, and a signal exiting through the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-43" role="math" style="width: 0.571em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.467em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.862em 1000.47em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-44"><span class="mi" id="MathJax-Span-45" style="font-family: STIXGeneral-Italic;">c</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.691em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></span></span><script type="math/tex" id="MathJax-Element-7">c</script>
+contact does so at the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mo lspace=&quot;thickmathspace&quot; rspace=&quot;thickmathspace&quot;&gt;mod&lt;/mo&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-46" role="math" style="width: 6.717em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.529em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1005.48em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-47"><span class="mi" id="MathJax-Span-48" style="font-family: STIXGeneral-Italic;">c</span><span class="mo" id="MathJax-Span-49" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">−</span><span class="mi" id="MathJax-Span-50" style="font-family: STIXGeneral-Italic; padding-left: 0.261em;">k<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-51" style="font-family: STIXGeneral-Regular; padding-left: 0.313em; padding-right: 0.313em;">mod</span><span class="mn" id="MathJax-Span-52" style="font-family: STIXGeneral-Regular;">26</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi><mo>−</mo><mi>k</mi><mo lspace="thickmathspace" rspace="thickmathspace">mod</mo><mn>26</mn></math></span></span><script type="math/tex" id="MathJax-Element-8">c - k \bmod 26</script> position.
+Figure 1 shows the effect of moving rotor I from its
+'A' to its 'B' setting.</p>
+
+<p>The
+contacts on the rightmost rotor's right side connect with stationary
+input and output contacts, which run to keys that, when pressed, direct
+current to the contact from a battery or, when not pressed, direct
+current back from the contact to a light bulb indicating a letter of the
+alphabet.  Since a letter never encrypts or decrypts to itself, the
+to and from directions never conflict.</p>
+
+<p>The operator can set the initial positions of the rotors using
+finger wheels on each rotor.
+Each rotor has an alphabet running around its perimeter and visible to
+the operator through the top of the machine.
+The letter that is
+showing at any given time indicates the setting of that rotor.</p>
+
+<p><img src="./Project 1 _ CS 61BL Summer 2016_files/permutation.png" alt="Permutations">
+<img src="./Project 1 _ CS 61BL Summer 2016_files/table.png" alt="Table"></p>
+
+
+<h2 id="example">Example</h2>
+
+<p>As an example of a translation, suppose that the
+rotors in positions 1—5 are, respectively, B, Beta, III, IV, and I
+and assume that 2—5 are currently at positions A, X, L, E, respectively.
+We input the letter 'F', which causes the following steps:</p>
+
+<ol>
+  <li>The pawls all move. This causes rotor 5 to advance from E to F.
+  The other two pawls are not over notches, so rotors 3 and 4 do not
+  move.</li>
+  <li>The letter 'F' enters the right side of rotor 5 (an I rotor).  Since this
+  rotor is at position 'F' (letter number 5 of the alphabet, numbering
+  from 0), the signal enters the rotor at position <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-53" role="math" style="width: 5.529em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.548em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1004.55em 2.689em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-54"><span class="mn" id="MathJax-Span-55" style="font-family: STIXGeneral-Regular;">5</span><span class="mo" id="MathJax-Span-56" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">+</span><span class="mn" id="MathJax-Span-57" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">5</span><span class="mo" id="MathJax-Span-58" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-59" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">10</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>5</mn><mo>+</mo><mn>5</mn><mo>=</mo><mn>10</mn></math></span></span><script type="math/tex" id="MathJax-Element-9">5+5=10</script>, or 'K'.</li>
+  <li>According to Figure 2, rotor I converts 'K' to
+  'N' (letter number 13).  Because of the rotation of rotor I, however,
+  the signal actually comes out at letter position <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;13&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-60" role="math" style="width: 5.529em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.548em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1004.5em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-61"><span class="mn" id="MathJax-Span-62" style="font-family: STIXGeneral-Regular;">13</span><span class="mo" id="MathJax-Span-63" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">−</span><span class="mn" id="MathJax-Span-64" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">5</span><span class="mo" id="MathJax-Span-65" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-66" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">8</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>13</mn><mo>−</mo><mn>5</mn><mo>=</mo><mn>8</mn></math></span></span><script type="math/tex" id="MathJax-Element-10">13-5=8</script> ('I').</li>
+  <li>The 'I' signal from rotor 5 now goes into the right side of
+  rotor 4.  Since rotor 4 is a IV rotor and is in the 'L' (or 11)
+  position, the 'I' enters the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-11-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;11&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;19&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-67" role="math" style="width: 6.098em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.013em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1004.96em 2.689em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-68"><span class="mn" id="MathJax-Span-69" style="font-family: STIXGeneral-Regular;">8</span><span class="mo" id="MathJax-Span-70" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">+</span><span class="mn" id="MathJax-Span-71" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">11</span><span class="mo" id="MathJax-Span-72" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-73" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">19</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>8</mn><mo>+</mo><mn>11</mn><mo>=</mo><mn>19</mn></math></span></span><script type="math/tex" id="MathJax-Element-11">8+11=19</script> ('T') position, and is
+  translated to 'G' (6), which comes out at position <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-12-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;11&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;21&lt;/mn&gt;&lt;mo lspace=&quot;thickmathspace&quot; rspace=&quot;thickmathspace&quot;&gt;mod&lt;/mo&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-74" role="math" style="width: 13.226em; display: inline-block;"><span style="display: inline-block; position: relative; width: 10.901em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1010.85em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-75"><span class="mn" id="MathJax-Span-76" style="font-family: STIXGeneral-Regular;">6</span><span class="mo" id="MathJax-Span-77" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">−</span><span class="mn" id="MathJax-Span-78" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">11</span><span class="mo" id="MathJax-Span-79" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mo" id="MathJax-Span-80" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">−</span><span class="mn" id="MathJax-Span-81" style="font-family: STIXGeneral-Regular;">5</span><span class="mo" id="MathJax-Span-82" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-83" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">21</span><span class="mo" id="MathJax-Span-84" style="font-family: STIXGeneral-Regular; padding-left: 0.313em; padding-right: 0.313em;">mod</span><span class="mn" id="MathJax-Span-85" style="font-family: STIXGeneral-Regular;">26</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>6</mn><mo>−</mo><mn>11</mn><mo>=</mo><mo>−</mo><mn>5</mn><mo>=</mo><mn>21</mn><mo lspace="thickmathspace" rspace="thickmathspace">mod</mo><mn>26</mn></math></span></span><script type="math/tex" id="MathJax-Element-12">6-11=-5 = 21 \bmod 26</script>, the
+  fifth letter from the end of the alphabet ('V').</li>
+  <li>The 'V' from rotor 4 goes now to the right side of rotor 3, a
+  III rotor in position 'X' (23).  The signal enters the rotor at
+  position <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-13-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;21&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;23&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;44&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;18&lt;/mn&gt;&lt;mo lspace=&quot;thickmathspace&quot; rspace=&quot;thickmathspace&quot;&gt;mod&lt;/mo&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-86" role="math" style="width: 13.587em; display: inline-block;"><span style="display: inline-block; position: relative; width: 11.211em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1011.16em 2.689em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-87"><span class="mn" id="MathJax-Span-88" style="font-family: STIXGeneral-Regular;">21</span><span class="mo" id="MathJax-Span-89" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">+</span><span class="mn" id="MathJax-Span-90" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">23</span><span class="mo" id="MathJax-Span-91" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-92" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">44</span><span class="mo" id="MathJax-Span-93" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-94" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">18</span><span class="mo" id="MathJax-Span-95" style="font-family: STIXGeneral-Regular; padding-left: 0.313em; padding-right: 0.313em;">mod</span><span class="mn" id="MathJax-Span-96" style="font-family: STIXGeneral-Regular;">26</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>21</mn><mo>+</mo><mn>23</mn><mo>=</mo><mn>44</mn><mo>=</mo><mn>18</mn><mo lspace="thickmathspace" rspace="thickmathspace">mod</mo><mn>26</mn></math></span></span><script type="math/tex" id="MathJax-Element-13">21+23 = 44 = 18 \bmod 26</script> ('S'), is translated to 'G' (6), which
+  exits at position <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-14-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;23&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;17&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;9&lt;/mn&gt;&lt;mo lspace=&quot;thickmathspace&quot; rspace=&quot;thickmathspace&quot;&gt;mod&lt;/mo&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-97" role="math" style="width: 13.226em; display: inline-block;"><span style="display: inline-block; position: relative; width: 10.901em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1010.85em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-98"><span class="mn" id="MathJax-Span-99" style="font-family: STIXGeneral-Regular;">6</span><span class="mo" id="MathJax-Span-100" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">−</span><span class="mn" id="MathJax-Span-101" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">23</span><span class="mo" id="MathJax-Span-102" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mo" id="MathJax-Span-103" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">−</span><span class="mn" id="MathJax-Span-104" style="font-family: STIXGeneral-Regular;">17</span><span class="mo" id="MathJax-Span-105" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-106" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">9</span><span class="mo" id="MathJax-Span-107" style="font-family: STIXGeneral-Regular; padding-left: 0.313em; padding-right: 0.313em;">mod</span><span class="mn" id="MathJax-Span-108" style="font-family: STIXGeneral-Regular;">26</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>6</mn><mo>−</mo><mn>23</mn><mo>=</mo><mo>−</mo><mn>17</mn><mo>=</mo><mn>9</mn><mo lspace="thickmathspace" rspace="thickmathspace">mod</mo><mn>26</mn></math></span></span><script type="math/tex" id="MathJax-Element-14">6 - 23 = -17 = 9 \bmod 26</script> ('J').</li>
+  <li>Rotor 2 (Beta) is in position 'A', and thus translates 'J' to
+  'W'.</li>
+  <li>Rotor 1 (B) converts the 'W' to 'H' and bounces it back to the
+  left side of rotor 2.</li>
+  <li>Rotor 2 (Beta in the 'A' position) converts 'H' on its left to
+  'X' (23) on its right.</li>
+  <li>The 'X' from rotor 2 now goes into the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-15-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;23&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;23&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;46&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;20&lt;/mn&gt;&lt;mo lspace=&quot;thickmathspace&quot; rspace=&quot;thickmathspace&quot;&gt;mod&lt;/mo&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-109" role="math" style="width: 13.587em; display: inline-block;"><span style="display: inline-block; position: relative; width: 11.211em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1011.16em 2.689em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-110"><span class="mn" id="MathJax-Span-111" style="font-family: STIXGeneral-Regular;">23</span><span class="mo" id="MathJax-Span-112" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">+</span><span class="mn" id="MathJax-Span-113" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">23</span><span class="mo" id="MathJax-Span-114" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-115" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">46</span><span class="mo" id="MathJax-Span-116" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-117" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">20</span><span class="mo" id="MathJax-Span-118" style="font-family: STIXGeneral-Regular; padding-left: 0.313em; padding-right: 0.313em;">mod</span><span class="mn" id="MathJax-Span-119" style="font-family: STIXGeneral-Regular;">26</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>23</mn><mo>+</mo><mn>23</mn><mo>=</mo><mn>46</mn><mo>=</mo><mn>20</mn><mo lspace="thickmathspace" rspace="thickmathspace">mod</mo><mn>26</mn></math></span></span><script type="math/tex" id="MathJax-Element-15">23 + 23 = 46 = 20 \bmod
+  26</script> ('U') position on the left side of rotor 3 (III in position 'X'),
+  and is converted to 'W' (22), which comes out at position
+  <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-16-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;22&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;23&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;25&lt;/mn&gt;&lt;mo lspace=&quot;thickmathspace&quot; rspace=&quot;thickmathspace&quot;&gt;mod&lt;/mo&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-120" role="math" style="width: 13.846em; display: inline-block;"><span style="display: inline-block; position: relative; width: 11.418em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1011.37em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-121"><span class="mn" id="MathJax-Span-122" style="font-family: STIXGeneral-Regular;">22</span><span class="mo" id="MathJax-Span-123" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">−</span><span class="mn" id="MathJax-Span-124" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">23</span><span class="mo" id="MathJax-Span-125" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mo" id="MathJax-Span-126" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">−</span><span class="mn" id="MathJax-Span-127" style="font-family: STIXGeneral-Regular;">1</span><span class="mo" id="MathJax-Span-128" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-129" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">25</span><span class="mo" id="MathJax-Span-130" style="font-family: STIXGeneral-Regular; padding-left: 0.313em; padding-right: 0.313em;">mod</span><span class="mn" id="MathJax-Span-131" style="font-family: STIXGeneral-Regular;">26</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>22</mn><mo>−</mo><mn>23</mn><mo>=</mo><mo>−</mo><mn>1</mn><mo>=</mo><mn>25</mn><mo lspace="thickmathspace" rspace="thickmathspace">mod</mo><mn>26</mn></math></span></span><script type="math/tex" id="MathJax-Element-16">22-23=-1=25 \bmod 26</script> ('Z') on the right side of rotor 3.</li>
+  <li>'Z' now enters the left side of rotor 4 (IV in position 'L') at
+  <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-17-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;25&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;11&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;36&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;mo lspace=&quot;thickmathspace&quot; rspace=&quot;thickmathspace&quot;&gt;mod&lt;/mo&gt;&lt;mn&gt;26&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-132" role="math" style="width: 13.587em; display: inline-block;"><span style="display: inline-block; position: relative; width: 11.211em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1011.16em 2.689em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-133"><span class="mn" id="MathJax-Span-134" style="font-family: STIXGeneral-Regular;">25</span><span class="mo" id="MathJax-Span-135" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">+</span><span class="mn" id="MathJax-Span-136" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">11</span><span class="mo" id="MathJax-Span-137" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-138" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">36</span><span class="mo" id="MathJax-Span-139" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-140" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">10</span><span class="mo" id="MathJax-Span-141" style="font-family: STIXGeneral-Regular; padding-left: 0.313em; padding-right: 0.313em;">mod</span><span class="mn" id="MathJax-Span-142" style="font-family: STIXGeneral-Regular;">26</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>25</mn><mo>+</mo><mn>11</mn><mo>=</mo><mn>36</mn><mo>=</mo><mn>10</mn><mo lspace="thickmathspace" rspace="thickmathspace">mod</mo><mn>26</mn></math></span></span><script type="math/tex" id="MathJax-Element-17">25+11=36=10 \bmod 26</script> ('K'), is translated to 'U' (20), which comes
+  out at position <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-18-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;20&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;11&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;9&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-143" role="math" style="width: 6.098em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.013em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1004.96em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-144"><span class="mn" id="MathJax-Span-145" style="font-family: STIXGeneral-Regular;">20</span><span class="mo" id="MathJax-Span-146" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">−</span><span class="mn" id="MathJax-Span-147" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">11</span><span class="mo" id="MathJax-Span-148" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-149" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">9</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>20</mn><mo>−</mo><mn>11</mn><mo>=</mo><mn>9</mn></math></span></span><script type="math/tex" id="MathJax-Element-18">20 - 11=9</script> ('J') on the right side of rotor 4.</li>
+  <li>Finally, the 'J' from rotor 4 enters the left side of rotor 5 (I
+  at position 'F') at position <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-19-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;9&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;14&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-150" role="math" style="width: 5.529em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.548em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1004.5em 2.689em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-151"><span class="mn" id="MathJax-Span-152" style="font-family: STIXGeneral-Regular;">9</span><span class="mo" id="MathJax-Span-153" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">+</span><span class="mn" id="MathJax-Span-154" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">5</span><span class="mo" id="MathJax-Span-155" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-156" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">14</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>9</mn><mo>+</mo><mn>5</mn><mo>=</mo><mn>14</mn></math></span></span><script type="math/tex" id="MathJax-Element-19">9 + 5= 14</script> ('O'), is translated to 'M'
+  (12), and comes out at position <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-20-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;12&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;7&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-157" role="math" style="width: 5.529em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.548em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.655em 1004.5em 2.637em -999.997em); top: -2.477em; left: 0.003em;"><span class="mrow" id="MathJax-Span-158"><span class="mn" id="MathJax-Span-159" style="font-family: STIXGeneral-Regular;">12</span><span class="mo" id="MathJax-Span-160" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">−</span><span class="mn" id="MathJax-Span-161" style="font-family: STIXGeneral-Regular; padding-left: 0.261em;">5</span><span class="mo" id="MathJax-Span-162" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">=</span><span class="mn" id="MathJax-Span-163" style="font-family: STIXGeneral-Regular; padding-left: 0.313em;">7</span></span><span style="display: inline-block; width: 0px; height: 2.482em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>12</mn><mo>−</mo><mn>5</mn><mo>=</mo><mn>7</mn></math></span></span><script type="math/tex" id="MathJax-Element-20">12 - 5 = 7</script> ('H') on the right side
+  of rotor 5.</li>
+</ol>
+
+<p>Therefore, 'F' is converted to 'H'.</p>
+
+<p>After a total of 12 characters are converted, the rotor settings will
+have become 'AXLQ'.  Just before the next character is converted,
+rotor 5 will advance to 'R' and, since its notch is at position 'Q',
+rotor 4 will advance to 'M', so that the rotor configuration will be
+'AXMR' before the 13th character is converted.  After an additional
+597 characters have been converted, the configuration will be
+'AXIQ'.  The character after that will advance rotor 5 to 'R' and
+rotor 4 to 'J', giving 'AXJR'.  The next character will advance 5 to
+'S',
+and, since rotor IV's notch is at 'J', rotor 3 will advance to 'Y'.
+Also, as rotor 3's pawl advances rotor 3, it also moves the notch on
+rotor 4, advancing rotor 4 to 'K', so that the configuration goes from
+'AXJR' to 'AYKS'. Rotor 3 in this case has a notch at 'V', but since
+rotor 2 has no pawl, rotor 3's notch never has any effect.</p>
+
+
+<h2 id="input-and-output">Input and Output</h2>
+
+<p>To run your program, you can use the command</p>
+
+<pre><code class="hljs">java enigma.Main [input file name] [output file name]</code></pre>
+
+<p>The input to your program will consist of a sequence of messages to
+decode, each preceded by a line giving the initial configuration.
+A configuration line looks like this:</p>
+
+<pre><code class="hljs">* B BETA III IV I AXLE</code></pre>
+
+<p>(all upper case.)
+This particular example means that the rotors used are reflector B,
+and rotors Beta, III, IV, and I, with rotor I in the rightmost, or fast,
+slot.  Rotor 1 is always the reflector; rotor 2 is Beta or
+Gamma, and each of 3—5
+is one of rotors I—VIII. A rotor may not be repeated.  The
+last four-letter word gives the initial positions of rotors 2—5
+(i.e., not including the reflector,) in the
+same order as they were specified.</p>
+
+<p>After each configuration line comes a message on any number of lines.
+Each line of a message
+consists only of letters, blanks, and tabs (0 or more).
+The program should ignore the blanks and tabs and convert all
+letters to upper case.  The end of message is indicated either by the
+end of the input or by a new configuration line (distinguished by its
+leading asterisk).
+The machine is not reset between lines, but continues stepping from
+where it left off on the previous message line.
+Because the Enigma is a reciprocal cipher, a given translation may
+either be a decryption or encryption; you don't have to worry about
+which, since the process is the same in any case.</p>
+
+<p>Output the translation for each message line
+in groups of five upper-case letters, separated
+by blanks (the last group may have fewer characters, depending on the
+message length). Figure 3 contains an example
+that shows an encryption followed by a decryption
+of the encrypted message. Since we have yet to cover the details of
+File I/O, you will be provided the File IO machinery for this project.</p>
+
+<p><img src="./Project 1 _ CS 61BL Summer 2016_files/input_output.png" alt="Input Output Figure"></p>
+
+
+<h2 id="handling-errors">Handling Errors</h2>
+
+<p>You can see a number of opportunities for input errors:</p>
+
+<ul>
+  <li>The input might not start with a configuration.</li>
+  <li>The configuration line can contain the wrong number of arguments.</li>
+  <li>The rotors might be misnamed.</li>
+  <li>A rotor might be repeated in the configuration.</li>
+  <li>The first rotor might not be a reflector.</li>
+  <li>The initial positions string might be the wrong length or contain
+  non-alphabetic characters.</li>
+  <li>The message might contain non-alphabetic characters.</li>
+</ul>
+
+<p>A significant amount of a program will typically be devoted to
+detecting such errors, and taking corrective action.  In our case, the
+only corrective action needed is throwing an <code>EnigmaException</code> with an explanatory message.</p>
+
+
+<h2 id="testing">Testing</h2>
+
+<p>To help with testing some basic functionalities of your project, we have provided
+you with a couple of JUnit test cases in the file <code>SanityCheckTest.java</code>. After setting
+up JUnit, you should be able to run these tests from the command line using</p>
+
+<pre><code class="hljs">$ java org.junit.runner.JUnitCore tests.SanityCheckTest</code></pre>
+
+<p>or from IntelliJ using its built-in JUnit testing capabilities. In addition, we 
+encourage you to extend the provided tests with some test cases of your own. While it
+may be tempting to follow ADD (in other words, Autograder-driven Development), you'll
+likely have a much better time testing your project locally rather than waiting
+in a queue.</p>
+
+
+<h2 id="what-to-turn-in">What to Turn In</h2>
+
+
+<p>Submit your project by pushing to github.</p>
+
+<p>You may change <em>any</em> of the code we've provided, as long as the
+resulting program works according to the specifications here.</p>
+
+<p>Your finished programs should be workmanlike, and of
+course, we will enforce the mechanical style standards.
+Make sure all methods are adequately commented---meaning that after
+reading the name, parameters, and comment on a method, you don't need
+to look at the code to figure out what a call will do.</p>
+
+<p>Don't leave debugging print statements lying around.  In fact, don't use them;
+learn to use the debugger.</p>
+
+
+<h2 id="advice">Advice</h2>
+
+<p>First, get started immediately, of course.  Don't just jump in and
+code, though.  Make sure you understand the specifications
+(which have their subtleties) and
+plan out how you're going to meet them. Read the skeleton code and understand the design. Figure out how to break this
+problem down into small pieces, and how to implement and test them one
+piece at a time.  Know in detail how you're going to do something
+before writing a line of Java code for it.  In particular, take some
+time to understand how the rotors work, and especially how the rotor
+position modifies the permutation.</p>
+
+<p>Don't allow things to remain mysterious to you, or they'll surely bite
+you at some point.   You don't have to use <em>any</em> of the skeleton
+code we've provided as long as the command <code>java enigma.Main</code>
+works as specified.  However, if you find yourself throwing something
+away because you don't understand it, <em>STOP!</em> You're allowing
+yourself to be mystified by something that is intended to be simple.</p>
+
+<p>There is a fair amount of string-hacking involved.
+The Java library can help you.  Look at the documentation of
+<code>String</code>, <code>Character</code>, and perhaps 
+<code>java.util.regex.Pattern</code>
+in the on-line Java library documentation.
+We particularly invite you to consider</p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>From String</th>
+    <th>From Character</th>
+  </tr>
+  <tr>
+    <td>charAt</td>
+    <td>isLetter</td>
+  </tr>
+  <tr>
+    <td>replaceAll</td>
+    <td>isWhitespace</td>
+  </tr>
+  <tr>
+    <td>split</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>startsWith</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>substring</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>toUpper</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>trim</td>
+    <td></td>
+  </tr>
+</tbody></table>
+
+
+
+<p>A useful property of characters is that the type <code>char</code> is
+actually an integer type, and that if <code>c</code> is an upper-case letter,
+then <code>c - 'A'</code> is the position of <code>c</code> in the alphabet ('A' is
+0, 'B' is 1, etc.).  Contrariwise, if <code>p</code> is the position of an
+upper-case letter in the alphabet, then <code>(char) (p + 'A')</code> is the
+corresponding character.</p>
+
+<p>Be creatively lazy.  Feel free to browse the Java library for useful
+stuff, even if you haven't seen it in class.  For example, you might
+find a use for <code>HashMap</code> or <code>ArrayList</code>.
+If you find yourself writing:</p>
+
+<pre><code class="hljs java"><span class="hljs-keyword">if</span> (rotor.equals(<span class="hljs-string">"I"</span>) {
+    <span class="hljs-keyword">if</span> (c == <span class="hljs-string">'A'</span>)
+        e = <span class="hljs-string">'E'</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">'B'</span>)
+        e = <span class="hljs-string">'K'</span>;
+    ...
+}</code></pre>
+
+<p>or something equally hideous, <em>STOP!</em> you are doing something wrong!</p>
+
+<p>You can write JUnit tests of the overall system <em>before</em> you write a
+line of code. Be particularly careful to include tests that at one point caused your
+program to fail (<em>regression tests</em>) so that you can be sure you
+don't backslide when you make further changes. There's no reason you
+can't have tests that you fail, by the way; they'll serve to remind
+you of things you still need to do.</p>
+
+<p>Use the git repository.  Frequently commit your work so that you'll never
+have to reconstruct too much if your files somehow vanish
+mysteriously.</p>
+
+<p>Above all, it is always fair to ask for help and advice.  We don't
+<em>ever</em> want to hear about how you've been beating your head
+against the wall over some problem for hours.  If you can't make
+progress, don't waste your time guessing or bleeding: ask.  If
+nobody's available to ask, do something else (or get some sleep).</p>
+    </main></div>
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: STIXSizeOneSym, sans-serif;"></div></div></body></html>
