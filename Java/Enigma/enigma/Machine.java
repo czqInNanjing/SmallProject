@@ -17,8 +17,8 @@ class Machine {
      * Set my rotors to (from left to right) ROTORS.  Initially, the rotor
      * settings are all 'A'.
      */
-    void replaceRotors(Rotor[] rotors) {
-        this.rotors = rotors;
+    void replaceRotors(Rotor[] rotorsX) {
+        this.rotors = rotorsX;
     }
 
     /**
@@ -27,7 +27,7 @@ class Machine {
      * rotor setting.
      */
     void setRotors(String setting) {
-        rotors[0].set(Rotor.toIndex(setting.charAt(0)));
+        rotors[1].set(Rotor.toIndex(setting.charAt(0)));
         for (int i = 0; i < 3; i++) {
             rotors[i + 2].set(Rotor.toIndex(setting.charAt(i + 1)));
         }
@@ -44,16 +44,28 @@ class Machine {
         for (char c : msg.toCharArray()) {
 
             boolean allowToAdvance = true;
-
-            for (int i = 4; i > 2; i--) {
+            boolean rotor3Advance = false;
+            boolean rotor2Advance = false;
+            for (int i = 4; i > 1; i--) {
 
                 if (allowToAdvance) {
                     rotors[i].advance();
+//                    System.out.println("rotor " + i + " advance");
+                    allowToAdvance = rotors[i].atAdvanceNotch();
+                    if (i == 3){
+                        rotor3Advance = true;
+                    } else if (i == 2){
+                        rotor2Advance = true;
+                    }
+                }else {
+                    allowToAdvance = rotors[i].atNotch();
                 }
-                allowToAdvance = rotors[i].atNotch();
+
 
             }
-            if (allowToAdvance) {
+//            System.out.println();
+            if (rotor2Advance && !rotor3Advance) {
+                System.out.println("you advance +++++++++++++++++++++++++++");
                 rotors[3].advance();
             }
 

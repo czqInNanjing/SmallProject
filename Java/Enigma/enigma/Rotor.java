@@ -134,8 +134,21 @@ class Rotor {
      * to advance.
      */
     boolean atNotch() {
+//        int lastSetting = (_setting - 1) % 26;
+//        if (lastSetting < 0) {
+//            lastSetting += ALPHABET_SIZE;
+//        }
+        for (int n : notchs) {
+            if (n == _setting) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    boolean atAdvanceNotch() {
         int lastSetting = (_setting - 1) % 26;
-        if (lastSetting < 0){
+        if (lastSetting < 0) {
             lastSetting += ALPHABET_SIZE;
         }
         for (int n : notchs) {

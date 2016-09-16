@@ -61,8 +61,14 @@ public final class Main {
                 if (line == null) {
                     break;
                 }
-                writeMessageLine(M.convert(standardize(line)),
-                        outputFilename);
+                if (isConfigurationLine(line)) {
+                    M = new Machine();
+                    configure(M, line);
+                } else {
+                    writeMessageLine(M.convert(standardize(line)),
+                            outputFilename);
+                }
+
 
             }
 //            writeMessageLine("\n",outputFilename);
@@ -107,19 +113,19 @@ public final class Main {
 
         }
 
-        if (rotors[0].hasInverse()){
+        if (rotors[0].hasInverse()) {
             throw new EnigmaException("The first rotor might not be a reflector.");
         }
 
         M.replaceRotors(rotors);
         //config settings of the router
 
-        if (result[6].length() != 4){
+        if (result[6].length() != 4) {
             throw new EnigmaException("The initial positions string might be the wrong length");
         }
 
-        for (char c : result[6].toCharArray()){
-            if ( c < 'A' || c > 'Z'){
+        for (char c : result[6].toCharArray()) {
+            if (c < 'A' || c > 'Z') {
                 throw new EnigmaException("The initial positions string might contain non-alphabetic characters.");
             }
         }
@@ -133,15 +139,16 @@ public final class Main {
      * characters other than letters and blanks.
      */
     private static String standardize(String line) {
+        System.out.println(line);
         StringBuilder result = new StringBuilder(line.length());
 
         for (char c : line.toCharArray()) {
-            if (Character.isLetterOrDigit(c) || c == ' ') {
-                if (Character.isLetterOrDigit(c)) {
-                    result.append(c);
-                }
+            if (c == ' ') {
+                continue;
+            } else if (((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z'))) {
+                result.append(c);
             } else {
-                throw new EnigmaException("There is illegal character in the message");
+                throw new EnigmaException("There is illegal character in the message: " + c);
             }
 
 
@@ -163,9 +170,9 @@ public final class Main {
                     outputString += " ";
                 }
             }
-            if (!outputString.isEmpty()) {
+//            if (!outputString.isEmpty()) {
                 writer.write(outputString + "\n");
-            }
+//            }
 
             writer.close();
         } catch (IOException e) {
