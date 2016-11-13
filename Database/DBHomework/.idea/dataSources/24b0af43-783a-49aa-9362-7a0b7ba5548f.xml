@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - railway@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="railway">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="AnyQuant"/>
+    <schema id="3" name="CAD"/>
+    <schema id="4" name="cms"/>
+    <schema id="5" name="dessert"/>
+    <schema id="6" name="elmssql"/>
+    <schema id="7" name="homework2"/>
+    <schema id="8" name="information_schema"/>
+    <schema id="9" name="mysql"/>
+    <schema id="10" name="performance_schema"/>
+    <schema id="11" name="Qiang"/>
+    <table id="12" parent="1" name="user"/>
+    <table id="13" parent="1" name="r_order"/>
+    <table id="14" parent="1" name="seat"/>
+    <table id="15" parent="1" name="route"/>
+    <column id="16" parent="12" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="17" parent="12" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="18" parent="12" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="19" parent="12" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="20" parent="12" name="id_num">
+      <mandatory>1</mandatory>
+      <data-type>char(22)|0</data-type>
+    </column>
+    <index id="21" parent="12" name="user_email_uindex">
+      <columns>email</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="22" parent="12" name="user_id_num_uindex">
+      <columns>id_num</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="23" parent="12" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="24" parent="12" name="user_email_uindex">
+      <columns>email</columns>
+      <underlying-index>user_email_uindex</underlying-index>
+    </key>
+    <key id="25" parent="12" name="user_id_num_uindex">
+      <columns>id_num</columns>
+      <underlying-index>user_id_num_uindex</underlying-index>
+    </key>
+    <column id="26" parent="13" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="27" parent="13" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="28" parent="13" name="bill">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="29" parent="13" name="start_station">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="30" parent="13" name="end_station">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="31" parent="13" name="ticket_num">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="32" parent="13" name="time">
+      <data-type>timestamp|0</data-type>
+    </column>
+    <key id="33" parent="13" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="34" parent="14" name="route_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="35" parent="14" name="station_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="36" parent="14" name="route_number">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="37" parent="14" name="date">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="38" parent="14" name="type">
+      <mandatory>1</mandatory>
+      <data-type>enum(&apos;商务座&apos;, &apos;一等座&apos;, &apos;二等座&apos;, &apos;无座&apos;)|0</data-type>
+      <default-expression>&apos;无座&apos;</default-expression>
+    </column>
+    <column id="39" parent="14" name="carriage">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="40" parent="14" name="row">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="41" parent="14" name="number">
+      <mandatory>1</mandatory>
+      <data-type>char(1)|0</data-type>
+      <default-expression>&apos;G&apos;</default-expression>
+    </column>
+    <column id="42" parent="14" name="cost">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="43" parent="14" name="available">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <key id="44" parent="14" name="PRIMARY">
+      <columns>route_id
+station_id
+route_number
+date
+carriage
+row
+number</columns>
+      <primary>1</primary>
+    </key>
+    <column id="45" parent="15" name="route_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="46" parent="15" name="station_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="47" parent="15" name="route_number">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="48" parent="15" name="date">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="49" parent="15" name="start_station">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="50" parent="15" name="end_station">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="51" parent="15" name="interval">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="52" parent="15" name="start_time">
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <key id="53" parent="15" name="PRIMARY">
+      <columns>route_id
+station_id
+route_number
+date</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

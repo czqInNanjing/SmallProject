@@ -1,0 +1,90 @@
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Checking status of localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Updating cluster description to  {type=STANDALONE, servers=[{address=localhost:27017, type=STANDALONE, roundTripTime=0.5 ms, state=CONNECTED}]
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Checking status of localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Updating cluster description to  {type=STANDALONE, servers=[{address=localhost:27017, type=STANDALONE, roundTripTime=0.6 ms, state=CONNECTED}]
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Checking status of localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Updating cluster description to  {type=STANDALONE, servers=[{address=localhost:27017, type=STANDALONE, roundTripTime=0.5 ms, state=CONNECTED}]
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Checking status of localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Updating cluster description to  {type=STANDALONE, servers=[{address=localhost:27017, type=STANDALONE, roundTripTime=0.5 ms, state=CONNECTED}]
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Checking status of localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Updating cluster description to  {type=STANDALONE, servers=[{address=localhost:27017, type=STANDALONE, roundTripTime=0.5 ms, state=CONNECTED}]
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Checking status of localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Updating cluster description to  {type=STANDALONE, servers=[{address=localhost:27017, type=STANDALONE, roundTripTime=0.5 ms, state=CONNECTED}]
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Checking status of localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Updating cluster description to  {type=STANDALONE, servers=[{address=localhost:27017, type=STANDALONE, roundTripTime=0.5 ms, state=CONNECTED}]
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.command - Sending command {aggregate : BsonString{value='routes'}} to database railway on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.command - Command execution completed
+DEBUG main org.mongodb.driver.protocol.command - Sending command {aggregate : BsonString{value='seats'}} to database railway on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Checking status of localhost:27017
+DEBUG cluster-ClusterId{value='58281e8226de1f680662f216', description='null'}-localhost:27017 org.mongodb.driver.cluster - Updating cluster description to  {type=STANDALONE, servers=[{address=localhost:27017, type=STANDALONE, roundTripTime=0.5 ms, state=CONNECTED}]
+DEBUG main org.mongodb.driver.protocol.command - Command execution completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
+DEBUG main org.mongodb.driver.protocol.update - Updating documents in namespace railway.seats on connection [connectionId{localValue:2, serverValue:388}] to server localhost:27017
+DEBUG main org.mongodb.driver.protocol.update - Update completed
