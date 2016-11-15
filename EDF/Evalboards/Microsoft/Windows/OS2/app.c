@@ -84,6 +84,12 @@ OS_STK TASK2STK[TASK_STK_SIZE];
 #define TASK4_ID 4
 #define TASK5_ID 5
 
+#define TASK1_PRIORITY 1
+#define TASK2_PRIORITY 2
+#define TASK3_PRIORITY 3
+#define TASK4_PRIORITY 4
+#define TASK5_PRIORITY 5
+
 // c, p, compTime, ddl, start, end
 EDF_TASK_DATA taskData[] {
     {1,3,1,4,0,0},          // task1
@@ -121,7 +127,7 @@ int  main (void)
     OSTaskCreateExt((void(*)(void *))task1,
         (void          *) 0,
         (OS_STK        *)&TASK1STK[TASK_STACK_SIZE-1],
-        (INT8U          ) TASK_1_ID,
+        (INT8U          ) TASK1_PRIORITY,                   // this should be priority
         (INT16U         ) TASK_1_ID,
         (OS_STK        *)&TASK1STK[0],
         (INT32U         ) TASK_STACK_SIZE,
@@ -131,7 +137,7 @@ int  main (void)
     OSTaskCreateExt((void(*)(void *))task2,
         (void          *) 0,
         (OS_STK        *)&TASK1STK[TASK_STACK_SIZE-1],
-        (INT8U          ) TASK_2_ID,
+        (INT8U          ) TASK2_PRIORITY,
         (INT16U         ) TASK_2_ID,
         (OS_STK        *)&TASK2STK[0],
         (INT32U         ) TASK_STACK_SIZE,
@@ -181,3 +187,49 @@ static  void  AppTaskStart (void *p_arg)
         APP_TRACE_DBG(("Time: %d\n\r", OSTimeGet(&err)));
     }
 }
+
+
+static void task1(void *pdata){
+    INT32U start;
+    INT32U end;
+    INT32U toDelay;
+    start = 0;
+    while(1) {
+        while( ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime > 0 ) {
+            // do nothing
+        }
+        end = OSTimeGet(); // end time
+        int t = (EDF_TASK_DATA*)OSTCBCur->OSTCBxtPtr)->p;
+        toDelay =  t -(end-start);
+        start = start + t; // next start time
+
+        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = (EDF_TASK_DATA*)OSTCBCur->OSTCBxtPtr)->c; // reset the counter (c ticks for computation)
+        OSTimeDly(toDelay);
+
+    }
+    
+}
+
+static void task2(void *pdata){
+    INT32U start;
+    INT32U end;
+    INT32U toDelay;
+    start = 0;
+    while(1) {
+        while( ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime > 0 ) {
+            // do nothing
+        }
+        end = OSTimeGet(); // end time
+        int t = (EDF_TASK_DATA*)OSTCBCur->OSTCBxtPtr)->p;
+        toDelay =  t -(end-start);
+        start = start + t; // next start time
+
+        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = (EDF_TASK_DATA*)OSTCBCur->OSTCBxtPtr)->c; // reset the counter (c ticks for computation)
+        OSTimeDly(toDelay);
+
+    }
+    
+}
+
+
+

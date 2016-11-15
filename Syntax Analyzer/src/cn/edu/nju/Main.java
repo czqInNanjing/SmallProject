@@ -26,6 +26,13 @@ public class Main {
                 System.out.println(reduction);
             }
 
+            System.out.println("================================================  Test Case 3  ========================================================");
+            analyzer = new Analyzer(IOHelper.fileReaderToString("src/cn/edu/nju/ppt3.txt"), IOHelper.fileReaderToString("src/cn/edu/nju/CFG3.txt"));
+            reductions = analyzer.parseInput(IOHelper.fileReaderToCharArray("src/cn/edu/nju/input3.txt"));
+            for (Reduction reduction : reductions) {
+                System.out.println(reduction);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
