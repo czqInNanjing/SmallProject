@@ -71,11 +71,17 @@ static  void  AppTaskStart(void  *p_arg);
 *                                         DEFINED FOR EDF ALGORITHM BY QIANG
 *********************************************************************************************************
 */
+static void task1(void* pdata);
+static void task2(void* pdata);
+static void task3(void* pdata);
+static void task4(void* pdata);
+static void task5(void* pdata);
+
 #define TASK_STACK_SIZE 1024  
 
 /*---   stacks ---*/
-OS_STK TASK1STK[TASK_STK_SIZE];
-OS_STK TASK2STK[TASK_STK_SIZE];
+OS_STK TASK1STK[TASK_STACK_SIZE];
+OS_STK TASK2STK[TASK_STACK_SIZE];
 
 //TASK ID and Priority 
 #define TASK1_ID 1
@@ -91,10 +97,10 @@ OS_STK TASK2STK[TASK_STK_SIZE];
 #define TASK5_PRIORITY 5
 
 // c, p, compTime, ddl, start, end
-EDF_TASK_DATA taskData[] {
-    {1,3,1,4,0,0},          // task1
-    {3,5,3,6,0,0}           // task2
-}
+EDF_TASK_DATA taskData[] = {
+    {100,300,100,400,0,0},          // task1
+    {300,500,300,600,0,0}           // task2
+};
 
 
 /*
@@ -128,7 +134,7 @@ int  main (void)
         (void          *) 0,
         (OS_STK        *)&TASK1STK[TASK_STACK_SIZE-1],
         (INT8U          ) TASK1_PRIORITY,                   // this should be priority
-        (INT16U         ) TASK_1_ID,
+        (INT16U         ) TASK1_ID,
         (OS_STK        *)&TASK1STK[0],
         (INT32U         ) TASK_STACK_SIZE,
         (void          *)&taskData[0],                 // TCBext
@@ -138,7 +144,7 @@ int  main (void)
         (void          *) 0,
         (OS_STK        *)&TASK1STK[TASK_STACK_SIZE-1],
         (INT8U          ) TASK2_PRIORITY,
-        (INT16U         ) TASK_2_ID,
+        (INT16U         ) TASK2_ID,
         (OS_STK        *)&TASK2STK[0],
         (INT32U         ) TASK_STACK_SIZE,
         (void          *)&taskData[1],
@@ -199,11 +205,11 @@ static void task1(void *pdata){
             // do nothing
         }
         end = OSTimeGet(); // end time
-        int t = (EDF_TASK_DATA*)OSTCBCur->OSTCBxtPtr)->p;
+        int t = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->p;
         toDelay =  t -(end-start);
         start = start + t; // next start time
 
-        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = (EDF_TASK_DATA*)OSTCBCur->OSTCBxtPtr)->c; // reset the counter (c ticks for computation)
+        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->c; // reset the counter (c ticks for computation)
         OSTimeDly(toDelay);
 
     }
@@ -220,11 +226,11 @@ static void task2(void *pdata){
             // do nothing
         }
         end = OSTimeGet(); // end time
-        int t = (EDF_TASK_DATA*)OSTCBCur->OSTCBxtPtr)->p;
+        int t = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->p;
         toDelay =  t -(end-start);
         start = start + t; // next start time
 
-        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = (EDF_TASK_DATA*)OSTCBCur->OSTCBxtPtr)->c; // reset the counter (c ticks for computation)
+        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->c; // reset the counter (c ticks for computation)
         OSTimeDly(toDelay);
 
     }

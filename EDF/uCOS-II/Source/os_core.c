@@ -27,7 +27,7 @@
 #define  OS_GLOBALS
 #include <ucos_ii.h>
 #endif
-
+#include <stdio.h>
 /*
 *********************************************************************************************************
 *                                      PRIORITY RESOLUTION TABLE
@@ -79,6 +79,14 @@ static  void  OS_InitTCBList(void);
 
 static  void  OS_SchedNew(void);
 
+// ****************************
+// By Qiang
+static void OS_mySched(void);
+/*------------------------------------------------------------------------------------------------------
+define edf data for idle task
+--------------------------------------------------------------------------------------------------------
+*/
+EDF_TASK_DATA idleEdf = { 999999,1000000,999999,1000000 ,0 ,0 };
 /*$PAGE*/
 /*
 *********************************************************************************************************
@@ -698,10 +706,15 @@ void  OSIntExit (void)
         
         //*************************************************
                 // OS_SchedNew();
+        int lastID = OSTCBCur->OSTCBId;
                     OS_mySched();
 
                 OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];
-                if (OSPrioHighRdy != OSPrioCur) {          /* No Ctx Sw if current task is highest rdy */
+                if (OSPrioHighRdy != OSPrioCur) {           /* No Ctx Sw if current task is highest rdy */
+
+//*******************************
+                printf("\n%d\tPreempted\t%d\t%d\n",OSTimeGet(),lastID,OSTCBCur->OSTCBId);
+
 #if OS_TASK_PROFILE_EN > 0u
                     OSTCBHighRdy->OSTCBCtxSwCtr++;         /* Inc. # of context switches to this task  */
 #endif
@@ -856,8 +869,8 @@ void  OSStart (void)
     if (OSRunning == OS_FALSE) {
         
 //***************************************************************
-        // OS_SchedNew();                               /* Find highest priority's task priority number   */
-        OS_mySched();
+        OS_SchedNew();                               /* Find highest priority's task priority number   */
+        // OS_mySched();
 
 
 
@@ -991,7 +1004,7 @@ void  OSTimeTick (void)
             ptcb = ptcb->OSTCBNext;                        /* Point at next TCB in TCB list                */
             OS_EXIT_CRITICAL();
         }
-        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->comp_time--;
+        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime--;
     }
 }
 
@@ -1454,7 +1467,8 @@ static  void  OS_InitTaskIdle (void)
                           OS_TASK_IDLE_ID,
                           &OSTaskIdleStk[0],                         /* Set Bottom-Of-Stack                  */
                           OS_TASK_IDLE_STK_SIZE,
-                          (void *)0,                                 /* No TCB extension                     */
+                          //(void *)0,                                 /* No TCB extension                     */
+							(void *)&idleEdf,
                           OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR);/* Enable stack checking + clear stack  */
     #else
     (void)OSTaskCreateExt(OS_TaskIdle,
@@ -1684,11 +1698,17 @@ void  OS_Sched (void)
     
     //***********************************
             // OS_SchedNew();
+            int lastID = OSTCBCur->OSTCBId;
             OS_mySched();
 
 
             OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];
             if (OSPrioHighRdy != OSPrioCur) {          /* No Ctx Sw if current task is highest rdy     */
+    //**********************************
+				printf("\n%d\tComplete\t%d\t%d\n",OSTimeGet(),lastID,OSTCBCur->OSTCBId);
+
+
+
 #if OS_TASK_PROFILE_EN > 0u
                 OSTCBHighRdy->OSTCBCtxSwCtr++;         /* Inc. # of context switches to this task      */
 #endif
@@ -1757,14 +1777,21 @@ static void OS_mySched(void)
     OS_TCB* nextToDone;
     int tempLatestDDL = 1000000;
     int ddl;
-    int allDelay = 1;
+    int isAllDelay = 1;
 
     task_current = OSTCBList;
-
+	nextToDone = OSTCBPrioTbl[OS_TASK_IDLE_PRIO];
+	OSPrioHighRdy = OS_TASK_IDLE_PRIO;
     while( task_current->OSTCBPrio != OS_TASK_IDLE_PRIO ) {
-        if (task_current->OSTCBDly == 0 && ((EDF_TASK_DATA *)p_current->OSTCBExtPtr)->comp_time>0)
+
+		if (task_current->OSTCBExtPtr == 0) {
+			task_current->OSTCBExtPtr = &idleEdf;
+		}
+
+
+        if (task_current->OSTCBDly == 0 && ((EDF_TASK_DATA *)task_current->OSTCBExtPtr)->compTime>0)
         {
-            ddl = ((EDF_TASK_DATA *)p_current->OSTCBExtPtr)->ddl;
+            ddl = ((EDF_TASK_DATA *)task_current->OSTCBExtPtr)->ddl;
             if (ddl < tempLatestDDL)
             {
                 tempLatestDDL = ddl;
