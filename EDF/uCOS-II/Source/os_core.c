@@ -1,6 +1,6 @@
-
+/*
 *********************************************************************************************************
-*                                                uC/OS-II
+*                                                uC / OS - II
 *                                          The Real-Time Kernel
 *                                             CORE FUNCTIONS
 *
@@ -695,7 +695,11 @@ void  OSIntExit (void)
         }
         if (OSIntNesting == 0u) {                          /* Reschedule only if all ISRs complete ... */
             if (OSLockNesting == 0u) {                     /* ... and not locked.                      */
-                OS_SchedNew();
+        
+        //*************************************************
+                // OS_SchedNew();
+                    OS_mySched();
+
                 OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];
                 if (OSPrioHighRdy != OSPrioCur) {          /* No Ctx Sw if current task is highest rdy */
 #if OS_TASK_PROFILE_EN > 0u
@@ -850,7 +854,13 @@ void  OSSchedUnlock (void)
 void  OSStart (void)
 {
     if (OSRunning == OS_FALSE) {
-        OS_SchedNew();                               /* Find highest priority's task priority number   */
+        
+//***************************************************************
+        // OS_SchedNew();                               /* Find highest priority's task priority number   */
+        OS_mySched();
+
+
+
         OSPrioCur     = OSPrioHighRdy;
         OSTCBHighRdy  = OSTCBPrioTbl[OSPrioHighRdy]; /* Point to highest priority task ready to run    */
         OSTCBCur      = OSTCBHighRdy;
@@ -981,6 +991,7 @@ void  OSTimeTick (void)
             ptcb = ptcb->OSTCBNext;                        /* Point at next TCB in TCB list                */
             OS_EXIT_CRITICAL();
         }
+        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->comp_time--;
     }
 }
 
@@ -1670,7 +1681,12 @@ void  OS_Sched (void)
     OS_ENTER_CRITICAL();
     if (OSIntNesting == 0u) {                          /* Schedule only if all ISRs done and ...       */
         if (OSLockNesting == 0u) {                     /* ... scheduler is not locked                  */
-            OS_SchedNew();
+    
+    //***********************************
+            // OS_SchedNew();
+            OS_mySched();
+
+
             OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];
             if (OSPrioHighRdy != OSPrioCur) {          /* No Ctx Sw if current task is highest rdy     */
 #if OS_TASK_PROFILE_EN > 0u
@@ -1733,6 +1749,35 @@ static  void  OS_SchedNew (void)
         OSPrioHighRdy = (INT8U)((y << 4u) + OSUnMapTbl[(OS_PRIO)(*ptbl >> 8u) & 0xFFu] + 8u);
     }
 #endif
+}
+
+static void OS_mySched(void) 
+{
+    OS_TCB* task_current;
+    OS_TCB* nextToDone;
+    int tempLatestDDL = 1000000;
+    int ddl;
+    int allDelay = 1;
+
+    task_current = OSTCBList;
+
+    while( task_current->OSTCBPrio != OS_TASK_IDLE_PRIO ) {
+        if (task_current->OSTCBDly == 0 && ((EDF_TASK_DATA *)p_current->OSTCBExtPtr)->comp_time>0)
+        {
+            ddl = ((EDF_TASK_DATA *)p_current->OSTCBExtPtr)->ddl;
+            if (ddl < tempLatestDDL)
+            {
+                tempLatestDDL = ddl;
+                nextToDone = task_current;
+            }
+            isAllDelay = 0;
+        }
+        task_current = task_current->OSTCBNext;
+    }
+    OSPrioHighRdy=nextToDone->OSTCBPrio;        
+    if(isAllDelay==1){
+        OSPrioHighRdy=OS_TASK_IDLE_PRIO;
+    }
 }
 
 /*$PAGE*/

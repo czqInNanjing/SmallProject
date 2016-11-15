@@ -372,7 +372,7 @@ typedef struct edf_task_data{
 	INT32U ddl;			// the deadline of a task
 	INT32U start;
 	INT32U end;
-}EDF_TASK_DATA;
+} EDF_TASK_DATA;
 
 
 
