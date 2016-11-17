@@ -1,9 +1,0 @@
-﻿  app.c
-z:\development\smallproject\edf\evalboards\microsoft\windows\os2\app.c(231): warning C4087: “OSTimeGet”: 用“void”参数列表声明
-z:\development\smallproject\edf\evalboards\microsoft\windows\os2\app.c(240): warning C4101: “toDelay”: 未引用的局部变量
-z:\development\smallproject\edf\evalboards\microsoft\windows\os2\app.c(285): warning C4101: “toDelay”: 未引用的局部变量
-z:\development\smallproject\edf\evalboards\microsoft\windows\os2\app.c(310): warning C4101: “toDelay”: 未引用的局部变量
-z:\development\smallproject\edf\evalboards\microsoft\windows\os2\app.c(335): warning C4101: “toDelay”: 未引用的局部变量
-z:\development\smallproject\edf\evalboards\microsoft\windows\os2\app.c(349): warning C4101: “toDelay”: 未引用的局部变量
-  OS2.vcxproj -> Z:\Development\SmallProject\EDF\Evalboards\Microsoft\Windows\OS2\Visual Studio\Debug\OS2.exe
-  OS2.vcxproj -> Z:\Development\SmallProject\EDF\Evalboards\Microsoft\Windows\OS2\Visual Studio\Debug\OS2.pdb (Full PDB)
