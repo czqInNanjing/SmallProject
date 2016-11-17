@@ -12,7 +12,7 @@
 * Version : V2.92.10
 *
 * LICENSING TERMS:
-* ---------------
+* ---------------d
 *   uC/OS-II is provided in source form for FREE evaluation, for educational use or for peaceful research.
 * If you plan on using  uC/OS-II  in a commercial product you need to contact Micrium to properly license
 * its use in your product. We provide ALL the source code for your convenience and to help you experience
@@ -82,6 +82,7 @@ static  void  OS_SchedNew(void);
 // ****************************
 // By Qiang
 static void OS_mySched(void);
+static int justZero = 1;
 /*------------------------------------------------------------------------------------------------------
 define edf data for idle task
 --------------------------------------------------------------------------------------------------------
@@ -706,14 +707,14 @@ void  OSIntExit (void)
         
         //*************************************************
                 // OS_SchedNew();
-        int lastID = OSTCBCur->OSTCBId;
+        // int lastID = OSTCBCur->OSTCBId;
                     OS_mySched();
 
                 OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];
                 if (OSPrioHighRdy != OSPrioCur) {           /* No Ctx Sw if current task is highest rdy */
 
 //*******************************
-                printf("\n%d\tPreempted\t%d\t%d\n",OSTimeGet(),lastID,OSTCBCur->OSTCBId);
+                // printf("%d\tPreempted\t%d\t%d\n",OSTimeGet(),lastID,nextTaskID);
 
 #if OS_TASK_PROFILE_EN > 0u
                     OSTCBHighRdy->OSTCBCtxSwCtr++;         /* Inc. # of context switches to this task  */
@@ -1004,7 +1005,27 @@ void  OSTimeTick (void)
             ptcb = ptcb->OSTCBNext;                        /* Point at next TCB in TCB list                */
             OS_EXIT_CRITICAL();
         }
-        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime--;
+            justZero = 0;
+            EDF_TASK_DATA* tempPoint = (EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr;
+            tempPoint->compTime--;
+            if (tempPoint->compTime == 0)
+            {   
+                justZero = 1;
+                tempPoint->end = OSTimeGet(); // end time
+                int t = tempPoint->p;
+                int toDelay =  t - ( tempPoint->end - tempPoint->start);
+				if (toDelay <= 0)
+				{
+					toDelay = 0;
+				}
+                tempPoint->start = tempPoint->start + t; // next start time
+				//printf("  ****%d    ",toDelay);
+				//printf("  ****%d    ", tempPoint->ddl);
+                tempPoint->ddl = tempPoint->ddl + tempPoint->p;
+                tempPoint->compTime = tempPoint->c; // reset the counter (c ticks for computation)
+				OSTCBCur->OSTCBDly = toDelay;
+            }
+            
     }
 }
 
@@ -1671,9 +1692,7 @@ void  OS_MemCopy (INT8U  *pdest,
 *********************************************************************************************************
 *                                              SCHEDULER
 *
-* Description: This function is called by other uC/OS-II services to determine whether a new, high
-*              priority task has been made ready to run.  This function is invoked by TASK level code
-*              and is not used to reschedule tasks from ISRs (see OSIntExit() for ISR rescheduling).
+* Description: This function is called by other uC/s (see OSIntExit() for ISR rescheduling).
 *
 * Arguments  : none
 *
@@ -1701,11 +1720,11 @@ void  OS_Sched (void)
             int lastID = OSTCBCur->OSTCBId;
             OS_mySched();
 
-
+			//printf("%d\tComplete\t%d\t%d\n", OSTimeGet(), lastID, nextTaskID);
             OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];
             if (OSPrioHighRdy != OSPrioCur) {          /* No Ctx Sw if current task is highest rdy     */
     //**********************************
-				printf("\n%d\tComplete\t%d\t%d\n",OSTimeGet(),lastID,OSTCBCur->OSTCBId);
+				//printf("%d\tComplete\t%d\t%d\n",OSTimeGet(),lastID,nextTaskID);
 
 
 
@@ -1800,6 +1819,18 @@ static void OS_mySched(void)
             isAllDelay = 0;
         }
         task_current = task_current->OSTCBNext;
+    }
+
+    int nextTaskID = nextToDone->OSTCBId;
+    if (OSTCBCur->OSTCBId != nextTaskID)
+    {
+        EDF_TASK_DATA * tempPoint = (EDF_TASK_DATA *)OSTCBCur->OSTCBExtPtr;
+        if (justZero == 1)
+        {   
+            printf("%d\tComplete\t%d\t%d\n",OSTimeGet()/100,OSTCBCur->OSTCBId,nextTaskID);
+        }else{
+            printf("%d\tPreempted\t%d\t%d\n",OSTimeGet()/100,OSTCBCur->OSTCBId,nextTaskID);
+        }
     }
     OSPrioHighRdy=nextToDone->OSTCBPrio;        
     if(isAllDelay==1){

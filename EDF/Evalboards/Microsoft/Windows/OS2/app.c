@@ -82,6 +82,9 @@ static void task5(void* pdata);
 /*---   stacks ---*/
 OS_STK TASK1STK[TASK_STACK_SIZE];
 OS_STK TASK2STK[TASK_STACK_SIZE];
+OS_STK TASK3STK[TASK_STACK_SIZE];
+OS_STK TASK4STK[TASK_STACK_SIZE];
+OS_STK TASK5STK[TASK_STACK_SIZE];
 
 //TASK ID and Priority 
 #define TASK1_ID 1
@@ -98,9 +101,15 @@ OS_STK TASK2STK[TASK_STACK_SIZE];
 
 // c, p, compTime, ddl, start, end
 EDF_TASK_DATA taskData[] = {
-    {100,300,100,400,0,0},          // task1
-    {300,500,300,600,0,0}           // task2
+    {100,300,100,300,0,0},          // task1
+    {300,500,300,500,0,0},
+{ 100,400,100,400,0,0 },         
+{ 200,500,200,500,0,0 }
+,
+{ 200,1000,200,1000,0,0 }
 };
+
+
 
 
 /*
@@ -130,26 +139,55 @@ int  main (void)
     //     (void          *) 0,
     //     (INT16U         )(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
-    OSTaskCreateExt((void(*)(void *))task1,
+    //OSTaskCreateExt((void(*)(void *))task1,
+    //    (void          *) 0,
+    //    (OS_STK        *)&TASK1STK[TASK_STACK_SIZE-1],
+    //    (INT8U          ) TASK1_PRIORITY,                   // this should be priority
+    //    (INT16U         ) TASK1_ID,
+    //    (OS_STK        *)&TASK1STK[0],
+    //    (INT32U         ) TASK_STACK_SIZE,
+    //    (void          *)&taskData[0],                 // TCBext
+    //    (INT16U         )0);
+
+    //OSTaskCreateExt((void(*)(void *))task2,
+    //    (void          *) 0,
+    //    (OS_STK        *)&TASK1STK[TASK_STACK_SIZE-1],
+    //    (INT8U          ) TASK2_PRIORITY,
+    //    (INT16U         ) TASK2_ID,
+    //    (OS_STK        *)&TASK2STK[0],
+    //    (INT32U         ) TASK_STACK_SIZE,
+    //    (void          *)&taskData[1],
+    //    (INT16U         )0);
+
+    OSTaskCreateExt((void(*)(void *))task3,
         (void          *) 0,
-        (OS_STK        *)&TASK1STK[TASK_STACK_SIZE-1],
-        (INT8U          ) TASK1_PRIORITY,                   // this should be priority
-        (INT16U         ) TASK1_ID,
-        (OS_STK        *)&TASK1STK[0],
+        (OS_STK        *)&TASK5STK[TASK_STACK_SIZE-1],
+        (INT8U          ) TASK3_PRIORITY,
+        (INT16U         ) TASK3_ID,
+        (OS_STK        *)&TASK3STK[0],
         (INT32U         ) TASK_STACK_SIZE,
-        (void          *)&taskData[0],                 // TCBext
+        (void          *)&taskData[2],
         (INT16U         )0);
 
-    OSTaskCreateExt((void(*)(void *))task2,
-        (void          *) 0,
-        (OS_STK        *)&TASK1STK[TASK_STACK_SIZE-1],
-        (INT8U          ) TASK2_PRIORITY,
-        (INT16U         ) TASK2_ID,
-        (OS_STK        *)&TASK2STK[0],
-        (INT32U         ) TASK_STACK_SIZE,
-        (void          *)&taskData[1],
-        (INT16U         )0);
+		OSTaskCreateExt((void(*)(void *))task4,
+		(void          *) 0,
+		(OS_STK        *)&TASK5STK[TASK_STACK_SIZE-1],
+		(INT8U          ) TASK4_PRIORITY,
+		(INT16U         ) TASK4_ID,
+		(OS_STK        *)&TASK4STK[0],
+		(INT32U         ) TASK_STACK_SIZE,
+		(void          *)&taskData[3],
+		(INT16U         )0);
 
+		OSTaskCreateExt((void(*)(void *))task5,
+		(void          *) 0,
+		(OS_STK        *)&TASK5STK[TASK_STACK_SIZE-1],
+		(INT8U          ) TASK5_PRIORITY,
+		(INT16U         ) TASK5_ID,
+		(OS_STK        *)&TASK5STK[0],
+		(INT32U         ) TASK_STACK_SIZE,
+		(void          *)&taskData[4],
+		(INT16U         )0);
 
     OSStart();                                                  /* Start multitasking (i.e. give control to uC/OS-II).  */
 }
@@ -196,46 +234,127 @@ static  void  AppTaskStart (void *p_arg)
 
 
 static void task1(void *pdata){
-    INT32U start;
-    INT32U end;
+
+
+    EDF_TASK_DATA* taskData = (EDF_TASK_DATA*) OSTCBCur->OSTCBExtPtr;
     INT32U toDelay;
-    start = 0;
+
     while(1) {
-        while( ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime > 0 ) {
+        while( taskData->compTime > 0 ) {
             // do nothing
         }
-        end = OSTimeGet(); // end time
-        int t = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->p;
-        toDelay =  t -(end-start);
-        start = start + t; // next start time
+        // OS_ENTER_CRITICAL();
+        // taskData->end = OSTimeGet(); // end time
+        // int t = taskData->p;
+        // toDelay =  t -( taskData->end - taskData->start);
+        // taskData->start = taskData->start + t; // next start time
 
-        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->c; // reset the counter (c ticks for computation)
-        OSTimeDly(toDelay);
+        // taskData->ddl = taskData->ddl + taskData->start;
+        // taskData->compTime = taskData->c; // reset the counter (c ticks for computation)
+        // OSTimeDly(toDelay);
+        // OS_EXIT_CRITICAL();
 
     }
+    // INT32U start;
+    // INT32U end;
+    // INT32U toDelay;
+    // start = 0;
+    // while(1) {
+
+
+
+
+    //     while( ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime > 0 ) {
+    //         // do nothing
+    //     }
+    //     OS_ENTER_CRITICAL();
+    //     end = OSTimeGet(); // end time
+    //     int t = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->p;
+    //     toDelay =  t - (end-start);
+    //     start = start + t; // next start time
+
+    //     ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->c; // reset the counter (c ticks for computation)
+    //     OSTimeDly(toDelay);
+    //     OS_EXIT_CRITICAL();
+    // }
     
 }
 
 static void task2(void *pdata){
-    INT32U start;
-    INT32U end;
+	EDF_TASK_DATA* taskData = (EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr;
+	INT32U toDelay;
+
+	while (1) {
+		while (taskData->compTime > 0) {
+			// do nothing
+		}
+		// OS_ENTER_CRITICAL();
+		// taskData->end = OSTimeGet(); // end time
+		// int t = taskData->p;
+		// toDelay = t - (taskData->end - taskData->start);
+		// taskData->start = taskData->start + t; // next start time
+
+		// taskData->ddl = taskData->ddl + taskData->start;
+		// printf("%d comptime", taskData->compTime);
+		// taskData->compTime = taskData->c; // reset the counter (c ticks for computation)
+		// printf("%d comptime", taskData->compTime);
+		// OSTimeDly(toDelay);
+		// OS_EXIT_CRITICAL();
+
+    }
+    
+}
+
+static void task3(void *pdata){
+    EDF_TASK_DATA* taskData = (EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr;
     INT32U toDelay;
-    start = 0;
-    while(1) {
-        while( ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime > 0 ) {
+
+    while (1) {
+        while (taskData->compTime > 0) {
             // do nothing
         }
-        end = OSTimeGet(); // end time
-        int t = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->p;
-        toDelay =  t -(end-start);
-        start = start + t; // next start time
+        // OS_ENTER_CRITICAL();
+        // taskData->end = OSTimeGet(); // end time
+        // int t = taskData->p;
+        // toDelay = t - (taskData->end - taskData->start);
+        // taskData->start = taskData->start + t; // next start time
 
-        ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->compTime = ((EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr)->c; // reset the counter (c ticks for computation)
-        OSTimeDly(toDelay);
+        // taskData->ddl = taskData->ddl + taskData->start;
+        // taskData->compTime = taskData->c; // reset the counter (c ticks for computation)
+        // OSTimeDly(toDelay);
+        // OS_EXIT_CRITICAL();
 
     }
     
 }
 
 
+
+static void task4(void *pdata) {
+	EDF_TASK_DATA* taskData = (EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr;
+	INT32U toDelay;
+
+	while (1) {
+		while (taskData->compTime > 0) {
+			// do nothing
+		}
+
+
+	}
+
+}
+
+static void task5(void *pdata) {
+	EDF_TASK_DATA* taskData = (EDF_TASK_DATA*)OSTCBCur->OSTCBExtPtr;
+	INT32U toDelay;
+
+	while (1) {
+		while (taskData->compTime > 0) {
+			// do nothing
+		}
+
+
+	}
+
+}
 
