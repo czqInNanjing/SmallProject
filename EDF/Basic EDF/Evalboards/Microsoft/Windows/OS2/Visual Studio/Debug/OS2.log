@@ -1,0 +1,6 @@
+﻿  os_core.c
+z:\development\smallproject\edf\basic edf\ucos-ii\source\os_core.c(1832): warning C4047: “=”:“int”与“EDF_TASK_DATA *”的间接级别不同
+z:\development\smallproject\edf\basic edf\ucos-ii\source\os_core.c(1837): warning C4047: “<”:“EDF_TASK_DATA *”与“int”的间接级别不同
+z:\development\smallproject\edf\basic edf\ucos-ii\source\os_core.c(1840): warning C4047: “=”:“int”与“EDF_TASK_DATA *”的间接级别不同
+  OS2.vcxproj -> Z:\Development\SmallProject\EDF\Basic EDF\Evalboards\Microsoft\Windows\OS2\Visual Studio\Debug\OS2.exe
+  OS2.vcxproj -> Z:\Development\SmallProject\EDF\Basic EDF\Evalboards\Microsoft\Windows\OS2\Visual Studio\Debug\OS2.pdb (Full PDB)
