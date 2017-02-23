@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <Resource name="jdbc/j2ee1" global="jdbc/j2ee1" auth="Container" type="javax.sql.DataSource"
+               maxActive="50" maxIdle="30" maxWait="10000" logAbandoned="true" 
+               username="root" password="root" driverClassName="com.mysql.cj.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/j2ee1?autoReconnect=true&amp;characterEncoding=UTF-8&amp;useUnicode=true">
+  </Resource>
+</Context>

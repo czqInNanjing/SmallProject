@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="J2ee5_EJB_ejb (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/J2ee5_EJB_ejb.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

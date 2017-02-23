@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Built-By: Qiang
+Class-Path: lib/mysql-connector-java-6.0.5.jar lib/javax.servlet-api-4
+ .0.0-b01.jar
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_40
+

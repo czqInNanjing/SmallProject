@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="J2ee5_EJB:ejb">
+    <output-path>$PROJECT_DIR$/out/artifacts/J2ee5_EJB_ejb</output-path>
+    <root id="archive" name="J2ee5_EJB_ejb.jar">
+      <element id="artifact" artifact-name="J2ee5_EJB:ejb exploded" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
