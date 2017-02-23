@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-ejb" name="J2ee5_Web:ejb.ear">
-    <output-path>$PROJECT_DIR$/out/artifacts/J2ee5_Web_ejb_ear</output-path>
-    <root id="root">
-      <element id="javaee-facet-resources" facet="J2ee6_Web/ejb/EJB" />
-      <element id="javaee-facet-classes" facet="J2ee6_Web/ejb/EJB" />
-    </root>
-  </artifact>
-</component>

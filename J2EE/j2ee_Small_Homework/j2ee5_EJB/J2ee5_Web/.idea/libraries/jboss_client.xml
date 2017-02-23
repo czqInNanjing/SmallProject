@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jboss-client">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/jboss-client.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
