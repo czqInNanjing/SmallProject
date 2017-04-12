@@ -1,4 +1,0 @@
-S:A
-A:CC
-C:cC
-C:d
