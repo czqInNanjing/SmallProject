@@ -8,6 +8,7 @@ public class Percolation {
 
     private boolean[][] grid;
     private WeightedQuickUnionUF unionUF;
+    private WeightedQuickUnionUF unionUFWithNoDestination;
     private int size;
     private int source;
     private int endpoint;
@@ -29,10 +30,11 @@ public class Percolation {
         source = n * n;
         endpoint = n * n + 1;
         unionUF = new WeightedQuickUnionUF(n * n + 2);
-
+        unionUFWithNoDestination = new WeightedQuickUnionUF(n * n + 1);
         for (int i = 0; i < n; i++) {
             unionUF.union(i, source);
             unionUF.union((size - 1) * size + i, endpoint);
+            unionUFWithNoDestination.union(i, source);
         }
 
 
@@ -74,6 +76,7 @@ public class Percolation {
     private void connectIfOpen(int row1, int col1, int row2, int col2) {
         if (isOpen(row2, col2)) {
             unionUF.union(getPos(row1, col1), getPos(row2, col2));
+            unionUFWithNoDestination.union(getPos(row1, col1), getPos(row2, col2));
         }
     }
 
@@ -103,7 +106,7 @@ public class Percolation {
      */
     public boolean isFull(int row, int col) {
         checkRange(row, col);
-        return isOpen(row, col) && unionUF.connected(getPos(row, col), source);
+        return isOpen(row, col) && unionUFWithNoDestination.connected(getPos(row, col), source);
     }
 
 
