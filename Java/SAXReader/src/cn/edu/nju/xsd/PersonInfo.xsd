@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.nju.edu.cn/schema" 
+	xmlns:nju="http://www.nju.edu.cn/schema"  
+  xmlns:tns="http://jw.nju.edu.cn/schema"
+	elementFormDefault="qualified">
+
+  <include schemaLocation="Department.xsd"></include>
+
+  <simpleType name="性别类型">
+    <restriction base="string">
+      <enumeration value="男"></enumeration>
+      <enumeration value="女"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="教育类型">
+    <restriction base="string">
+      <enumeration value="专科"></enumeration>
+      <enumeration value="本科"></enumeration>
+      <enumeration value="硕士"></enumeration>
+      <enumeration value="博士"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="婚姻类型">
+    <restriction base="string">
+      <enumeration value="未婚"></enumeration>
+      <enumeration value="已婚"></enumeration>
+      <enumeration value="离异"></enumeration>
+      <enumeration value="丧偶"></enumeration>
+    </restriction>
+  </simpleType>
+  
+  <simpleType name="手机号码类型">
+    <restriction base="string">
+      <length value="11"></length>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="座机号码类型">
+    <restriction base="string">
+      <length value="12"></length>
+    </restriction>
+  </simpleType>
+
+  <complexType name="地址类型">
+    <sequence>
+      <element name="省份" type="string" minOccurs="0"></element>
+      <element name="城市" type="string"></element>
+      <element name="区" type="string"></element>
+      <element name="街道" type="string"></element>
+      <element name="号" type="string"></element>
+    </sequence>
+  </complexType>
+
+  <complexType name="个人基本信息类型">
+    <sequence>
+      <element name="姓名" type="string"></element>
+      <element name="性别" type="nju:性别类型"></element>
+      <element name="教育背景" type="nju:教育类型"></element>
+      <element name="婚姻状况" type="nju:婚姻类型"></element>
+      <element name="手机号码" type="nju:手机号码类型"></element>
+      <element ref="nju:部门"></element>
+      <element name="地址" type="nju:地址类型"></element>
+    </sequence>
+  </complexType>
+  
+  <complexType name="个人信息类型">
+    <complexContent>
+      <extension base="nju:个人基本信息类型">
+        <sequence minOccurs="0">
+          <element name="座机号码" type="nju:座机号码类型"></element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <element name="基本信息" type="nju:个人信息类型"></element>
+  
+
+    
+</schema>

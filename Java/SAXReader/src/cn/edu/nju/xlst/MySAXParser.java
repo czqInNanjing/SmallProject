@@ -157,7 +157,7 @@ public class MySAXParser extends DefaultHandler {
                 transformer.setOutputProperty(OutputKeys.INDENT, "yes");
                 transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
                 DOMSource source = new DOMSource(doc);
-                StreamResult result = new StreamResult(new File("src/cn.edu.nju.xlst/文档4.xml"));
+                StreamResult result = new StreamResult(new File("src/cn/edu/nju/xlst/文档4.xml"));
                 transformer.transform(source, result);
             }
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://jw.nju.edu.cn/schema" 
+	xmlns:tns="http://jw.nju.edu.cn/schema"  
+	elementFormDefault="qualified">
+	
+
+    <element name="课程编号" type="tns:课程编号类型"></element>
+
+    <simpleType name="课程编号类型">
+    	<restriction base="string">
+    		<length value="6"></length>
+    	</restriction>
+    </simpleType>
+
+  <simpleType name="学分类型">
+    <restriction base="integer">
+      <minInclusive value="1"></minInclusive>
+      <maxInclusive value="10"></maxInclusive>
+    </restriction>
+  </simpleType>
+
+  <complexType name="课程信息">
+      <all>
+        <element name="课程编号" type="tns:课程编号类型"></element>
+        <element name="课程名称" type="string"></element>
+        <element name="任课教师" type="string"></element>
+        <element name="学分" type="tns:学分类型"></element>
+        <element name="选课人数" type="nonNegativeInteger"></element>
+        <element name="课程描述" type="string"></element>
+        <element name="参考教材" type="string"></element>
+        <element name="开始时间" type="date"></element>
+        <element name="结束时间" type="date"></element>
+      </all>
+  </complexType>
+
+  <element name="课程" type="tns:课程信息"></element>
+  
+  
+</schema>

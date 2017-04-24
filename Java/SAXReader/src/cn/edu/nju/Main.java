@@ -19,9 +19,9 @@ public class Main {
     }
 
     private static void XLSTransform() {
-        String srcXml = "src/cn.edu.nju.xlst/文档2.xml";
-        String dstXml = "src/cn.edu.nju.xlst/文档3.xml";
-        String xslt = "src/cn.edu.nju.xlst/OrderXSLT.xsl";
+        String srcXml = "src/cn/edu/nju/xlst/文档2.xml";
+        String dstXml = "src/cn/edu/nju/xlst/文档3.xml";
+        String xslt = "src/cn/edu/nju/xlst/OrderXSLT.xsl";
 
         transformXmlByXslt(srcXml, dstXml, xslt);
 
@@ -29,7 +29,7 @@ public class Main {
     }
 
     private static void SAXReader() {
-        MySAXParser parser = new MySAXParser("src/cn.edu.nju.xlst/文档3.xml");
+        MySAXParser parser = new MySAXParser("src/cn/edu/nju/xlst/文档3.xml");
         parser.createByDom(parser.getAllPassGrades());
     }
 
