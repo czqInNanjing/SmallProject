@@ -3,17 +3,15 @@ package CollinearPoints;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implementation of judging whether 4 or more points are in the same line more faster than the CollinearPoints.BruteCollinearPoints
- * exceed limit time, do not know why
+ *
  * @author Qiang
  * @since 16/04/2017
  */
-public class FastCollinearPoints {
+public class OldFastCollinearPoints {
 
     private Point[] points;
     private LineSegment[] segments;
@@ -26,13 +24,9 @@ public class FastCollinearPoints {
      * keep the destinations of each line segment in segments, to help judge whether we have save the same line segment
      */
     private Point[] destination;
-    /**
-     * keep the len of each line segment in segments, to help judge which short line to remove when has duplicate lines
-     */
-    private int[] lineLen;
     private int capacity;
 
-    public FastCollinearPoints(Point[] points) {
+    public OldFastCollinearPoints(Point[] points) {
         if (points == null) {
             throw new NullPointerException();
         }
@@ -53,12 +47,11 @@ public class FastCollinearPoints {
             }
         }
 
-        capacity = points.length / 2;
+        capacity = points.length * 10;
 
         segments = new LineSegment[capacity];
         slopes = new double[capacity];
         destination = new Point[capacity];
-        lineLen = new int[capacity];
         computeNumber();
 
 
@@ -82,6 +75,7 @@ public class FastCollinearPoints {
             int startOrder = -1;
             int sameSize = 0;
             boolean hasFoundSame = false;
+            boolean hasSameSlope = false;
             double lastSlope = aux[1].slopeTo(aux[0]);
             for (int j = 2; j < copySize; j++) {
                 double newSlope = aux[j].slopeTo(points[i]);
@@ -95,21 +89,28 @@ public class FastCollinearPoints {
                 } else {
                     if (hasFoundSame) {
                         if (sameSize >= 2) {
-                            destination[numOfSegments] = aux[startOrder + sameSize];
-                            slopes[numOfSegments] = lastSlope;
-                            lineLen[numOfSegments] = sameSize;
-                            segments[numOfSegments++] = new LineSegment(aux[0], aux[startOrder + sameSize]);
-
-                            if (numOfSegments == capacity) {
-                                resize();
+                            for (int k = 0; k < numOfSegments; k++) {
+                                if (compareDouble(slopes[k], lastSlope) && aux[startOrder + sameSize].compareTo(destination[k]) == 0) {
+                                    hasSameSlope = true;
+                                    break;
+                                }
                             }
-                        }
+                            if (!hasSameSlope) {
+                                destination[numOfSegments] = aux[startOrder + sameSize];
+                                slopes[numOfSegments] = lastSlope;
+                                segments[numOfSegments++] = new LineSegment(aux[0], aux[startOrder + sameSize]);
 
+                                if (numOfSegments == capacity) {
+                                    resize();
+                                }
+                            }
+
+                        }
 
                         sameSize = 0;
                         startOrder = -1;
                         hasFoundSame = false;
-
+                        hasSameSlope = false;
                     }
                     lastSlope = newSlope;
                 }
@@ -117,55 +118,27 @@ public class FastCollinearPoints {
 
             if (hasFoundSame) {
                 if (sameSize >= 2) {
-                    destination[numOfSegments] = aux[startOrder + sameSize];
-                    slopes[numOfSegments] = lastSlope;
-                    lineLen[numOfSegments] = sameSize;
-                    segments[numOfSegments++] = new LineSegment(aux[0], aux[startOrder + sameSize]);
-                }
-                if (numOfSegments == capacity) {
-                    resize();
-                }
-
-            }
-
-
-        }
-
-        removeDuplicate();
-    }
-
-    private void removeDuplicate() {
-        List<Integer> linesToSaved = new ArrayList<>(numOfSegments);
-        boolean[] hasBeenChecked = new boolean[numOfSegments];
-
-
-        for (int i = 0; i < numOfSegments; i++) {
-            if (hasBeenChecked[i])
-                continue;
-
-            int maxLen = lineLen[i];
-            int maxLenPos = i;
-
-            for (int j = i; j < numOfSegments; j++) {
-                if (compareDouble(slopes[i], slopes[j]) && destination[i].compareTo(destination[j]) == 0) {
-                    hasBeenChecked[j] = true;
-                    if (lineLen[j] > maxLen) {
-                        maxLen = lineLen[j];
-                        maxLenPos = j;
+                    for (int k = 0; k < numOfSegments; k++) {
+                        if (compareDouble(slopes[k], lastSlope) && aux[startOrder + sameSize].compareTo(destination[k]) == 0) {
+                            hasSameSlope = true;
+                            break;
+                        }
+                    }
+                    if (!hasSameSlope) {
+                        destination[numOfSegments] = aux[startOrder + sameSize];
+                        slopes[numOfSegments] = lastSlope;
+                        segments[numOfSegments++] = new LineSegment(aux[0], aux[startOrder + sameSize]);
+                        if (numOfSegments == capacity) {
+                            resize();
+                        }
                     }
                 }
             }
-            linesToSaved.add(maxLenPos);
+
+
         }
 
-        numOfSegments = linesToSaved.size();
-        LineSegment[] newSegments = new LineSegment[numOfSegments];
-        for (int i = 0; i < numOfSegments; i++) {
-            newSegments[i] = segments[linesToSaved.get(i)];
-        }
-        slopes = null;
-        destination = null;
-        segments = newSegments;
+
     }
 
     private void resize() {
@@ -173,18 +146,15 @@ public class FastCollinearPoints {
         int newCapacity = capacity * 4;
         Point[] newDestination = new Point[newCapacity];
         double[] newSlopes = new double[newCapacity];
-        LineSegment[] newSegments = new LineSegment[newCapacity];
-        int[] lines = new int[newCapacity];
+        LineSegment[] newSegements = new LineSegment[newCapacity];
         for (int i = 0; i < capacity; i++) {
             newDestination[i] = destination[i];
             newSlopes[i] = slopes[i];
-            newSegments[i] = segments[i];
-            lines[i] = lineLen[i];
+            newSegements[i] = segments[i];
         }
         destination = newDestination;
         slopes = newSlopes;
-        segments = newSegments;
-        lineLen = lines;
+        segments = newSegements;
         capacity = newCapacity;
 
     }
@@ -205,7 +175,7 @@ public class FastCollinearPoints {
     public static void main(String[] args) {
 
         // read the n points from a file
-        In in = new In("input200.txt");
+        In in = new In("input9.txt");
         int n = in.readInt();
         Point[] points = new Point[n];
         for (int i = 0; i < n; i++) {
@@ -224,12 +194,12 @@ public class FastCollinearPoints {
 //        StdDraw.show();
 
         // print and draw the line segments
-        FastCollinearPoints collinear = new FastCollinearPoints(points);
+        OldFastCollinearPoints collinear = new OldFastCollinearPoints(points);
         for (LineSegment segment : collinear.segments()) {
             StdOut.println(segment);
 //            segment.draw();
         }
-        StdOut.println("************************");
+        StdOut.println("****************aaa********");
 //        CollinearPoints.BruteCollinearPoints collinearPoints = new CollinearPoints.BruteCollinearPoints(points);
 //        for (CollinearPoints.LineSegment segment : collinearPoints.segments()) {
 //            StdOut.println(segment);
@@ -237,5 +207,4 @@ public class FastCollinearPoints {
 //        }
 //        StdDraw.show();
     }
-
 }

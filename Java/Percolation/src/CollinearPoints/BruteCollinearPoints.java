@@ -37,7 +37,7 @@ public class BruteCollinearPoints {
                 throw new NullPointerException();
             }
         }
-        segments = new LineSegment[points.length*10];
+        segments = new LineSegment[points.length * 10];
         computeNumber();
     }
 
@@ -80,7 +80,7 @@ public class BruteCollinearPoints {
     }
 
     private boolean compareDouble(double d1, double d2) {
-        return d1 == Double.POSITIVE_INFINITY && d2 == Double.POSITIVE_INFINITY  || Math.abs(d1 - d2) < 0.00000001;
+        return d1 == Double.POSITIVE_INFINITY && d2 == Double.POSITIVE_INFINITY || Math.abs(d1 - d2) < 0.00000001;
     }
 
     public static void main(String[] args) {

@@ -37,28 +37,28 @@ find every (maximal) line segment that connects a subset of 4 or more of the poi
 </center>
 
 <p>
-<b>Point data type.</b>
-Create an immutable data type <tt>Point</tt> that represents a point in the plane
+<b>CollinearPoints.Point data type.</b>
+Create an immutable data type <tt>CollinearPoints.Point</tt> that represents a point in the plane
 by implementing the following API:
 
 <blockquote>
 <pre>
-<b>public class Point implements Comparable&lt;Point&gt; {</b>
-<font color = gray>   public Point(int x, int y)                         // constructs the point (x, y)</font>
+<b>public class CollinearPoints.Point implements Comparable&lt;CollinearPoints.Point&gt; {</b>
+<font color = gray>   public CollinearPoints.Point(int x, int y)                         // constructs the point (x, y)</font>
 
 <font color = gray>   public   void draw()                               // draws this point</font>
-<font color = gray>   public   void drawTo(Point that)                   // draws the line segment from this point to that point</font>
+<font color = gray>   public   void drawTo(CollinearPoints.Point that)                   // draws the line segment from this point to that point</font>
 <font color = gray>   public String toString()                           // string representation</font>
 
-<b>   public               int compareTo(Point that)</b>     <font color = gray>// compare two points by y-coordinates, breaking ties by x-coordinates</font>
-<b>   public            double slopeTo(Point that)</b>       <font color = gray>// the slope between this point and that point</font>
-<b>   public Comparator&lt;Point&gt; slopeOrder()</b>              <font color = gray>// compare two points by slopes they make with this point</font>
+<b>   public               int compareTo(CollinearPoints.Point that)</b>     <font color = gray>// compare two points by y-coordinates, breaking ties by x-coordinates</font>
+<b>   public            double slopeTo(CollinearPoints.Point that)</b>       <font color = gray>// the slope between this point and that point</font>
+<b>   public Comparator&lt;CollinearPoints.Point&gt; slopeOrder()</b>              <font color = gray>// compare two points by slopes they make with this point</font>
 <b>}</b>
 </pre>
 </blockquote>
 
 To get started, use the data type
-<a href = "../testing/collinear/Point.java">Point.java</a>,
+<a href = "../testing/collinear/Point.java">CollinearPoints.Point.java</a>,
 which implements the constructor and the
 <tt>draw()</tt>, <tt>drawTo()</tt>, and <tt>toString()</tt> methods.
 Your job is to add the following components.
@@ -103,13 +103,13 @@ you may assume that the constructor arguments <tt>x</tt> and <tt>y</tt> are each
 <p>
 <b>Line segment data type.</b>
 To represent line segments in the plane, use the data type
-<a href = "../testing/collinear/LineSegment.java">LineSegment.java</a>,
+<a href = "../testing/collinear/LineSegment.java">CollinearPoints.LineSegment.java</a>,
 which has the following API:
 
 <blockquote>
 <pre>
-<b>public class LineSegment {</b>
-<font color = gray>   public LineSegment(Point p, Point q)        // constructs the line segment between points p and q</font>
+<b>public class CollinearPoints.LineSegment {</b>
+<font color = gray>   public CollinearPoints.LineSegment(CollinearPoints.Point p, CollinearPoints.Point q)        // constructs the line segment between points p and q</font>
 <font color = gray>   public   void draw()                        // draws this line segment</font>
 <font color = gray>   public String toString()                    // string representation</font>
 <b>}</b>
@@ -118,7 +118,7 @@ which has the following API:
 
 <p>
 <b>Brute force.</b>
-Write a program <tt>BruteCollinearPoints.java</tt> that examines 4 
+Write a program <tt>CollinearPoints.BruteCollinearPoints.java</tt> that examines 4
 points at a time and checks whether they all lie on the same line segment, returning all such line segments.
 To check whether the 4 points <em>p</em>, <em>q</em>, <em>r</em>, and <em>s</em> are collinear,
 check whether the three slopes between <em>p</em> and <em>q</em>, 
@@ -128,10 +128,10 @@ are all equal.
 
 <blockquote>
 <pre>
-<b>public class BruteCollinearPoints {</b>
-<b>   public BruteCollinearPoints(Point[] points)    </b><font color = gray>// finds all line segments containing 4 points</font>
+<b>public class CollinearPoints.BruteCollinearPoints {</b>
+<b>   public CollinearPoints.BruteCollinearPoints(CollinearPoints.Point[] points)    </b><font color = gray>// finds all line segments containing 4 points</font>
 <b>   public           int numberOfSegments()        </b><font color = gray>// the number of line segments</font>
-<b>   public LineSegment[] segments()                </b><font color = gray>// the line segments</font>
+<b>   public CollinearPoints.LineSegment[] segments()                </b><font color = gray>// the line segments</font>
 <b>}</b>
 </pre>
 </blockquote>
@@ -147,7 +147,7 @@ then you should include either the line segment
 and you should not include <em>subsegments</em> such as <em>p</em>&rarr;<em>r</em> or
 <em>q</em>&rarr;<em>r</em>.
 For simplicity,
-we will not supply any input to <tt>BruteCollinearPoints</tt> that has 5 or more collinear points.
+we will not supply any input to <tt>CollinearPoints.BruteCollinearPoints</tt> that has 5 or more collinear points.
 
 <p><em>Corner cases.</em>
 Throw a <tt>java.lang.NullPointerException</tt> either the argument to the constructor
@@ -191,14 +191,14 @@ The algorithm is fast because the bottleneck operation is sorting.
 <IMG SRC="lines1.png" width = 300 alt =  "Points and slopes">
 </center>
 <p>
-Write a program <tt>FastCollinearPoints.java</tt> that implements this algorithm.
+Write a program <tt>CollinearPoints.FastCollinearPoints.java</tt> that implements this algorithm.
 
 <blockquote>
 <pre>
-<b>public class FastCollinearPoints {</b>
-<b>   public FastCollinearPoints(Point[] points)     </b><font color = gray>// finds all line segments containing 4 or more points</font>
+<b>public class CollinearPoints.FastCollinearPoints {</b>
+<b>   public CollinearPoints.FastCollinearPoints(CollinearPoints.Point[] points)     </b><font color = gray>// finds all line segments containing 4 or more points</font>
 <b>   public           int numberOfSegments()        </b><font color = gray>// the number of line segments</font>
-<b>   public LineSegment[] segments()                </b><font color = gray>// the line segments</font>
+<b>   public CollinearPoints.LineSegment[] segments()                </b><font color = gray>// the line segments</font>
 <b>}</b>
 </pre>
 </blockquote>
@@ -221,7 +221,7 @@ contains a repeated point.
 The order of growth of the running time of your program should be
 <em>n</em><sup>2</sup> log <em>n</em> in the worst case and 
 it should use space proportional to <em>n</em> plus the number of line segments returned.
-<tt>FastCollinearPoints</tt> should work properly even if the input has 5 or more collinear points.
+<tt>CollinearPoints.FastCollinearPoints</tt> should work properly even if the input has 5 or more collinear points.
 
 
 <p>
@@ -238,25 +238,25 @@ public static void main(String[] args) {
     <font color = gray>// read the n points from a file</font>
     In in = new In(args[0]);
     int n = in.readInt();
-    Point[] points = new Point[n];
+    CollinearPoints.Point[] points = new CollinearPoints.Point[n];
     for (int i = 0; i < n; i++) {
         int x = in.readInt();
         int y = in.readInt();
-        points[i] = new Point(x, y);
+        points[i] = new CollinearPoints.Point(x, y);
     }
 
     <font color = gray>// draw the points</font>
     StdDraw.enableDoubleBuffering();
     StdDraw.setXscale(0, 32768);
     StdDraw.setYscale(0, 32768);
-    for (Point p : points) {
+    for (CollinearPoints.Point p : points) {
         p.draw();
     }
     StdDraw.show();
 
     <font color = gray>// print and draw the line segments</font>
-    BruteCollinearPoints collinear = new BruteCollinearPoints(points);
-    for (LineSegment segment : collinear.segments()) {
+    CollinearPoints.BruteCollinearPoints collinear = new CollinearPoints.BruteCollinearPoints(points);
+    for (CollinearPoints.LineSegment segment : collinear.segments()) {
         StdOut.println(segment);
         segment.draw();
     }
@@ -292,15 +292,15 @@ Below are two examples.
 
 
 <blockquote><pre>
-% <b>java BruteCollinearPoints input8.txt</b>
+% <b>java CollinearPoints.BruteCollinearPoints input8.txt</b>
 (10000, 0) -> (0, 10000) 
 (3000, 4000) -> (20000, 21000) 
 
-% <b>java FastCollinearPoints input8.txt</b>
+% <b>java CollinearPoints.FastCollinearPoints input8.txt</b>
 (3000, 4000) -> (20000, 21000) 
 (0, 10000) -> (10000, 0)
 
-% <b>java FastCollinearPoints input6.txt</b>
+% <b>java CollinearPoints.FastCollinearPoints input6.txt</b>
 (14000, 10000) -> (32000, 10000) 
 </pre>
 </blockquote>
@@ -310,8 +310,8 @@ Below are two examples.
 <p>
 <b>Deliverables.</b>
 Submit only the files
-<tt>BruteCollinearPoints.java</tt>, <tt>FastCollinearPoints.java</tt>, and <tt>Point.java</tt>.
-We will supply <tt>LineSegment.java</tt> and <tt>algs4.jar</tt>.
+<tt>CollinearPoints.BruteCollinearPoints.java</tt>, <tt>CollinearPoints.FastCollinearPoints.java</tt>, and <tt>CollinearPoints.Point.java</tt>.
+We will supply <tt>CollinearPoints.LineSegment.java</tt> and <tt>algs4.jar</tt>.
 You may not call any library functions other those in
 <tt>java.lang</tt>, <tt>java.util</tt>, and <tt>algs4.jar</tt>.
 In particular, you may call <tt>Arrays.sort()</tt>.

@@ -1,3 +1,5 @@
+package kdtree;
+
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 import edu.princeton.cs.algs4.StdDraw;
@@ -64,7 +66,7 @@ public class KdTree {
      */
     public void insert(Point2D p) {
         if (p == null)
-            throw new NullPointerException("Point can not be null");
+            throw new NullPointerException("CollinearPoints.Point can not be null");
         if (!contains(p)) {
             root = insert(root, p, true);
         }
@@ -101,7 +103,7 @@ public class KdTree {
      */
     public boolean contains(Point2D p) {
         if (p == null)
-            throw new NullPointerException("Point can not be null");
+            throw new NullPointerException("CollinearPoints.Point can not be null");
 
 
         return contains(p, root);
@@ -203,7 +205,7 @@ public class KdTree {
      */
     public Point2D nearest(Point2D p) {
         if (p == null)
-            throw new NullPointerException("Point can not be null");
+            throw new NullPointerException("CollinearPoints.Point can not be null");
         if (isEmpty())
             return null;
         nearest = root;
