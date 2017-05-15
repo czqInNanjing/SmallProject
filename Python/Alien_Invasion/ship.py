@@ -24,3 +24,7 @@ class Ship():
             self.rect.centerx -= self.ai_settings.ship_speed
         elif self.moving_right and self.rect.right < self.screen_rect.right:
             self.rect.centerx += self.ai_settings.ship_speed
+
+    def center_ship(self):
+        self.rect.centerx = self.screen_rect.centerx
+        self.rect.bottom = self.screen_rect.bottom
