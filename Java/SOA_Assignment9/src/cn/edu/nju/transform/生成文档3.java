@@ -21,8 +21,6 @@ public class 生成文档3 {
 
         if (studentList == null)
             throw new Exception("Error while reading 学生列表类型 from 文档2.xml");
-
-
         课程成绩列表类型 scoreList = new 课程成绩列表类型();
 
         for (学生信息 student : studentList.get学生()) {
